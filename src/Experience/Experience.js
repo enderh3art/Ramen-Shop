@@ -50,6 +50,20 @@ export default class Experience
         this.postProcessing = new PostProcessing()
         this.rayCaster = new RayCaster()
 
+        // Config
+        this.config = {}
+
+        window.addEventListener('touchstart', () =>
+        {
+            this.config.touch = true
+        }, { once: true })
+
+        window.addEventListener('mousedown', () =>
+        {
+            this.config.touch = false
+        }, { once: true })
+
+
         // Resize event
         this.sizes.on('resize', () =>
         {

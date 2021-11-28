@@ -66,3 +66,30 @@ body
         opacity:0;
     }
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    z-index: 1003;
+}
+.btn-1 {
+    width: 300px;
+    height: 100px;
+    border: none;
+    color: #ffffff;
+    background-color: rgb(186,85,211);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 0 #FF00FF;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+    z-index: inherit;
+}
+
+.btn-1:hover {
+    box-shadow: inset 300px 0 0 0 #FF00FF;
+}
