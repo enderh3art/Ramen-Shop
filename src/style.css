@@ -1,0 +1,68 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.overlay{
+    opacity:0;
+    background-color:rgb(0, 0, 0);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    pointer-events:none;
+    z-index:1000;
+}
+
+.overlay.ended{
+    animation: fadeOut 2s;
+}
+
+.loading-bar
+{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    transform: scaleX(0.01);
+    transform-origin: top left;
+    transition: transform 0.5s;
+    z-index:1001;
+    
+
+}
+
+.loading-bar.ended
+{
+    transform: scaleX(0);
+    transform-origin: 100% 0;
+    transition: transform 1.5s ease-in-out;
+    z-index:1002;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity:1;
+    }
+
+    to {
+        opacity:0;
+    }
+}
