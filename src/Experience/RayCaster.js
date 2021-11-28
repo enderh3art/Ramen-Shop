@@ -41,7 +41,8 @@ export default class RayCaster
             ]
             
             this.objectsToTest = [
-                this.ramenShop.poleLight
+                this.ramenShop.floor,
+                this.ramenShop.ramenShop
             ]
 
             // Sign Hit Boxes
@@ -135,8 +136,8 @@ export default class RayCaster
         
                     switch(selectedModel)
                     {
-                        case this.ramenShop.poleLight:
-                            console.log('poleLight')
+                        case this.ramenShop.floor:
+                            console.log('floor')
                             break 
                         // case projectsRed:
                         // case projectsWhite:
