@@ -25,26 +25,6 @@ export default class RayCaster
 
             console.log(this.config.touch)
 
-            // Objects to test
-            this.bottlesToTest = 
-            [
-                this.ramenShop.bottle1, 
-                this.ramenShop.bottle2, 
-                this.ramenShop.bottle3, 
-                this.ramenShop.bottle4, 
-                this.ramenShop.bottle5, 
-                this.ramenShop.bottle6, 
-                this.ramenShop.bottle7, 
-                this.ramenShop.bottle8, 
-                this.ramenShop.bottle9, 
-                this.ramenShop.bottle10
-            ]
-            
-            this.objectsToTest = [
-                this.ramenShop.floor,
-                this.ramenShop.ramenShop
-            ]
-
             // Sign Hit Boxes
             this.projectsHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.6, 1.7 ),
@@ -78,7 +58,27 @@ export default class RayCaster
 
             this.scene.add(this.projectsHitBox, this.jZhouHitBox, this.articlesHitBox,this.aboutMeHitBox, this.creditsHitBox )
 
-            // Listener
+            // Objects to test
+            this.bottlesToTest = 
+            [
+                this.ramenShop.bottle1, 
+                this.ramenShop.bottle2, 
+                this.ramenShop.bottle3, 
+                this.ramenShop.bottle4, 
+                this.ramenShop.bottle5, 
+                this.ramenShop.bottle6, 
+                this.ramenShop.bottle7, 
+                this.ramenShop.bottle8, 
+                this.ramenShop.bottle9, 
+                this.ramenShop.bottle10
+            ]
+            
+            this.objectsToTest = [
+                this.ramenShop.floor,
+                this.ramenShop.ramenShop
+            ]
+
+            // Bottles listener
             window.addEventListener('pointerdown', (event) =>
             {
                 this.cursor.x = event.clientX / this.sizes.width * 2 - 1
