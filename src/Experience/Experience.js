@@ -14,6 +14,7 @@ import PostProcessing from './PostProcessing.js'
 import RayCaster from './RayCaster.js'
 import Performance from './Performance.js'
 import PreLoader from './PreLoader.js'
+import Controller from './Controller.js'
 
 let instance = null
 
@@ -48,7 +49,9 @@ export default class Experience
         this.materials = new Materials()
         this.animations = new Animations()
         this.postProcessing = new PostProcessing()
+        this.controller = new Controller()
         this.rayCaster = new RayCaster()
+        
 
         // Config
         this.config = {}

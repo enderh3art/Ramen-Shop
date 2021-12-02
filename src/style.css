@@ -19,7 +19,7 @@ body
 }
 
 .overlay{
-    opacity:0;
+    opacity:1;
     background-color:rgb(0, 0, 0);
     position:fixed;
     width:100%;

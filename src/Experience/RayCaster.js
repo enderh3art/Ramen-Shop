@@ -13,6 +13,7 @@ export default class RayCaster
         this.sizes = this.experience.sizes
         this.performance = this.experience.performance 
         this.preLoader = this.experience.preLoader
+        this.controller = this.experience.controller
 
         // Wait for resources
         this.preLoader.on('start', () =>
@@ -132,39 +133,43 @@ export default class RayCaster
                     {
 
                         case this.ramenShop.bottle1:
-                            console.log('bottle1')
-                            this.camera.transitions.vendingMachine()
-                            this.performance.performanceCheck()
+                            this.controller.bottleControls.bottle1()
                             break
                         
                         case this.ramenShop.bottle2:
-                            console.log('bottle2')
+                            this.controller.bottleControls.bottle2()
                             break
 
                         case this.ramenShop.bottle3:
-                            console.log('bottle3')
+                            this.controller.bottleControls.bottle3()
                             break
                         
                         case this.ramenShop.bottle4:
-                            console.log('bottle4')
+                            this.controller.bottleControls.bottle4()
                             break
 
                         case this.ramenShop.bottle5:
+                            this.controller.bottleControls.bottle5()
                             break
 
                         case this.ramenShop.bottle6:
+                            this.controller.bottleControls.bottle6()
                             break
 
                         case this.ramenShop.bottle7:
+                            this.controller.bottleControls.bottle7()
                             break
                         
                         case this.ramenShop.bottle8:
+                            this.controller.bottleControls.bottle8()
                             break
 
                         case this.ramenShop.bottle9:
+                            this.controller.bottleControls.bottle9()
                             break
 
                         case this.ramenShop.bottle10:
+                            this.controller.bottleControls.bottle10()
                             break
                     }
                 }
@@ -180,33 +185,25 @@ export default class RayCaster
                         case this.ramenShop.projectsRed:
                         case this.ramenShop.projectsWhite:
                         case this.projectsHitBox:
-                            // controller.buttonIndicator(projectsWhite, 'white')
-                            // controller.toProjects()
-                            console.log('projects')
+                            this.controller.menuControls.projects()
                             break
         
                         case this.ramenShop.articlesWhite:
                         case this.ramenShop.articlesRed:
                         case this.articlesHitBox:
-                            // controller.buttonIndicator(articlesWhite, 'white')
-                            // window.open('https://medium.com/@jesse-zhou', '_blank');
-                            console.log('articles')
+                            this.controller.menuControls.articles()
                             break
         
                         case this.ramenShop.aboutMeBlack:
                         case this.ramenShop.aboutMeBlue:
                         case this.aboutMeHitBox:
-                            // controller.buttonIndicator(aboutMeBlack, 'black')
-                            // controller.toInfo()
-                            console.log('about me')
+                            this.controller.menuControls.aboutMe()
                             break
         
                         case this.ramenShop.creditsBlack:
                         case this.ramenShop.creditsOrange:
                         case this.creditsHitBox:
-                            // controller.buttonIndicator(creditsBlack, 'black')
-                            // controller.toCredits()
-                            console.log('credits')
+                            this.controller.menuControls.credits()
                             break
                 
                     }

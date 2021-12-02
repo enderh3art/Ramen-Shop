@@ -56,8 +56,18 @@ export default class PreLoader extends EventEmitter
                 this.overlay.remove()
             }, 2000)
 
+            // Trigger start events
+            this.controller = this.experience.controller
+            this.performance = this.experience.performance
+
+            this.controller.camControls.toDefault()
+            this.performance.performanceCheck()
+            
+
             // Emit Event
             this.trigger('start')
+
+            
             
         });
     }

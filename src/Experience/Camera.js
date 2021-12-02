@@ -40,7 +40,7 @@ export default class Camera
             .add(this.cameraToggle, 'unlockCamera')
             .onChange(() =>
             {
-                this.cam ? this.camAngle.unlocked() : this.camAngle.default()
+                this.cam ? this.camAngle.default() : this.camAngle.unlocked()
             })   
         }
     }
@@ -62,13 +62,15 @@ export default class Camera
         this.controls.rotateSpeed = 1.2
         this.controls.zoomSpeed = 0.8
         this.controls.target.z = -1
+        this.controls.enableRotate = false
+        this.controls.enableZoom = false
     }
 
     setCamAngles()
     {
         this.camAngle = {}
 
-        this.camAngle.default = () =>
+        this.camAngle.unlocked = () =>
         {
             this.controls.maxDistance = 30
             this.controls.minDistance = 0
@@ -79,7 +81,7 @@ export default class Camera
             this.cam = true
         }
 
-        this.camAngle.unlocked = () =>
+        this.camAngle.default = () =>
         {
             this.controls.minDistance = 7
             this.controls.maxDistance = 16
@@ -115,19 +117,46 @@ export default class Camera
     {
         this.transitions = {}
 
-        this.transitions.vendingMachine = async () =>
+        this.transitions.vendingMachine = async (duration) =>
         {
             this.controls.enableRotate = false
             this.controls.enableZoom = false
 
-            gsap.to(this.instance.position, { duration: 1.5, ease: "power1.inOut", x: 1.2, y:-1.6, z:7.5})
-            gsap.to(this.controls.target, { duration: 1.5, ease: "power1.inOut", x: -0.2, y:-1, z:0.3})
+            gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
+            x: 1.2,
+            y:-1.6,
+            z:7.5})
+            gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
+            x: -0.2,
+            y:-1,
+            z:0.3})
 
             await this.sleep(1500)
-
             this.controls.enableRotate = true
             this.controls.enableZoom = true
+        }
 
+        this.transitions.default = async (duration) =>
+        {
+            this.controls.enableRotate = false
+            this.controls.enableZoom = false
+
+            gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
+            // x: -13.8,
+            // y: 0,
+            // z: -8})
+            x: -10.9,
+            y: 0,
+            z: -6.7})
+            
+            gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
+            x: 0,
+            y: 0,
+            z: -1})
+
+            await this.sleep(1500)
+            this.controls.enableRotate = true
+            this.controls.enableZoom = true
         }
     
     }

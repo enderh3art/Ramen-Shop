@@ -25,6 +25,8 @@ export default class Performance
 
     performanceCheck()
     {
+        console.log(1000/this.frameTime)
+
         if (1000/this.frameTime <= 50) 
         {
             // disable bloom
@@ -47,7 +49,6 @@ export default class Performance
             this.stats.begin()
             this.stats.end()
         }
-        
 
         this.thisFrameTime = (this.thisLoop=new Date) - this.lastLoop;
         this.frameTime+= (this.thisFrameTime - this.frameTime) / this.filterStrength;
