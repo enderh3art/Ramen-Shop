@@ -52,17 +52,12 @@ export default class Experience
 
         // Config
         this.config = {}
+        this.config.touch = false
 
         window.addEventListener('touchstart', () =>
         {
             this.config.touch = true
         }, { once: true })
-
-        window.addEventListener('mousedown', () =>
-        {
-            this.config.touch = false
-        }, { once: true })
-
 
         // Resize event
         this.sizes.on('resize', () =>

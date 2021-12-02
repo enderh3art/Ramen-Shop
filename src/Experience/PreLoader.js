@@ -58,6 +58,7 @@ export default class PreLoader extends EventEmitter
 
             // Emit Event
             this.trigger('start')
+            
         });
     }
 }
