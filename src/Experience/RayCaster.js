@@ -96,8 +96,6 @@ export default class RayCaster
             ]
             
             // Objects to test 
-
-            console.log(this.config.touch)
             if(this.config.touch == true)
             {
                 this.objectsToTest = [
@@ -135,7 +133,7 @@ export default class RayCaster
 
                         case this.ramenShop.bottle1:
                             console.log('bottle1')
-                            this.openNav()
+                            this.camera.transitions.vendingMachine()
                             this.performance.performanceCheck()
                             break
                         

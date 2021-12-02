@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import gsap from 'gsap'
 
 export default class Camera
 {
@@ -15,6 +16,7 @@ export default class Camera
         this.setInstance()
         this.setControls()
         this.setCamAngles()
+        this.setTransitions()
 
         if(this.debug.active)
         {
@@ -87,17 +89,6 @@ export default class Camera
             this.cam = false
         }
 
-        this.camAngle.default = () =>
-        {
-            this.controls.maxDistance = 30
-            this.controls.minDistance = 0
-            this.controls.minAzimuthAngle = 0
-            this.controls.maxAzimuthAngle = Math.PI * 1.999
-            this.controls.minPolarAngle = 0
-            this.controls.maxPolarAngle = Math.PI
-            this.cam = true
-        }
-
         this.camAngle.vendingMachine = () =>
         {
             this.controls.minDistance = 4
@@ -119,6 +110,33 @@ export default class Camera
         }
     
     }
+
+    setTransitions()
+    {
+        this.transitions = {}
+
+        this.transitions.vendingMachine = async () =>
+        {
+            this.controls.enableRotate = false
+            this.controls.enableZoom = false
+
+            gsap.to(this.instance.position, { duration: 1.5, ease: "power1.inOut", x: 1.2, y:-1.6, z:7.5})
+            gsap.to(this.controls.target, { duration: 1.5, ease: "power1.inOut", x: -0.2, y:-1, z:0.3})
+
+            await this.sleep(1500)
+
+            this.controls.enableRotate = true
+            this.controls.enableZoom = true
+
+        }
+    
+    }
+
+    sleep(ms) 
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
 
     resize()
     {
