@@ -45,7 +45,7 @@ export default class PreLoader extends EventEmitter
     readyScreen()
     {
         this.startButton.style.display = "inline"
-        this.startButton.addEventListener("click",() => {
+        this.startButton.addEventListener("click", async () => {
 
             // Remove overlay and button
             this.overlay.classList.add('ended')
@@ -59,16 +59,19 @@ export default class PreLoader extends EventEmitter
             // Trigger start events
             this.controller = this.experience.controller
             this.performance = this.experience.performance
-
             this.controller.camControls.toDefault()
-            this.performance.performanceCheck()
-            
+
+            await this.sleep(500)
+            this.performance.performanceCheck()       
 
             // Emit Event
             this.trigger('start')
 
-            
-            
         });
+    }
+
+    sleep(ms) 
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

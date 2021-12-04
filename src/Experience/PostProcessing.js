@@ -156,8 +156,8 @@ export default class PostProcessing
         this.renderBloom = function renderBloom()
         {
             this.scene.traverse(this.darkenNonBloomed)
-            this.bloomComposer.render();
-            this.scene.traverse( this.restoreMaterial )
+            this.bloomComposer.render()
+            this.scene.traverse(this.restoreMaterial)
         }
     }
 

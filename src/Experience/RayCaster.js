@@ -111,6 +111,7 @@ export default class RayCaster
             {
                 this.objectsToTest = [
                     this.ramenShop.projectsRed,this.ramenShop.projectsWhite,
+                    this.ramenShop.jZhouBlack, this.ramenShop.jZhouPink,
                     this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
                     this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
                     this.ramenShop.creditsBlack,this.ramenShop.creditsOrange
@@ -185,25 +186,31 @@ export default class RayCaster
                         case this.ramenShop.projectsRed:
                         case this.ramenShop.projectsWhite:
                         case this.projectsHitBox:
-                            this.controller.menuControls.projects()
+                            this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
+                            break
+
+                        case this.ramenShop.jZhouBlack:
+                        case this.ramenShop.jZhouPink:
+                        case this.jZhouHitBox:
+                            this.controller.menuControls.jZhou(this.ramenShop.jZhouBlack, 'black')
                             break
         
                         case this.ramenShop.articlesWhite:
                         case this.ramenShop.articlesRed:
                         case this.articlesHitBox:
-                            this.controller.menuControls.articles()
+                            this.controller.menuControls.articles(this.ramenShop.articlesWhite, 'white')
                             break
         
                         case this.ramenShop.aboutMeBlack:
                         case this.ramenShop.aboutMeBlue:
                         case this.aboutMeHitBox:
-                            this.controller.menuControls.aboutMe()
+                            this.controller.menuControls.aboutMe(this.ramenShop.aboutMeBlack, 'black')
                             break
         
                         case this.ramenShop.creditsBlack:
                         case this.ramenShop.creditsOrange:
                         case this.creditsHitBox:
-                            this.controller.menuControls.credits()
+                            this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
                             break
                 
                     }

@@ -142,17 +142,32 @@ export default class Camera
             this.controls.enableZoom = false
 
             gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
-            // x: -13.8,
-            // y: 0,
-            // z: -8})
-            x: -10.9,
+            x: -13.8,
             y: 0,
-            z: -6.7})
+            z: -8})
+            // x: -10.9,
+            // y: 0,
+            // z: -6.7})
             
             gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
             x: 0,
             y: 0,
             z: -1})
+
+            await this.sleep(1500)
+            this.controls.enableRotate = true
+            this.controls.enableZoom = true
+        }
+
+        this.transitions.jZhou = async (duration) =>
+        {
+            this.controls.enableRotate = false
+            this.controls.enableZoom = false
+
+            gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
+            x: -10.2,
+            y: 6.3,
+            z: 3.8})
 
             await this.sleep(1500)
             this.controls.enableRotate = true

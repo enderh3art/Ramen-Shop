@@ -21,12 +21,23 @@ export default class Performance
         this.filterStrength = 5
         this.frameTime = 0
         this.lastLoop = new Date
+        this.intervalSet = null
     }
 
     performanceCheck()
     {
-        console.log(1000/this.frameTime)
 
+        // Perform checks every 5 seconds
+        if(this.intervalSet === null)
+        {
+            setInterval(() => {
+                this.performanceCheck()
+            }, 5000);
+            this.intervalSet = true
+        }
+
+        // Check Performance
+        console.log(1000/this.frameTime)
         if (1000/this.frameTime <= 50) 
         {
             // disable bloom
@@ -54,6 +65,4 @@ export default class Performance
         this.frameTime+= (this.thisFrameTime - this.frameTime) / this.filterStrength;
         this.lastLoop = this.thisLoop;
     }
-
-
 }

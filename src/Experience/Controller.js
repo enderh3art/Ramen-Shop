@@ -7,10 +7,31 @@ export default class Controller
     {
         this.experience = new Experience()
         this.camera = this.experience.camera
+        this.resources = this.experience.resources
 
+        this.setLogic()
         this.setBottleControls()
         this.setMenuControls()
         this.setCamControls()
+
+        this.resources.on('ready', () =>
+        {
+            this.ramenShop = this.experience.world.ramenShop
+        })
+    }
+
+    setLogic()
+    {
+        this.logic = {}
+        this.logic.buttonsLocked = false
+        this.logic.mode = 'menu'
+
+        this.logic.lockButtons = async (lockDuration) =>
+        {
+            this.logic.buttonsLocked = true
+            await this.sleep(lockDuration)
+            this.logic.buttonsLocked = false
+        }
     }
 
     setBottleControls()
@@ -18,7 +39,12 @@ export default class Controller
         this.bottleControls = {}
         this.bottleControls.bottle1 = async () =>
         {
-            console.log('bottle1')
+            if(this.logic.buttonsLocked === false & this.logic.mode === 'projects')
+            {
+                this.logic.mode = 'menu'
+                this.camControls.toDefault()
+                console.log('back')
+            }
         }
         this.bottleControls.bottle2 = async () =>
         {
@@ -61,21 +87,63 @@ export default class Controller
     setMenuControls()
     {
         this.menuControls = {}
-        this.menuControls.projects = async () =>
+        this.menuControls.projects = async (obj, color) =>
         {
-            this.camControls.toProjects()
+            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            {
+                this.logic.mode = 'projects'
+                this.menuControls.buttonIndicator(obj, color)
+                this.camControls.toProjects()
+            }
+ 
         }
-        this.menuControls.articles = async () =>
+        this.menuControls.jZhou = async (obj, color) =>
         {
-            this.camControls.toDefault()
+            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            {
+                this.logic.lockButtons(1500)
+                this.menuControls.buttonIndicator(obj, color)
+                this.camera.transitions.jZhou(1.5)
+            }
         }
-        this.menuControls.aboutMe = async () =>
+        this.menuControls.articles = async (obj, color) =>
         {
-            console.log('aboutMe')
+            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            {
+                this.menuControls.buttonIndicator(obj, color)
+                await this.sleep(250)
+                window.open('https://medium.com/@jesse-zhou', '_blank');
+            }
         }
-        this.menuControls.credits = async () =>
+        this.menuControls.aboutMe = async (obj, color) =>
         {
-            console.log('credits')
+            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            {
+                this.menuControls.buttonIndicator(obj, color)
+                console.log('aboutMe')
+            }
+        }
+        this.menuControls.credits = async (obj, color) =>
+        {
+            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            {
+                this.menuControls.buttonIndicator(obj, color)
+                console.log('credits')
+            }
+        }
+
+        this.menuControls.buttonIndicator = async (obj, color) =>
+        {
+            if (color === 'black') {
+                obj.material = this.ramenShop.materials.whiteSignMaterial
+                await this.sleep(200)
+                obj.material = this.ramenShop.materials.blackSignMaterial
+            }
+            if (color === 'white') {
+                obj.material = this.ramenShop.materials.blackSignMaterial
+                await this.sleep(200)
+                obj.material = this.ramenShop.materials.whiteSignMaterial
+            }
         }
     }
 
@@ -84,6 +152,7 @@ export default class Controller
         this.camControls = {}
         this.camControls.toProjects = async () =>
         {
+            this.logic.lockButtons(1500)
             this.camera.camAngle.unlocked()
             this.camera.transitions.vendingMachine(1.5)
             await this.sleep(1500)
