@@ -12,18 +12,17 @@ export default class PreLoader extends EventEmitter
         this.scene = this.experience.scene
         this.resources = this.experience.resources
         this.overlay = document.querySelector('.overlay')
-        this.loadingBarElement = document.querySelector('.loading-bar')
-        this.startButton = document.querySelector('.btn-1')
-        
-        this.startButton.style.display = "none"
-        
-        this.overlay.style.opacity = 1
+        this.cooking = document.querySelector('#cooking')
+        this.startButton = document.querySelector('.start')       
+        this.startButton.style.display = 'none'
+    
 
         // Progress
         this.resources.on('itemLoaded', () =>
         {
             this.progressRatio = (this.resources.loaded + 1)/ this.resources.toLoad
-            this.loadingBarElement.style.transform = `scaleX(${this.progressRatio})`
+            
+            document.getElementById("progressPercentage").innerHTML = this.progressRatio * 100
         })
 
         //Loaded
@@ -31,9 +30,8 @@ export default class PreLoader extends EventEmitter
         {
             window.setTimeout(() =>
             {
-                this.loadingBarElement.classList.add('ended')
-                this.loadingBarElement.style.transform = ''
-            }, 1000)
+                this.cooking.classList.add('fade')
+            }, 1500)
 
             window.setTimeout(() =>
             {
@@ -44,15 +42,17 @@ export default class PreLoader extends EventEmitter
     
     readyScreen()
     {
+        this.cooking.remove()
         this.startButton.style.display = "inline"
+        this.startButton.classList.add('fadeIn')
         this.startButton.addEventListener("click", async () => {
 
             // Remove overlay and button
-            this.overlay.classList.add('ended')
-            this.startButton = document.querySelector('.btn-1')
-            this.startButton.remove()
+            this.overlay.classList.add('fade')
+            this.startButton.classList.add('fadeOut')
             window.setTimeout(() =>
             {
+                this.startButton.remove()
                 this.overlay.remove()
             }, 2000)
 
