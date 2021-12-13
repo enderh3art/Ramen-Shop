@@ -14,7 +14,7 @@ export default class PreLoader extends EventEmitter
         this.overlay = document.querySelector('.overlay')
         this.cooking = document.querySelector('#cooking')
         this.startButton = document.querySelector('.start')       
-        this.startButton.style.display = 'none'
+        // this.startButton.style.display = 'none'
     
 
         // Progress
@@ -22,7 +22,7 @@ export default class PreLoader extends EventEmitter
         {
             this.progressRatio = (this.resources.loaded + 1)/ this.resources.toLoad
             
-            document.getElementById("progressPercentage").innerHTML = this.progressRatio * 100
+            document.getElementById("progressPercentage").innerHTML = Math.trunc(this.progressRatio * 100)
         })
 
         //Loaded
@@ -50,6 +50,7 @@ export default class PreLoader extends EventEmitter
             // Remove overlay and button
             this.overlay.classList.add('fade')
             this.startButton.classList.add('fadeOut')
+
             window.setTimeout(() =>
             {
                 this.startButton.remove()
@@ -67,7 +68,7 @@ export default class PreLoader extends EventEmitter
             // Emit Event
             this.trigger('start')
 
-        });
+        },{ once: true });
     }
 
     sleep(ms) 

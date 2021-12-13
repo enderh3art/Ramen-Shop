@@ -80,6 +80,14 @@ export default class ramenShop
         this.arcadeRim = this.model.children.find(child => child.name === 'arcadeRim')
         this.vendingMachineLight = this.model.children.find(child => child.name === 'vendingMachineLight')
 
+        // Screens
+        this.bigScreen = this.model.children.find(child => child.name === 'bigScreen')
+        this.tallScreen = this.model.children.find(child => child.name === 'tallScreen')
+        this.sideScreen = this.model.children.find(child => child.name === 'sideScreen')
+        this.arcadeScreen = this.model.children.find(child => child.name === 'arcadeScreen')
+        this.tvScreen = this.model.children.find(child => child.name === 'tvScreen')
+        this.littleTVScreen = this.model.children.find(child => child.name === 'littleTVScreen')
+    
         // Bottles
         this.bottle1 = this.model.children.find(child => child.name === 'bottle1')
         this.bottle2 = this.model.children.find(child => child.name === 'bottle2')   
@@ -160,6 +168,12 @@ export default class ramenShop
             this.poleLight.material = this.materials.poleLightMaterial
             this.arcadeRim.material = this.materials.neonBlueMaterial
             this.vendingMachineLight.material = this.materials.whiteSignMaterial
+
+            // Screens
+            this.arcadeScreen.material = this.materials.arcadeScreenDefaultMaterial
+            this.littleTVScreen.material = this.materials.hulkBusterVideoMaterial
+
+            // this.materials.hulkBusterVideoTexture.needsUpdate = true
 
             this.bottle1.material = this.materials.miscMaterial
             this.bottle2.material = this.materials.miscMaterial

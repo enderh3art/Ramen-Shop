@@ -40,5 +40,17 @@ export default [
         name: 'fanMatcapTexture',
         type: 'texture',
         path: 'textures/matcaps/fanMatcap.png'
+    },
+    // Screens
+    {
+        name: 'arcadeScreenDefaultTexture',
+        type: 'texture',
+        path: 'textures/screens/arcadeScreenDefault.png'
+    },
+    // Videos
+    {
+        name: 'hulkBusterVideoTexture',
+        type: 'videoTexture',
+        path: 'textures/videosTextures/hulkBuster.mp4'
     }
 ]

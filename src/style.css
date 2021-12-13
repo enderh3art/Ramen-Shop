@@ -2,14 +2,10 @@
 {
     margin: 0;
     padding: 0;
+    /* height: -webkit-fill-available; */
 }
 
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
-
-/* body
-{
-    overflow: hidden;
-} */
 
 .webgl
 {
@@ -21,6 +17,8 @@
 
 body {
     overflow: hidden;
+    /* min-height: 100vh;
+    min-height: -webkit-fill-available; */
 }
 
 .overlay{
@@ -66,6 +64,7 @@ h1 {
     font-family: 'Amatic SC';
     opacity: 0;
     transition: opacity 0.5s;
+    display: none;
 }
 
 .start.fadeIn{

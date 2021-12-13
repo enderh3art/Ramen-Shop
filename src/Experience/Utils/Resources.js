@@ -67,6 +67,24 @@ export default class Resources extends EventEmitter
                     }
                 )
             }
+            else if(source.type === 'videoTexture')
+            {
+                this.video = document.createElement('video')
+                this.video.playsInline = true
+                this.video.muted = true
+                this.video.loop = true
+                
+                this.videoTexture = new THREE.VideoTexture(this.video)
+                this.video.addEventListener('loadeddata', () =>
+                {
+                
+                    this.videoTexture.needsUpdate = true
+                    this.video.play()
+                    this.sourceLoaded(source, this.videoTexture)
+                })
+        
+                this.video.src = source.path
+            }
         }
     }
 

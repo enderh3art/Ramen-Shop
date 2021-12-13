@@ -43,15 +43,23 @@ export default class Materials
 
     mapTextures()
     {
+
+        // map baked textures
         this.ramenShopMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.ramenShopBakedTexture })
         this.machinesMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.machinesBakedTexture })
         this.floorMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.floorBakedTexture })
         this.miscMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.miscBakedTexture })
         this.graphicsMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.graphicsBakedTexture })
 
+        // map matcap textures
         this.dishMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.dishMatcapTexture, side: THREE.DoubleSide})
         this.fanMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.fanMatcapTexture})
 
+        // map screen textures
+        this.arcadeScreenDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.arcadeScreenDefaultTexture })
+
+        // Map video textures
+        this.hulkBusterVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.hulkBusterVideoTexture, side: THREE.FrontSide, toneMapped: false} )
         this.resources.trigger('texturesMapped')
     }
 }
