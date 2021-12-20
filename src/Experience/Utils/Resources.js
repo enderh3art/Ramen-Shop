@@ -15,6 +15,9 @@ export default class Resources extends EventEmitter
         this.toLoad = this.sources.length
         this.loaded = 0
 
+        this.video = {}
+        this.videoTexture = {}
+
         this.setLoaders()
         this.startLoading()
     }
@@ -69,21 +72,27 @@ export default class Resources extends EventEmitter
             }
             else if(source.type === 'videoTexture')
             {
-                this.video = document.createElement('video')
-                this.video.playsInline = true
-                this.video.muted = true
-                this.video.loop = true
+                this.video[source.name] = document.createElement('video')
+                this.video[source.name].playsInline = true
+                this.video[source.name].muted = true
+                this.video[source.name].loop = true
+                // this.video.flip = false
                 
-                this.videoTexture = new THREE.VideoTexture(this.video)
-                this.video.addEventListener('loadeddata', () =>
+                this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
+                // this.videoTexture.wrapS = THREE.RepeatWrapping;
+                // this.videoTexture.repeat.x = - 1;
+                
+                this.video[source.name].addEventListener('loadeddata', () =>
                 {
-                
                     this.videoTexture.needsUpdate = true
-                    this.video.play()
-                    this.sourceLoaded(source, this.videoTexture)
+                    this.video[source.name].play()
+                    console.log(this.videoTexture[source.name])
+                    this.sourceLoaded(source, this.videoTexture[source.name])
                 })
-        
-                this.video.src = source.path
+                this.video[source.name].src = source.path      
+
+
+                
             }
         }
     }

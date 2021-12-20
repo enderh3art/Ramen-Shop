@@ -52,5 +52,10 @@ export default [
         name: 'hulkBusterVideoTexture',
         type: 'videoTexture',
         path: 'textures/videosTextures/hulkBuster.mp4'
+    },
+    {
+        name: 'interstellarVideoTexture',
+        type: 'videoTexture',
+        path: 'textures/videosTextures/interstellar.mp4'
     }
 ]

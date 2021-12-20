@@ -60,6 +60,7 @@ export default class Materials
 
         // Map video textures
         this.hulkBusterVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.hulkBusterVideoTexture, side: THREE.FrontSide, toneMapped: false} )
+        this.interstellarVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.interstellarVideoTexture, side: THREE.FrontSide, toneMapped: false} )
         this.resources.trigger('texturesMapped')
     }
 }

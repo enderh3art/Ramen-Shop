@@ -172,6 +172,7 @@ export default class ramenShop
             // Screens
             this.arcadeScreen.material = this.materials.arcadeScreenDefaultMaterial
             this.littleTVScreen.material = this.materials.hulkBusterVideoMaterial
+            this.tallScreen.material = this.materials.interstellarVideoMaterial
 
             // this.materials.hulkBusterVideoTexture.needsUpdate = true
 
