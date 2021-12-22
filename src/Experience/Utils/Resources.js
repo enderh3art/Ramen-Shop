@@ -86,7 +86,6 @@ export default class Resources extends EventEmitter
                 {
                     this.videoTexture.needsUpdate = true
                     this.video[source.name].play()
-                    console.log(this.videoTexture[source.name])
                     this.sourceLoaded(source, this.videoTexture[source.name])
                 })
                 this.video[source.name].src = source.path      

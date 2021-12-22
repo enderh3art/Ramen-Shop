@@ -1,5 +1,6 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
+import Hologram from './Hologram.js'
 import RamenShop from './RamenShop.js'
 
 export default class World
@@ -15,11 +16,13 @@ export default class World
         {
             // Setup
             this.ramenShop = new RamenShop()
+            this.hologram = new Hologram()
             // this.environment = new Environment()
         })
     }
 
     update()
     {
+        if(this.hologram) {this.hologram.update()}
     }
 }

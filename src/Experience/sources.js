@@ -1,10 +1,16 @@
 export default [
-    // Baked Textures
+    // Models
     {
         name: 'ramenShopModel',
         type: 'gltfModel',
         path: 'models/ramenShop/glTF/ramenShop.gltf'
     },
+    {
+        name: 'ramenHologram',
+        type: 'gltfModel',
+        path: 'models/ramenShop/glTF/ramenHologram.gltf'
+    },
+    // Baked Textures
     {
         name: 'ramenShopBakedTexture',
         type: 'texture',
