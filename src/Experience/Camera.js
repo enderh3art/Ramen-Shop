@@ -193,3 +193,5 @@ export default class Camera
         this.controls.update()
     }
 }
+
+// test
