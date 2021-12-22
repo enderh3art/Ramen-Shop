@@ -7,6 +7,7 @@ export default class Performance
     constructor()
     {
         this.experience = new Experience()
+        this.resources = this.experience.resources
         this.debug = this.experience.debug
 
         // Debug
@@ -22,11 +23,11 @@ export default class Performance
         this.frameTime = 0
         this.lastLoop = new Date
         this.intervalSet = null
+
     }
 
     performanceCheck()
     {
-
         // Perform checks every 5 seconds
         if(this.intervalSet === null)
         {
@@ -38,19 +39,35 @@ export default class Performance
 
         // Check Performance
         console.log(1000/this.frameTime)
+
         if (1000/this.frameTime <= 50) 
         {
-            // disable bloom
-            experience.postProcessing.renderBloom = function dontRenderBloom (){}
-            experience.postProcessing.bloomComposer.reset()
-
-            // // change materials
-            experience.world.ramenShop.neonPink.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FFAEEA')})
-            experience.world.ramenShop.neonBlue.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
-            experience.world.ramenShop.arcadeRim.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
-            experience.world.ramenShop.poleLight.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FCD4FF')})
-            experience.world.ramenShop.neonGreen.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#8FFF8F')})    
+            this.lowerGraphics()
         }
+    }
+
+    lowerGraphics()
+    {
+        // disable bloom
+        this.experience.postProcessing.renderBloom = function dontRenderBloom (){}
+        this.experience.postProcessing.bloomComposer.reset()
+
+        // change materials
+        this.experience.world.ramenShop.neonPink.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FFAEEA')})
+        this.experience.world.ramenShop.neonBlue.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
+        this.experience.world.ramenShop.arcadeRim.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
+        this.experience.world.ramenShop.poleLight.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FCD4FF')})
+        this.experience.world.ramenShop.neonGreen.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#8FFF8F')})
+        
+        // Pause all videos
+        for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
+
+            this.resources.video[Object.keys(this.resources.video)[i]].pause()
+
+        }
+
+        // Turn off particle falling
+        this.experience.world.hologram.animate = false
     }
 
     update()

@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import Experience from '../Experience.js'
 
 export default class Hologram
@@ -21,8 +20,9 @@ export default class Hologram
         // Resource
         this.ramenHologram = this.resources.items.ramenHologram
 
+        this.animate = true
         this.positions = this.combineBuffer( this.ramenHologram.scene, 'position' )
-        this.createMesh( this.positions, this.scene, 0.0225, -0.1, 2, -0.95, 0xffdd44 );
+        this.createMesh( this.positions, this.scene, 0.0225, -0.1, 2, -0.95 );
 
     }
 
@@ -53,16 +53,13 @@ export default class Hologram
     
                 this.combined.set( this.buffer.array, this.offset );
                 this.offset += this.buffer.array.length;
-    
             }
-    
         } );
     
         return new THREE.BufferAttribute( this.combined, 3 );
-    
     }
 
-    createMesh( positions, scene, scale, x, y, z, color ) {
+    createMesh( positions, scene, scale, x, y, z ) {
 
         this.geometry = new THREE.BufferGeometry();
         this.geometry.setAttribute( 'position', positions.clone() );
@@ -70,7 +67,7 @@ export default class Hologram
     
         this.geometry.attributes.position.setUsage( THREE.DynamicDrawUsage );
 
-        this.mesh = new THREE.Points( this.geometry, new THREE.PointsMaterial( { size: .001, color: new THREE.Color( 0x00ffff ) } ) );
+        this.mesh = new THREE.Points( this.geometry, new THREE.PointsMaterial( { size: .01, color: new THREE.Color( 0x00ffff ) } ) );
         this.mesh.scale.x = this.mesh.scale.y = this.mesh.scale.z = scale;
     
         this.mesh.position.x = x 
@@ -88,9 +85,10 @@ export default class Hologram
 
     update()
     {
-    if (this.mesh) 
+
+    if (this.mesh && this.animate === true) 
     {   
-        this.mesh.rotation.y += - 0.25 * this.time.delta * 0.001
+        // Mesh drop and Rise
         this.positions = this.data.mesh.geometry.attributes.position;
         this.initialPositions = this.data.mesh.geometry.attributes.initialPosition;
 
@@ -170,7 +168,6 @@ export default class Hologram
 
         // all vertices down
         if ( this.data.verticesDown >= this.count ) {
-
             if ( this.data.delay <= 0 ) {
 
                 this.data.direction = 1;

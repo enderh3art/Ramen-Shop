@@ -39,7 +39,7 @@ export default class Controller
         this.bottleControls = {}
         this.bottleControls.bottle1 = async () =>
         {
-            if(this.logic.buttonsLocked === false & this.logic.mode === 'projects')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects')
             {
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
@@ -89,7 +89,7 @@ export default class Controller
         this.menuControls = {}
         this.menuControls.projects = async (obj, color) =>
         {
-            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
                 this.logic.mode = 'projects'
                 this.menuControls.buttonIndicator(obj, color)
@@ -99,7 +99,7 @@ export default class Controller
         }
         this.menuControls.jZhou = async (obj, color) =>
         {
-            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
                 this.logic.lockButtons(1500)
                 this.menuControls.buttonIndicator(obj, color)
@@ -108,7 +108,7 @@ export default class Controller
         }
         this.menuControls.articles = async (obj, color) =>
         {
-            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
                 this.menuControls.buttonIndicator(obj, color)
                 await this.sleep(250)
@@ -117,7 +117,7 @@ export default class Controller
         }
         this.menuControls.aboutMe = async (obj, color) =>
         {
-            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
                 this.menuControls.buttonIndicator(obj, color)
                 console.log('aboutMe')
@@ -125,7 +125,7 @@ export default class Controller
         }
         this.menuControls.credits = async (obj, color) =>
         {
-            if(this.logic.buttonsLocked === false & this.logic.mode === 'menu')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
                 this.menuControls.buttonIndicator(obj, color)
                 console.log('credits')
