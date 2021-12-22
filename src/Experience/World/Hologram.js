@@ -22,7 +22,7 @@ export default class Hologram
         this.ramenHologram = this.resources.items.ramenHologram
 
         this.positions = this.combineBuffer( this.ramenHologram.scene, 'position' )
-        this.createMesh( this.positions, this.scene, 0.02, -0.1, 2, -0.95, 0xffdd44 );
+        this.createMesh( this.positions, this.scene, 0.0225, -0.1, 2, -0.95, 0xffdd44 );
 
     }
 
@@ -80,7 +80,7 @@ export default class Hologram
         scene.add( this.mesh );
         
         this.data = {
-            mesh: this.mesh, verticesDown: 0, verticesUp: 0, direction: 0, speed: 15, delay: Math.floor( 200 + 200 * Math.random() ),
+            mesh: this.mesh, verticesDown: 0, verticesUp: 0, direction: 0, speed: 15, delay: 500,
             start: Math.floor( 100 + 200 * Math.random() ),
         }
 
@@ -176,7 +176,7 @@ export default class Hologram
                 this.data.direction = 1;
                 this.data.speed = 5;
                 this.data.verticesDown = 0;
-                this.data.delay = 320;
+                this.data.delay = 1000;
 
             } else {
 
