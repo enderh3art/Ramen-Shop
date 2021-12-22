@@ -1,0 +1,134 @@
+{
+  "definitions": {
+    "ObjectPattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "instanceof": "Function"
+            }
+          ]
+        },
+        "context": {
+          "type": "string"
+        },
+        "globOptions": {
+          "type": "object"
+        },
+        "filter": {
+          "instanceof": "Function"
+        },
+        "transformAll": {
+          "instanceof": "Function"
+        },
+        "toType": {
+          "enum": ["dir", "file", "template"]
+        },
+        "force": {
+          "type": "boolean"
+        },
+        "priority": {
+          "type": "number"
+        },
+        "info": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "instanceof": "Function"
+            }
+          ]
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "instanceof": "Function"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "transformer": {
+                  "instanceof": "Function"
+                },
+                "cache": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "keys": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            {
+                              "instanceof": "Function"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "transformPath": {
+          "instanceof": "Function"
+        },
+        "noErrorOnMissing": {
+          "type": "boolean"
+        }
+      },
+      "required": ["from"]
+    },
+    "StringPattern": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "patterns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/StringPattern"
+          },
+          {
+            "$ref": "#/definitions/ObjectPattern"
+          }
+        ]
+      }
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "concurrency": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "required": ["patterns"]
+}
