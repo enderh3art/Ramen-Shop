@@ -1,0 +1,48 @@
+uwaga: font ten najlepiej wyglada przy wielkosci 27pt, no antialias
+
+
+:: [L I C E N C J A] :: 
+
+:: autorem fontów zamieszczonych na tej stronie jest bartek nowak [barmee] 
+
+:: mo¿esz : 
+--->tworzyæ dowoln¹ iloœæ kopii fonta 
+--->instalowaæ fonta na dowolnej liczbie komputerów 
+--->wykorzystywaæ go na stronach www i w publikacjach papierowych i elektronicznych pod     warunkiem, ¿e nie maj¹ one charakteru komercyjnego [tzn. przygotowujesz je na swój     w³asny u¿ytek a nie w celu zarobienia pieniêdzy] 
+--->udostêpniaæ fonta na stronie www ale pod warunkiem, ¿e zachowasz plik z czcionk¹ bez     zmian i w widocznym miejscu poinformujesz kto jest autorem fonta 
+
+:: bez zgody autora nie mo¿esz : 
+--->modyfikowaæ pliku z fontem, a szczególnie zmieniaæ nazwy fonta, usuwaæ informacjê o     autorze, usuwaæ plik z licencj¹ 
+--->u¿ywaæ fonta do dzia³añ komercyjnych 
+--->udostêpniaæ fonta na p³ytach cd i jako sk³adnik oprogramowania 
+--->sprzedawaæ fonta albo udostêpniaæ go na p³atnych stronach www 
+
+:: wszelkie uwagi proszê kierowaæ na adres : barme@czcionki.com 
+
+:: najnowsze wersje fontów znajdziesz zawsze na stronie : http://www.nowak.tv/fontoholic 
+
+29082002
+::BARMEE:: 
+
+------------------------------english version-------------------------------
+
+:: [L I C E N S E] :: 
+
+:: the author of fonts at this website is bartek nowak [barmee] 
+
+:: you may : 
+--->install and use an unlimited number of copies of the fonts. 
+--->use the fonts at websites and paper publications on the condition that the publications     are not commercial [it means that you prepare them for private use and not to earn     money] 
+--->you may reproduce and distribute an unlimited number of copies of the font, provided     that each copy shall be a true and complete copy, including all copyright and trademark     notices (if applicable) , and shall be accompanied by a copy of this text file. 
+
+:: without author's permission you mustn't : 
+--->rename, edit or create any derivative works from the font, other than subsetting when     embedding them in documents unless you have permission from bartek nowak. 
+--->use the fonts commercially 
+--->copies of the font may not be distributed for profit either on a standalone basis or     included as part of your own product unless by prior permission of bartek nowak. 
+
+:: please send all questions to : barme@czcionki.com 
+
+:: you can find latest versions of fonts at : http://www.nowak.tv/fontoholic
+
+29082002
+::BARMEE:: 

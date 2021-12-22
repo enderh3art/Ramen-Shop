@@ -1,0 +1,30 @@
+BIG NOODLE TITLING from Sentinel Type, designed by James Arboghast
+
+Hello, and thanks for downloading Big Noodle. Its a pretty simple formula and I stuck to it - a condensed linear all-caps font for titling, in an unassuming, squared style. To describe it as modern would be meaningless. 'Modern' started with Bodoni in the 19th century, and linears have been around since at least 1816. But its definitely 'industrial'. Its also very uniform and utilitarian. So bland and modular it can be used on almost anything, and that's the whole idea - its a general purpose font!
+
+Here's what you get:
+
+* Professionally designed commercial quality font 
+* An upper case (wow!)
+* A lower case (see 'upper case')
+* Numerals (also called 'numbers')
+* Full punctuation, smart quotes, currency, fractions, superiors etc
+* Accented Western European characters and a few ligatures
+* Windows 1252 Latin 1 character set (see above)
+* Fully embeddable for use with Adobe .PDF documents
+
+Big Noodle is a free font, meaning you can use it for any purpose - personal or commercial. If you make a fair bit of money using it in a big ad campaign, please send me a royalty payment based on the amount of exposure the work recieves, and I'll send you a disc of lovely commercial fonts from the Sentinel Type library in return.
+
+Make the money order or cheque (that's how we spell it in Australia and Canada) payable to:
+Maurice Dorisio
+
+Mail cheques to:
+14 Albany Place Bulleen
+Victoria, Australia 3105
+
+U.S funds are fine, but Australian dollars (AUD $) makes life easier at my end.
+
+Thanks for taking the time to read thru this, and have fun with Big Noodle.
+
+
+Regards, James Arboghast
