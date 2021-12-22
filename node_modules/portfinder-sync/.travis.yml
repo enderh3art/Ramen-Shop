@@ -1,0 +1,11 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js:
+- 6.5.0
+
+script: npm run coverage
+
+after_success:
+  - npm run coveralls
