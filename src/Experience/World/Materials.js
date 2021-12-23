@@ -59,8 +59,9 @@ export default class Materials
         this.arcadeScreenDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.arcadeScreenDefaultTexture })
 
         // Map video textures
-        this.hulkBusterVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.hulkBusterVideoTexture, side: THREE.FrontSide, toneMapped: false} )
-        this.interstellarVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.interstellarVideoTexture, side: THREE.FrontSide, toneMapped: false} )
+        this.littleTVScreenVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.littleTVScreenVideoTexture, side: THREE.FrontSide, toneMapped: false} )
+        this.tallScreenVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.tallScreenVideoTexture, side: THREE.FrontSide, toneMapped: false} )
+        this.tvScreenVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.tvScreenVideoTexture, side: THREE.FrontSide, toneMapped: false} )
         this.resources.trigger('texturesMapped')
     }
 }

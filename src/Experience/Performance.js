@@ -60,8 +60,10 @@ export default class Performance
         this.experience.world.ramenShop.neonGreen.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#8FFF8F')})
         
         // Pause all videos
+
         for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
 
+            this.resources.video[Object.keys(this.resources.video)[i]].currentTime = 0
             this.resources.video[Object.keys(this.resources.video)[i]].pause()
 
         }

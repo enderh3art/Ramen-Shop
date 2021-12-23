@@ -55,13 +55,18 @@ export default [
     },
     // Videos
     {
-        name: 'hulkBusterVideoTexture',
+        name: 'littleTVScreenVideoTexture',
         type: 'videoTexture',
-        path: 'textures/videosTextures/hulkBuster.mp4'
+        path: 'textures/videosTextures/littleTVScreen.mp4'
     },
     {
-        name: 'interstellarVideoTexture',
+        name: 'tallScreenVideoTexture',
         type: 'videoTexture',
-        path: 'textures/videosTextures/interstellar.mp4'
+        path: 'textures/videosTextures/tallScreen.mp4'
+    },
+    {
+        name: 'tvScreenVideoTexture',
+        type: 'videoTexture',
+        path: 'textures/videosTextures/tvScreen.mp4'
     }
 ]

@@ -171,8 +171,9 @@ export default class RamenShop
 
             // Screens
             this.arcadeScreen.material = this.materials.arcadeScreenDefaultMaterial
-            this.littleTVScreen.material = this.materials.hulkBusterVideoMaterial
-            this.tallScreen.material = this.materials.interstellarVideoMaterial
+            this.littleTVScreen.material = this.materials.littleTVScreenVideoMaterial
+            this.tallScreen.material = this.materials.tallScreenVideoMaterial
+            this.tvScreen.material = this.materials.tvScreenVideoMaterial
 
             // this.materials.hulkBusterVideoTexture.needsUpdate = true
 
