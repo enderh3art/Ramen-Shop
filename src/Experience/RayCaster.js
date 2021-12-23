@@ -22,6 +22,7 @@ export default class RayCaster
             this.config = {}
             this.config.touch = this.experience.config.touch
             this.ramenShop = this.experience.world.ramenShop
+            this.hologram = this.experience.world.hologram
             this.raycaster = new THREE.Raycaster()
             this.cursor = new THREE.Vector2()
 
@@ -211,6 +212,7 @@ export default class RayCaster
                         case this.ramenShop.creditsOrange:
                         case this.creditsHitBox:
                             this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
+                            this.hologram.breakHologram()
                             break
                 
                     }

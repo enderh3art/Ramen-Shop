@@ -67,7 +67,7 @@ export default class Performance
         }
 
         // Turn off particle falling
-        this.experience.world.hologram.animate = false
+        // this.experience.world.hologram.animate = false
     }
 
     update()

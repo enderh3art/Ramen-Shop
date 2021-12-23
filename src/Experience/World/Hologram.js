@@ -25,9 +25,15 @@ export default class Hologram
         this.positions = this.combineBuffer( this.ramenHologram.scene, 'position' )
         this.createMesh( this.positions, this.scene, 0.0225, -0.1, 2, -0.95 )
 
+        this.started = false
         this.preLoader.on('start', () => 
         {
-            this.raiseHologram()
+            window.setTimeout(()=>{
+                this.raiseHologram()
+            }, 100)
+            this.started = true
+
+            
         })
 
     }
@@ -84,18 +90,13 @@ export default class Hologram
         
         this.data = {
             mesh: this.mesh, verticesDown: 0, verticesUp: 0, direction: 0, speed: 15, delay: 500,
-            start: 300,
+            start: 10,
         }
 
     }
 
     raiseHologram()
     {
-        // this.data.direction = 1;
-        // this.data.speed = 5;
-        // this.data.verticesDown = 0;
-        // this.data.delay = 1000;
-
         if ( this.data.verticesDown >= this.count ) {
                 this.data.direction = 1;
                 this.data.speed = 5;
@@ -104,6 +105,19 @@ export default class Hologram
 
         }
     }
+
+    breakHologram()
+    {
+        if ( this.data.verticesUp >= this.count && this.animate === true) {
+
+                this.data.direction = - 1;
+                this.data.speed = 15;
+                this.data.verticesUp = 0;
+                this.data.delay = 50;
+
+        }
+    }
+
 
     update()
     {
@@ -122,10 +136,9 @@ export default class Hologram
 
         } else {
 
-            if ( this.data.direction === 0  && this.animate === true) {
-
+            
+            if ( this.data.direction === 0 && this.started === false) {
                 this.data.direction = - 1;
-
             }
 
         }
@@ -190,32 +203,32 @@ export default class Hologram
 
         // all vertices down (go up)
 
-        // if ( this.data.verticesDown >= this.count ) {
-        //     if ( this.data.delay <= 0 ) {
+        if ( this.data.verticesDown >= this.count && this.animate === true) {
+            if ( this.data.delay <= 0 ) {
 
-        //         this.data.direction = 1;
-        //         this.data.speed = 5;
-        //         this.data.verticesDown = 0;
-        //         this.data.delay = 1000;
+                this.data.direction = 1;
+                this.data.speed = 5;
+                this.data.verticesDown = 0;
+                // this.data.delay = 1000;
 
-        //     } else {
+            } else {
 
-        //         this.data.delay -= 1;
+                this.data.delay -= 1;
 
-        //     }
+            }
 
-        // }
+        }
 
         // all vertices up (go down)
 
-        // if ( this.data.verticesUp >= this.count ) {
+        // if ( this.data.verticesUp >= this.count && this.animate === true) {
 
         //     if ( this.data.delay <= 0 ) {
 
         //         this.data.direction = - 1;
         //         this.data.speed = 15;
         //         this.data.verticesUp = 0;
-        //         this.data.delay = 120;
+        //         this.data.delay = 20;
 
         //     } else {
 
