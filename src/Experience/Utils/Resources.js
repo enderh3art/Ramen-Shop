@@ -76,15 +76,16 @@ export default class Resources extends EventEmitter
                 this.video[source.name].playsInline = true
                 this.video[source.name].muted = true
                 this.video[source.name].loop = true
-                // this.video.flip = false
+                
                 
                 this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
+                this.videoTexture[source.name].flipY = false
                 // this.videoTexture.wrapS = THREE.RepeatWrapping;
                 // this.videoTexture.repeat.x = - 1;
                 
                 this.video[source.name].addEventListener('loadeddata', () =>
                 {
-                    this.videoTexture.needsUpdate = true
+                    this.videoTexture[source.name].needsUpdate = true
                     this.video[source.name].play()
                     this.sourceLoaded(source, this.videoTexture[source.name])
                 })

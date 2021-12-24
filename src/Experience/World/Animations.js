@@ -15,7 +15,8 @@ export default class Animations
         this.resources.on('ready', () =>
         {
             // Setup
-            this.ramenShop = new RamenShop()
+            this.ramenShop = this.experience.world.ramenShop
+            this.hologram = this.experience.world.hologram
             this.loaded = 1
         })
     }
@@ -25,5 +26,6 @@ export default class Animations
         if(this.loaded === 1) {this.ramenShop.fan1.rotation.y = -this.time.elapsed * 3 * 0.001}
         if(this.loaded === 1) {this.ramenShop.fan2.rotation.y = -this.time.elapsed * 3 * 0.001}
         if(this.loaded === 1) {this.ramenShop.dish.rotation.y = Math.sin(this.time.elapsed * 0.5 * 0.001) *.4 - Math.PI *.2}
+        if(this.loaded === 1) {this.hologram.mesh.rotation.y += - 0.25 * this.time.delta * 0.001}
     }
 }
