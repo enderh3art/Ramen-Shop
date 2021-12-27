@@ -282,7 +282,7 @@ export default class Reflections
         } );
         this.groundMirror.position.y = -2.8;
         this.groundMirror.material.transparent = true;
-	    this.groundMirror.material.uniforms.opacity.value = 0.2;
+	    this.groundMirror.material.uniforms.opacity.value = 0.08;
         this.groundMirror.rotateX( - Math.PI / 2 );
         this.scene.add( this.groundMirror );
     }
