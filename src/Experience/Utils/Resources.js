@@ -77,19 +77,21 @@ export default class Resources extends EventEmitter
                 this.video[source.name].muted = true
                 this.video[source.name].loop = true
                 
-                
                 this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
                 this.videoTexture[source.name].flipY = false
                 // this.videoTexture.wrapS = THREE.RepeatWrapping;
                 // this.videoTexture.repeat.x = - 1;
                 
-                this.video[source.name].addEventListener('loadeddata', () =>
-                {
-                    this.videoTexture[source.name].needsUpdate = true
-                    this.video[source.name].play()
-                    this.sourceLoaded(source, this.videoTexture[source.name])
-                })
-                this.video[source.name].src = source.path      
+                // this.video[source.name].addEventListener('loadeddata', () =>
+                // {
+                //     this.videoTexture[source.name].needsUpdate = true
+                //     this.video[source.name].play()
+                //     this.sourceLoaded(source, this.videoTexture[source.name])
+                // })
+
+                this.video[source.name].src = source.path
+                this.video[source.name].play()
+                this.sourceLoaded(source, this.videoTexture[source.name])      
 
 
                 
@@ -100,6 +102,7 @@ export default class Resources extends EventEmitter
     sourceLoaded(source, file)
     {
         this.trigger('itemLoaded')
+
 
         this.items[source.name] = file
         this.loaded++

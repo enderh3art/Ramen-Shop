@@ -203,6 +203,5 @@ export default class RamenShop
 
         this.model.position.y = - 3
         this.scene.add(this.model)
-
     }
 }

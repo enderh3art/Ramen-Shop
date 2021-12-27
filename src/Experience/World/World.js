@@ -2,6 +2,7 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Hologram from './Hologram.js'
 import RamenShop from './RamenShop.js'
+import Reflections from './Reflections.js'
 
 export default class World
 {
@@ -17,7 +18,7 @@ export default class World
             // Setup
             this.ramenShop = new RamenShop()
             this.hologram = new Hologram()
-            // this.environment = new Environment()
+            this.reflections = new Reflections()
         })
     }
 

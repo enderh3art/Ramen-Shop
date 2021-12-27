@@ -42,24 +42,24 @@ export default class RayCaster
             this.jZhouHitBox.visible = false
 
             this.articlesHitBox = new THREE.Mesh(
-                new THREE.BoxGeometry( 0.4, 0.4, 1.5 ),
+                new THREE.BoxGeometry( 0.4, 0.45, 1.5 ),
                 new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } )
             )
-            this.articlesHitBox.position.set(-4,-1.2,-5)
+            this.articlesHitBox.position.set(-4,-1.25,-5)
             this.articlesHitBox.visible = false
 
             this.aboutMeHitBox = new THREE.Mesh(
-                new THREE.BoxGeometry( 0.4, 0.5, 1.7 ),
+                new THREE.BoxGeometry( 0.4, 0.43, 1.7 ),
                 new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } )
             )
-            this.aboutMeHitBox.position.set(-4,-1.65,-5.1)
+            this.aboutMeHitBox.position.set(-4,-1.83,-5.1)
             this.aboutMeHitBox.visible = false
 
             this.creditsHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.4, 1.4 ),
                 new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } )
             )
-            this.creditsHitBox.position.set(-4,-2.15,-5.03)
+            this.creditsHitBox.position.set(-4,-2.3,-5.03)
             this.creditsHitBox.visible = false
 
             this.scene.add(this.projectsHitBox, this.jZhouHitBox, this.articlesHitBox,this.aboutMeHitBox, this.creditsHitBox )

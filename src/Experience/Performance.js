@@ -40,7 +40,7 @@ export default class Performance
         // Check Performance
         console.log(1000/this.frameTime)
 
-        if (1000/this.frameTime <= 50) 
+        if (1000/this.frameTime <= 30) 
         {
             this.lowerGraphics()
         }
@@ -68,8 +68,9 @@ export default class Performance
 
         }
 
-        // Turn off particle falling
-        // this.experience.world.hologram.animate = false
+        // Remove reflections
+
+        // this.experience.scene.remove(this.experience.world.reflections.groundMirror)
     }
 
     update()
