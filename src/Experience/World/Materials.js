@@ -57,6 +57,7 @@ export default class Materials
 
         // map screen textures
         this.arcadeScreenDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.arcadeScreenDefaultTexture })
+        this.vendingMachineScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineScreenTexture })
 
         // Map video textures
         this.littleTVScreenVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.littleTVScreenVideoTexture, side: THREE.FrontSide, toneMapped: false} )

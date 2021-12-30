@@ -50,7 +50,6 @@ export default class RamenShop
         this.dishStand = this.model.children.find(child => child.name === 'dishStand') 
 
         // Non-glow Lights
-        this.chinese = this.model.children.find(child => child.name === 'chinese') 
         this.projectsRed = this.model.children.find(child => child.name === 'projectsRed')
         this.projectsWhite = this.model.children.find(child => child.name === 'projectsWhite')
         this.articlesRed = this.model.children.find(child => child.name === 'articlesRed')
@@ -67,9 +66,10 @@ export default class RamenShop
         this.whiteButton = this.model.children.find(child => child.name === 'whiteButton')
         this.redLED = this.model.children.find(child => child.name === 'redLED')
         this.greenLED = this.model.children.find(child => child.name === 'greenLED')
-        this.arcadeToken = this.model.children.find(child => child.name === 'arcadeToken')
+        
 
         // Glow Lights
+        this.chinese = this.model.children.find(child => child.name === 'chinese') 
         this.neonBlue = this.model.children.find(child => child.name === 'neonBlue')
         this.neonPink = this.model.children.find(child => child.name === 'neonPink')
         this.neonYellow = this.model.children.find(child => child.name === 'neonYellow')
@@ -79,6 +79,9 @@ export default class RamenShop
         this.poleLight = this.model.children.find(child => child.name === 'poleLight')
         this.arcadeRim = this.model.children.find(child => child.name === 'arcadeRim')
         this.vendingMachineLight = this.model.children.find(child => child.name === 'vendingMachineLight')
+        this.vendingMachineLight = this.model.children.find(child => child.name === 'vendingMachineLight')
+        this.arcadeToken = this.model.children.find(child => child.name === 'arcadeToken')
+        this.lampLights = this.model.children.find(child => child.name === 'lampLights')
 
         // Screens
         this.bigScreen = this.model.children.find(child => child.name === 'bigScreen')
@@ -87,30 +90,32 @@ export default class RamenShop
         this.arcadeScreen = this.model.children.find(child => child.name === 'arcadeScreen')
         this.tvScreen = this.model.children.find(child => child.name === 'tvScreen')
         this.littleTVScreen = this.model.children.find(child => child.name === 'littleTVScreen')
+
+        this.vendingMachineScreen = this.model.children.find(child => child.name === 'vendingMachineScreen')
     
         // Bottles
-        this.bottle1 = this.model.children.find(child => child.name === 'bottle1')
-        this.bottle2 = this.model.children.find(child => child.name === 'bottle2')   
-        this.bottle3 = this.model.children.find(child => child.name === 'bottle3')
-        this.bottle4 = this.model.children.find(child => child.name === 'bottle4')
-        this.bottle5 = this.model.children.find(child => child.name === 'bottle5')
-        this.bottle6 = this.model.children.find(child => child.name === 'bottle6')
-        this.bottle7 = this.model.children.find(child => child.name === 'bottle7')
-        this.bottle8 = this.model.children.find(child => child.name === 'bottle8')
-        this.bottle9 = this.model.children.find(child => child.name === 'bottle9')
-        this.bottle10 = this.model.children.find(child => child.name === 'bottle10')
+        // this.bottle1 = this.model.children.find(child => child.name === 'bottle1')
+        // this.bottle2 = this.model.children.find(child => child.name === 'bottle2')   
+        // this.bottle3 = this.model.children.find(child => child.name === 'bottle3')
+        // this.bottle4 = this.model.children.find(child => child.name === 'bottle4')
+        // this.bottle5 = this.model.children.find(child => child.name === 'bottle5')
+        // this.bottle6 = this.model.children.find(child => child.name === 'bottle6')
+        // this.bottle7 = this.model.children.find(child => child.name === 'bottle7')
+        // this.bottle8 = this.model.children.find(child => child.name === 'bottle8')
+        // this.bottle9 = this.model.children.find(child => child.name === 'bottle9')
+        // this.bottle10 = this.model.children.find(child => child.name === 'bottle10')
 
         // Bottle Lights
-        this.bottleLight1 = this.model.children.find(child => child.name === 'bottleLight1')
-        this.bottleLight2 = this.model.children.find(child => child.name === 'bottleLight2')   
-        this.bottleLight3 = this.model.children.find(child => child.name === 'bottleLight3')
-        this.bottleLight4 = this.model.children.find(child => child.name === 'bottleLight4')
-        this.bottleLight5 = this.model.children.find(child => child.name === 'bottleLight5')
-        this.bottleLight6 = this.model.children.find(child => child.name === 'bottleLight6')
-        this.bottleLight7 = this.model.children.find(child => child.name === 'bottleLight7')
-        this.bottleLight8 = this.model.children.find(child => child.name === 'bottleLight8')
-        this.bottleLight9 = this.model.children.find(child => child.name === 'bottleLight9')
-        this.bottleLight10 = this.model.children.find(child => child.name === 'bottleLight10')
+        // this.bottleLight1 = this.model.children.find(child => child.name === 'bottleLight1')
+        // this.bottleLight2 = this.model.children.find(child => child.name === 'bottleLight2')   
+        // this.bottleLight3 = this.model.children.find(child => child.name === 'bottleLight3')
+        // this.bottleLight4 = this.model.children.find(child => child.name === 'bottleLight4')
+        // this.bottleLight5 = this.model.children.find(child => child.name === 'bottleLight5')
+        // this.bottleLight6 = this.model.children.find(child => child.name === 'bottleLight6')
+        // this.bottleLight7 = this.model.children.find(child => child.name === 'bottleLight7')
+        // this.bottleLight8 = this.model.children.find(child => child.name === 'bottleLight8')
+        // this.bottleLight9 = this.model.children.find(child => child.name === 'bottleLight9')
+        // this.bottleLight10 = this.model.children.find(child => child.name === 'bottleLight10')
     }
 
     setMaterials()
@@ -123,12 +128,12 @@ export default class RamenShop
             this.machines.material = this.materials.machinesMaterial
             this.floor.material = this.materials.floorMaterial
             this.arcadeMachine.material = this.materials.miscMaterial
-            this.vendingMachine.material = this.materials.miscMaterial
+            // this.vendingMachine.material = this.materials.miscMaterial
             this.pole.material = this.materials.miscMaterial
             this.easel.material = this.materials.miscMaterial
             this.arcadeMachineMisc.material = this.materials.miscMaterial
             this.arcadeSideGraphic.material = this.materials.graphicsMaterial
-            this.vendingMachineGraphic.material = this.materials.graphicsMaterial
+            // this.vendingMachineGraphic.material = this.materials.graphicsMaterial
             this.powerWallMisc.material = this.materials.miscMaterial
             this.jesseZhouJoined.material = this.materials.whiteSignMaterial
 
@@ -139,7 +144,6 @@ export default class RamenShop
             this.dishStand.material = this.materials.dishMatcapMaterial
 
             // Non-glow Lights
-            this.chinese.material = this.materials.greenSignMaterial
             this.projectsRed.material = this.materials.redSignMaterial
             this.projectsWhite.material = this.materials.whiteSignMaterial
             this.articlesWhite.material = this.materials.whiteSignMaterial
@@ -156,9 +160,9 @@ export default class RamenShop
             this.whiteButton.material = this.materials.whiteSignMaterial
             this.redLED.material = this.materials.redLedMaterial
             this.greenLED.material = this.materials.greenLedMaterial
-            this.arcadeToken.material = this.materials.redLedMaterial
         
             // Glow lights
+            this.chinese.material = this.materials.greenSignMaterial
             this.neonBlue.material = this.materials.neonBlueMaterial
             this.neonPink.material = this.materials.neonPinkMaterial
             this.neonYellow.material = this.materials.neonYellowMaterial
@@ -167,7 +171,9 @@ export default class RamenShop
             this.storageLight.material = this.materials.neonBlueMaterial
             this.poleLight.material = this.materials.poleLightMaterial
             this.arcadeRim.material = this.materials.neonBlueMaterial
-            this.vendingMachineLight.material = this.materials.whiteSignMaterial
+            // this.vendingMachineLight.material = this.materials.whiteSignMaterial
+            this.arcadeToken.material = this.materials.redLedMaterial
+            this.lampLights.material = this.materials.whiteSignMaterial
 
             // Screens
             this.arcadeScreen.material = this.materials.arcadeScreenDefaultMaterial
@@ -175,29 +181,29 @@ export default class RamenShop
             this.tallScreen.material = this.materials.tallScreenVideoMaterial
             this.tvScreen.material = this.materials.tvScreenVideoMaterial
 
-            // this.materials.hulkBusterVideoTexture.needsUpdate = true
+            this.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
 
-            this.bottle1.material = this.materials.miscMaterial
-            this.bottle2.material = this.materials.miscMaterial
-            this.bottle3.material = this.materials.miscMaterial
-            this.bottle4.material = this.materials.miscMaterial
-            this.bottle5.material = this.materials.miscMaterial
-            this.bottle6.material = this.materials.miscMaterial
-            this.bottle7.material = this.materials.miscMaterial
-            this.bottle8.material = this.materials.miscMaterial
-            this.bottle9.material = this.materials.miscMaterial
-            this.bottle10.material = this.materials.miscMaterial
+            // this.bottle1.material = this.materials.miscMaterial
+            // this.bottle2.material = this.materials.miscMaterial
+            // this.bottle3.material = this.materials.miscMaterial
+            // this.bottle4.material = this.materials.miscMaterial
+            // this.bottle5.material = this.materials.miscMaterial
+            // this.bottle6.material = this.materials.miscMaterial
+            // this.bottle7.material = this.materials.miscMaterial
+            // this.bottle8.material = this.materials.miscMaterial
+            // this.bottle9.material = this.materials.miscMaterial
+            // this.bottle10.material = this.materials.miscMaterial
             
-            this.bottleLight1.material = this.materials.grayLedOffMaterial
-            this.bottleLight2.material = this.materials.grayLedOffMaterial
-            this.bottleLight3.material = this.materials.grayLedOffMaterial
-            this.bottleLight4.material = this.materials.grayLedOffMaterial
-            this.bottleLight5.material = this.materials.grayLedOffMaterial
-            this.bottleLight6.material = this.materials.grayLedOffMaterial
-            this.bottleLight7.material = this.materials.grayLedOffMaterial
-            this.bottleLight8.material = this.materials.grayLedOffMaterial
-            this.bottleLight9.material = this.materials.grayLedOffMaterial
-            this.bottleLight10.material = this.materials.grayLedOffMaterial
+            // this.bottleLight1.material = this.materials.grayLedOffMaterial
+            // this.bottleLight2.material = this.materials.grayLedOffMaterial
+            // this.bottleLight3.material = this.materials.grayLedOffMaterial
+            // this.bottleLight4.material = this.materials.grayLedOffMaterial
+            // this.bottleLight5.material = this.materials.grayLedOffMaterial
+            // this.bottleLight6.material = this.materials.grayLedOffMaterial
+            // this.bottleLight7.material = this.materials.grayLedOffMaterial
+            // this.bottleLight8.material = this.materials.grayLedOffMaterial
+            // this.bottleLight9.material = this.materials.grayLedOffMaterial
+            // this.bottleLight10.material = this.materials.grayLedOffMaterial
 
         })
 

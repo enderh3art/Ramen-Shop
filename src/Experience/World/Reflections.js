@@ -263,12 +263,6 @@ export default class Reflections
         this.scene = this.experience.scene
         this.debug = this.experience.debug
 
-        // Debug
-        if(this.debug.active)
-        {
-            // this.debugFolder = this.debug.ui.addFolder('hologram')
-        }
-
         this.setInstance()
     }
 
@@ -285,6 +279,36 @@ export default class Reflections
 	    this.groundMirror.material.uniforms.opacity.value = 0.08;
         this.groundMirror.rotateX( - Math.PI / 2 );
         this.scene.add( this.groundMirror );
+
+        // Debug
+
+        if(this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('reflections')
+            this.debugFolder.add(this.groundMirror.material.uniforms.opacity, 'value').min(0.01).max(1).step(0.01)
+            
+            this.mirror = true
+            this.mirrorToggle = {toggleCamera:false}
+            this.debugFolder
+            .add(this.mirrorToggle, 'toggleCamera')
+            .onChange(() =>
+            {
+                this.mirror ? this.removeMirror() : this.addMirror()
+            })   
+        }
+
+    }
+
+    removeMirror()
+    {
+        this.scene.remove(this.groundMirror)
+        this.mirror = false
+    }
+
+    addMirror()
+    {
+        this.scene.add(this.groundMirror)
+        this.mirror = true
     }
     
 }

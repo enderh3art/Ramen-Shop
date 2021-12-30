@@ -127,54 +127,54 @@ export default class RayCaster
                 this.raycaster.setFromCamera(this.cursor, this.camera.instance)
 
                 // Bottle click listener
-                this.intersectsBottles = this.raycaster.intersectObjects(this.bottlesToTest)
-                if(this.intersectsBottles.length)
-                {
-                    this.selectedBottle = this.intersectsBottles[ 0 ].object
-                    switch(this.selectedBottle)
-                    {
+                // this.intersectsBottles = this.raycaster.intersectObjects(this.bottlesToTest)
+                // if(this.intersectsBottles.length)
+                // {
+                //     this.selectedBottle = this.intersectsBottles[ 0 ].object
+                //     switch(this.selectedBottle)
+                //     {
 
-                        case this.ramenShop.bottle1:
-                            this.controller.bottleControls.bottle1()
-                            break
+                //         case this.ramenShop.bottle1:
+                //             this.controller.bottleControls.bottle1()
+                //             break
                         
-                        case this.ramenShop.bottle2:
-                            this.controller.bottleControls.bottle2()
-                            break
+                //         case this.ramenShop.bottle2:
+                //             this.controller.bottleControls.bottle2()
+                //             break
 
-                        case this.ramenShop.bottle3:
-                            this.controller.bottleControls.bottle3()
-                            break
+                //         case this.ramenShop.bottle3:
+                //             this.controller.bottleControls.bottle3()
+                //             break
                         
-                        case this.ramenShop.bottle4:
-                            this.controller.bottleControls.bottle4()
-                            break
+                //         case this.ramenShop.bottle4:
+                //             this.controller.bottleControls.bottle4()
+                //             break
 
-                        case this.ramenShop.bottle5:
-                            this.controller.bottleControls.bottle5()
-                            break
+                //         case this.ramenShop.bottle5:
+                //             this.controller.bottleControls.bottle5()
+                //             break
 
-                        case this.ramenShop.bottle6:
-                            this.controller.bottleControls.bottle6()
-                            break
+                //         case this.ramenShop.bottle6:
+                //             this.controller.bottleControls.bottle6()
+                //             break
 
-                        case this.ramenShop.bottle7:
-                            this.controller.bottleControls.bottle7()
-                            break
+                //         case this.ramenShop.bottle7:
+                //             this.controller.bottleControls.bottle7()
+                //             break
                         
-                        case this.ramenShop.bottle8:
-                            this.controller.bottleControls.bottle8()
-                            break
+                //         case this.ramenShop.bottle8:
+                //             this.controller.bottleControls.bottle8()
+                //             break
 
-                        case this.ramenShop.bottle9:
-                            this.controller.bottleControls.bottle9()
-                            break
+                //         case this.ramenShop.bottle9:
+                //             this.controller.bottleControls.bottle9()
+                //             break
 
-                        case this.ramenShop.bottle10:
-                            this.controller.bottleControls.bottle10()
-                            break
-                    }
-                }
+                //         case this.ramenShop.bottle10:
+                //             this.controller.bottleControls.bottle10()
+                //             break
+                //     }
+                // }
 
                 //Object click listener
                 this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)

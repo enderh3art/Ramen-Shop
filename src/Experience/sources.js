@@ -53,6 +53,12 @@ export default [
         type: 'texture',
         path: 'textures/screens/arcadeScreenDefault.png'
     },
+
+    {
+        name: 'vendingMachineScreenTexture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreen.png'
+    },
     // Videos
     {
         name: 'littleTVScreenVideoTexture',
