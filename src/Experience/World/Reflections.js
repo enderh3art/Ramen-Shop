@@ -62,7 +62,8 @@ class Reflector extends Mesh {
                 shader.uniforms
             ] ),
             fragmentShader: shader.fragmentShader,
-            vertexShader: shader.vertexShader
+            vertexShader: shader.vertexShader,
+            precision: 'lowp'
         } );
 
         material.uniforms[ "tDiffuse" ].value = renderTarget.texture;
@@ -267,16 +268,16 @@ export default class Reflections
     }
 
     setInstance() {
-        this.geometry = new THREE.CircleGeometry( 40, 64 );
+        this.geometry = new THREE.CircleGeometry( 25, 5 );
         this.groundMirror = new Reflector( this.geometry, {
             clipBias: 0.003,
-            textureWidth: window.innerWidth * window.devicePixelRatio,
-            textureHeight: window.innerHeight * window.devicePixelRatio,
+            textureWidth: window.innerWidth/2,
+            textureHeight: window.innerHeight/2,
             color: 0x777777
         } );
         this.groundMirror.position.y = -2.8;
         this.groundMirror.material.transparent = true;
-	    this.groundMirror.material.uniforms.opacity.value = 0.08;
+	    this.groundMirror.material.uniforms.opacity.value = 0.04;
         this.groundMirror.rotateX( - Math.PI / 2 );
         this.scene.add( this.groundMirror );
 

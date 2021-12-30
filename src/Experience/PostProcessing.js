@@ -1,3 +1,10 @@
+//https://jsfiddle.net/prisoner849/jm0vb71c/, https://discourse.threejs.org/t/selective-bloom-parts-of-a-single-geometry/28683
+// https://stackoverflow.com/questions/67014085/threejs-selective-bloom-for-specific-parts-of-one-object-using-emission-map
+
+
+//
+
+
 import * as THREE from 'three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'  
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
@@ -23,6 +30,8 @@ export default class PostProcessing
         this.camera = this.experience.camera
         this.sizes = this.experience.sizes
         this.resources = this.experience.resources
+
+        this.update = function update() {}
 
         // Wait for resources
         this.resources.on('ready', () =>
@@ -128,7 +137,8 @@ export default class PostProcessing
                 },
                 vertexShader: vertexShader,
                 fragmentShader: fragmentShader,
-                defines: {}
+                defines: {},
+                precision: 'lowp'
             } ), 
             "baseTexture"
         )
@@ -149,6 +159,9 @@ export default class PostProcessing
             this.finalComposer.addPass(this.smaaPass)
             console.log('Using SMAA')
         }
+
+        this.enableUpdate()
+
     }
 
     setUpBloom()
@@ -176,13 +189,21 @@ export default class PostProcessing
             delete materials[ obj.uuid ];
         }
     }
-    
-    update()
-    {
-        if(this.finalComposer) {this.renderBloom()}
-        if(this.finalComposer) {this.finalComposer.render()}
 
+    enableUpdate()
+    {
+        this.update = function update() {
+            {this.renderBloom()}
+            {this.finalComposer.render()}
+        }
     }
+    
+    // update()
+    // {
+    //     if(this.finalComposer) {this.renderBloom()}
+    //     if(this.finalComposer) {this.finalComposer.render()}
+
+    // }
 
     resize()
     {

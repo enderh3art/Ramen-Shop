@@ -17,7 +17,8 @@ export default class Renderer
     setInstance()
     {
         this.instance = new THREE.WebGLRenderer({
-            canvas: this.canvas
+            canvas: this.canvas,
+            powerPreference: 'high-performance'
         })
 
         this.instance.setSize(this.sizes.width, this.sizes.height)

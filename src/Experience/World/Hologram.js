@@ -20,6 +20,7 @@ export default class Hologram
 
         // Resource
         this.ramenHologram = this.resources.items.ramenHologram
+        this.update = function update() {}
 
         this.animate = true
         this.positions = this.combineBuffer( this.ramenHologram.scene, 'position' )
@@ -93,6 +94,9 @@ export default class Hologram
             start: 10,
         }
 
+        this.enableUpdate()
+        
+
     }
 
     raiseHologram()
@@ -118,129 +122,128 @@ export default class Hologram
         }
     }
 
-
-    update()
+    enableUpdate()
     {
+        // Update Function
+        this.update = function update() {
 
-    if (this.mesh) 
-    {   
-        // Mesh drop and Rise
-        this.positions = this.data.mesh.geometry.attributes.position;
-        this.initialPositions = this.data.mesh.geometry.attributes.initialPosition;
+            // Mesh drop and Rise
+            this.positions = this.data.mesh.geometry.attributes.position;
+            this.initialPositions = this.data.mesh.geometry.attributes.initialPosition;
 
-        this.count = this.positions.count;
+            this.count = this.positions.count;
 
-        if ( this.data.start > 0 ) {
+            if ( this.data.start > 0 ) {
 
-            this.data.start -= 1;
-
-        } else {
-
-            
-            if ( this.data.direction === 0 && this.started === false) {
-                this.data.direction = - 1;
-            }
-
-        }
-
-        for ( let i = 0; i < this.count; i ++ ) {
-
-            this.px = this.positions.getX( i );
-            this.py = this.positions.getY( i );
-            this.pz = this.positions.getZ( i );
-
-            // falling down
-            if ( this.data.direction < 0 ) {
-
-                if ( this.py > 0 ) {
-
-                    this.positions.setXYZ(
-                        i,
-                        this.px + 1.5 * ( 0.50 - Math.random() ) * this.data.speed * this.time.delta * 0.01,
-                        this.py + 3.0 * ( 0.25 - Math.random() ) * this.data.speed * this.time.delta * 0.01,
-                        this.pz + 1.5 * ( 0.50 - Math.random() ) * this.data.speed * this.time.delta * 0.01
-                    );
-
-                } else {
-
-                    this.data.verticesDown += 1;
-
-                }
-
-            }
-
-            // rising up
-            if ( this.data.direction > 0 ) {
-
-                this.ix = this.initialPositions.getX( i );
-                this.iy = this.initialPositions.getY( i );
-                this.iz = this.initialPositions.getZ( i );
-
-                this.dx = Math.abs( this.px - this.ix );
-                this.dy = Math.abs( this.py - this.iy );
-                this.dz = Math.abs( this.pz - this.iz );
-
-                this.d = this.dx + this.dy + this.dx;
-
-                if ( this.d > 1 ) {
-
-                    this.positions.setXYZ(
-                        i,
-                        this.px - ( this.px - this.ix ) / this.dx * this.data.speed * this.time.delta * ( 0.85 - Math.random() ) * 0.01,
-                        this.py - ( this.py - this.iy ) / this.dy * this.data.speed * this.time.delta * ( 1 + Math.random() ) * 0.01,
-                        this.pz - ( this.pz - this.iz ) / this.dz * this.data.speed * this.time.delta * ( 0.85 - Math.random() ) * 0.01
-                    );
-
-                } else {
-
-                    this.data.verticesUp += 1;
-
-                }
-
-            }
-
-        }
-
-        // all vertices down (go up)
-
-        if ( this.data.verticesDown >= this.count && this.animate === true) {
-            if ( this.data.delay <= 0 ) {
-
-                this.data.direction = 1;
-                this.data.speed = 5;
-                this.data.verticesDown = 0;
-                // this.data.delay = 1000;
+                this.data.start -= 1;
 
             } else {
 
-                this.data.delay -= 1;
+                
+                if ( this.data.direction === 0 && this.started === false) {
+                    this.data.direction = - 1;
+                }
 
             }
 
+            for ( let i = 0; i < this.count; i ++ ) {
+
+                this.px = this.positions.getX( i );
+                this.py = this.positions.getY( i );
+                this.pz = this.positions.getZ( i );
+
+                // falling down
+                if ( this.data.direction < 0 ) {
+
+                    if ( this.py > 0 ) {
+
+                        this.positions.setXYZ(
+                            i,
+                            this.px + 1.5 * ( 0.50 - Math.random() ) * this.data.speed * this.time.delta * 0.01,
+                            this.py + 3.0 * ( 0.25 - Math.random() ) * this.data.speed * this.time.delta * 0.01,
+                            this.pz + 1.5 * ( 0.50 - Math.random() ) * this.data.speed * this.time.delta * 0.01
+                        );
+
+                    } else {
+
+                        this.data.verticesDown += 1;
+
+                    }
+
+                }
+
+                // rising up
+                if ( this.data.direction > 0 ) {
+
+                    this.ix = this.initialPositions.getX( i );
+                    this.iy = this.initialPositions.getY( i );
+                    this.iz = this.initialPositions.getZ( i );
+
+                    this.dx = Math.abs( this.px - this.ix );
+                    this.dy = Math.abs( this.py - this.iy );
+                    this.dz = Math.abs( this.pz - this.iz );
+
+                    this.d = this.dx + this.dy + this.dx;
+
+                    if ( this.d > 1 ) {
+
+                        this.positions.setXYZ(
+                            i,
+                            this.px - ( this.px - this.ix ) / this.dx * this.data.speed * this.time.delta * ( 0.85 - Math.random() ) * 0.01,
+                            this.py - ( this.py - this.iy ) / this.dy * this.data.speed * this.time.delta * ( 1 + Math.random() ) * 0.01,
+                            this.pz - ( this.pz - this.iz ) / this.dz * this.data.speed * this.time.delta * ( 0.85 - Math.random() ) * 0.01
+                        );
+
+                    } else {
+
+                        this.data.verticesUp += 1;
+
+                    }
+
+                }
+
+            }
+
+            // all vertices down (go up)
+
+            if ( this.data.verticesDown >= this.count && this.animate === true) {
+                if ( this.data.delay <= 0 ) {
+
+                    this.data.direction = 1;
+                    this.data.speed = 5;
+                    this.data.verticesDown = 0;
+                    // this.data.delay = 1000;
+
+                } else {
+
+                    this.data.delay -= 1;
+
+                }
+
+            }
+
+            // all vertices up (go down)
+
+            // if ( this.data.verticesUp >= this.count && this.animate === true) {
+
+            //     if ( this.data.delay <= 0 ) {
+
+            //         this.data.direction = - 1;
+            //         this.data.speed = 15;
+            //         this.data.verticesUp = 0;
+            //         this.data.delay = 20;
+
+            //     } else {
+
+            //         this.data.delay -= 1;
+
+            //     }
+
+            // }
+
+            this.positions.needsUpdate = true;
+
         }
-
-        // all vertices up (go down)
-
-        // if ( this.data.verticesUp >= this.count && this.animate === true) {
-
-        //     if ( this.data.delay <= 0 ) {
-
-        //         this.data.direction = - 1;
-        //         this.data.speed = 15;
-        //         this.data.verticesUp = 0;
-        //         this.data.delay = 20;
-
-        //     } else {
-
-        //         this.data.delay -= 1;
-
-        //     }
-
-        // }
-
-        this.positions.needsUpdate = true;
-
-    }
     }
     
 }
