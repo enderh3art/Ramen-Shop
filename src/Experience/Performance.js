@@ -42,7 +42,7 @@ export default class Performance
 
         if (1000/this.frameTime <= 30) 
         {
-            // this.lowerGraphics()
+            this.lowerGraphics()
         }
     }
 
