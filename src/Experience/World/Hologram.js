@@ -26,6 +26,7 @@ export default class Hologram
         this.positions = this.combineBuffer( this.ramenHologram.scene, 'position' )
         this.createMesh( this.positions, this.scene, 0.0225, -0.1, 2, -0.95 )
 
+
         this.started = false
         this.preLoader.on('start', () => 
         {

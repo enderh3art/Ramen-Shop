@@ -14,7 +14,7 @@ export default [
     {
         name: 'ramenShopBakedTexture',
         type: 'texture',
-        path: 'textures/baked/ramenShopBaked.jpeg'
+        path: 'textures/baked/ramenShopBaked.jpg'
     },
     {
         name: 'machinesBakedTexture',
@@ -29,7 +29,7 @@ export default [
     {
         name: 'miscBakedTexture',
         type: 'texture',
-        path: 'textures/baked/miscBaked.jpg'
+        path: 'textures/baked/miscBaked.png'
     },
     {
         name: 'graphicsBakedTexture',

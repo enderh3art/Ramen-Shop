@@ -2,7 +2,7 @@
 // https://stackoverflow.com/questions/67014085/threejs-selective-bloom-for-specific-parts-of-one-object-using-emission-map
 
 
-//
+//https://github.com/vanruesc/postprocessing
 
 
 import * as THREE from 'three'
