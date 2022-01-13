@@ -93,7 +93,7 @@ export default class Camera
 
         this.camAngle.vendingMachine = () =>
         {
-            this.controls.minDistance = 4
+            this.controls.minDistance = 1.5
             this.controls.maxDistance = 14
             this.controls.minAzimuthAngle = -(Math.PI * 0.2) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.2 //right
@@ -124,12 +124,12 @@ export default class Camera
 
             gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
             x: 1.2,
-            y:-1.6,
-            z:7.5})
+            y:-1.2,
+            z:4.8})
             gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
-            x: -0.2,
-            y:-1,
-            z:0.3})
+            x: 1.2,
+            y:-1.2,
+            z:1.7})
 
             await this.sleep(1500)
             this.controls.enableRotate = true

@@ -18,6 +18,7 @@ export default class RayCaster
         // Wait for resources
         this.preLoader.on('start', () =>
         {
+
             // Setup
             this.config = {}
             this.config.touch = this.experience.config.touch
@@ -27,42 +28,120 @@ export default class RayCaster
             this.cursor = new THREE.Vector2()
 
             // Create sign hitboxes
+            this.hitBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true} )
+
             this.projectsHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.6, 1.7 ),
-                new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true} )
+                this.hitBoxMaterial
             )
             this.projectsHitBox.position.set(-4,0.4,-5)
             this.projectsHitBox.visible = false
 
             this.jZhouHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 1, 1 ),
-                new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } )
+                this.hitBoxMaterial
             )
             this.jZhouHitBox.position.set(-4,-0.4,-4.72)
             this.jZhouHitBox.visible = false
 
             this.articlesHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.45, 1.5 ),
-                new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } )
+                this.hitBoxMaterial
             )
             this.articlesHitBox.position.set(-4,-1.25,-5)
             this.articlesHitBox.visible = false
 
             this.aboutMeHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.43, 1.7 ),
-                new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } )
+                this.hitBoxMaterial
             )
             this.aboutMeHitBox.position.set(-4,-1.83,-5.1)
             this.aboutMeHitBox.visible = false
 
             this.creditsHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.4, 1.4 ),
-                new THREE.MeshBasicMaterial( { color: 0xffff00, wireframe: true } )
+                this.hitBoxMaterial
             )
             this.creditsHitBox.position.set(-4,-2.3,-5.03)
             this.creditsHitBox.visible = false
 
             this.scene.add(this.projectsHitBox, this.jZhouHitBox, this.articlesHitBox,this.aboutMeHitBox, this.creditsHitBox )
+
+            // Create Project Hitboxes
+            
+            this.ProjectHitBoxGeometry = new THREE.BoxGeometry( 0.29, 0.435, 0.05 )
+
+            this.project1 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project1.position.set(0.72,-0.695,2.9)
+            this.project1.visible = false
+
+            this.project2 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project2.position.set(0.72 + 0.29,-0.695,2.9)
+            this.project2.visible = false
+
+            this.project3 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project3.position.set(0.72 + 0.29*2,-0.695,2.9)
+            this.project3.visible = false
+
+            this.project4 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project4.position.set(0.72 + 0.29*3,-0.695,2.9)
+            this.project4.visible = false
+
+            this.project5 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project5.position.set(0.72,-1.23,2.9)
+            this.project5.visible = false
+
+            this.project6 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project6.position.set(0.72 + 0.29,-1.23,2.9)
+            this.project6.visible = false
+
+            this.project7 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project7.position.set(0.72 + 0.28*2,-1.23,2.9)
+            this.project7.visible = false
+
+            this.project8 = new THREE.Mesh(
+                this.ProjectHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.project8.position.set(0.72 + 0.28*3,-1.23,2.9)
+            this.project8.visible = false
+
+            this.projectBack = new THREE.Mesh(
+                new THREE.BoxGeometry( 0.47, 0.27, 0.05 ),
+                this.hitBoxMaterial
+            )
+            this.projectBack.position.set(0.86,-1.66,2.85)
+            this.projectBack.visible = false
+
+            this.projectEnter = new THREE.Mesh(
+                new THREE.BoxGeometry( 0.47, 0.27, 0.05 ),
+                this.hitBoxMaterial
+            )
+            this.projectEnter.position.set(1.415,-1.66,2.85)
+            this.projectEnter.visible = false
+
+            this.scene.add(this.project1, this.project2, this.project3, this.project4, this.project5, this.project6, this.project7, this.project8, this.projectBack, this.projectEnter)
 
             // Debug
             if(this.debug.active)
@@ -78,23 +157,33 @@ export default class RayCaster
                         this.articlesHitBox.visible = this.hitBoxVisibility.visible
                         this.aboutMeHitBox.visible = this.hitBoxVisibility.visible
                         this.creditsHitBox.visible = this.hitBoxVisibility.visible
+                        this.project1.visible = this.hitBoxVisibility.visible
+                        this.project2.visible = this.hitBoxVisibility.visible
+                        this.project3.visible = this.hitBoxVisibility.visible
+                        this.project4.visible = this.hitBoxVisibility.visible
+                        this.project5.visible = this.hitBoxVisibility.visible
+                        this.project6.visible = this.hitBoxVisibility.visible
+                        this.project7.visible = this.hitBoxVisibility.visible
+                        this.project8.visible = this.hitBoxVisibility.visible
+                        this.projectBack.visible = this.hitBoxVisibility.visible
+                        this.projectEnter.visible = this.hitBoxVisibility.visible
                     })
                 
             }
 
-            // Bottles to test
-            this.bottlesToTest = 
+            // Projects to test
+            this.projectsToTest = 
             [
-                this.ramenShop.bottle1, 
-                this.ramenShop.bottle2, 
-                this.ramenShop.bottle3, 
-                this.ramenShop.bottle4, 
-                this.ramenShop.bottle5, 
-                this.ramenShop.bottle6, 
-                this.ramenShop.bottle7, 
-                this.ramenShop.bottle8, 
-                this.ramenShop.bottle9, 
-                this.ramenShop.bottle10
+                this.project1, 
+                this.project2, 
+                this.project3, 
+                this.project4, 
+                this.project5, 
+                this.project6, 
+                this.project7, 
+                this.project8,
+                this.projectBack,
+                this.projectEnter
             ]
             
             // Objects to test 
@@ -126,55 +215,55 @@ export default class RayCaster
                 this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
                 this.raycaster.setFromCamera(this.cursor, this.camera.instance)
 
-                // Bottle click listener
-                // this.intersectsBottles = this.raycaster.intersectObjects(this.bottlesToTest)
-                // if(this.intersectsBottles.length)
-                // {
-                //     this.selectedBottle = this.intersectsBottles[ 0 ].object
-                //     switch(this.selectedBottle)
-                //     {
+                // project click listener
+                this.intersectsProjects = this.raycaster.intersectObjects(this.projectsToTest)
+                if(this.intersectsProjects.length)
+                {
+                    this.selectedProject = this.intersectsProjects[ 0 ].object
+                    switch(this.selectedProject)
+                    {
 
-                //         case this.ramenShop.bottle1:
-                //             this.controller.bottleControls.bottle1()
-                //             break
+                        case this.project1:
+                            this.controller.projectControls.project1()
+                            break
                         
-                //         case this.ramenShop.bottle2:
-                //             this.controller.bottleControls.bottle2()
-                //             break
+                        case this.project2:
+                            this.controller.projectControls.project2()
+                            break
 
-                //         case this.ramenShop.bottle3:
-                //             this.controller.bottleControls.bottle3()
-                //             break
+                        case this.project3:
+                            this.controller.projectControls.project3()
+                            break
                         
-                //         case this.ramenShop.bottle4:
-                //             this.controller.bottleControls.bottle4()
-                //             break
+                        case this.project4:
+                            this.controller.projectControls.project4()
+                            break
 
-                //         case this.ramenShop.bottle5:
-                //             this.controller.bottleControls.bottle5()
-                //             break
+                        case this.project5:
+                            this.controller.projectControls.project5()
+                            break
 
-                //         case this.ramenShop.bottle6:
-                //             this.controller.bottleControls.bottle6()
-                //             break
+                        case this.project6:
+                            this.controller.projectControls.project6()
+                            break
 
-                //         case this.ramenShop.bottle7:
-                //             this.controller.bottleControls.bottle7()
-                //             break
+                        case this.project7:
+                            this.controller.projectControls.project7()
+                            break
                         
-                //         case this.ramenShop.bottle8:
-                //             this.controller.bottleControls.bottle8()
-                //             break
+                        case this.project8:
+                            this.controller.projectControls.project8()
+                            break
 
-                //         case this.ramenShop.bottle9:
-                //             this.controller.bottleControls.bottle9()
-                //             break
-
-                //         case this.ramenShop.bottle10:
-                //             this.controller.bottleControls.bottle10()
-                //             break
-                //     }
-                // }
+                        case this.projectBack:
+                            this.controller.projectControls.projectBack()
+                            break
+                        
+                        case this.projectEnter:
+                            this.controller.projectControls.projectEnter()
+                            break
+                    }
+                }
 
                 //Object click listener
                 this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)

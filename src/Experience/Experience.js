@@ -37,14 +37,16 @@ export default class Experience
 
         // Setup
         this.debug = new Debug()
-        this.resources = new Resources(sources)
         this.scene = new THREE.Scene()
-        this.preLoader = new PreLoader()
-        this.performance = new Performance()
+        
+        // this.performance = new Performance()
         this.sizes = new Sizes()
         this.time = new Time()
         this.camera = new Camera()
         this.renderer = new Renderer()
+        this.resources = new Resources(sources)
+        this.performance = new Performance()
+        this.preLoader = new PreLoader()
         this.world = new World()
         this.materials = new Materials()
         this.animations = new Animations()

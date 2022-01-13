@@ -54,11 +54,62 @@ export default [
         path: 'textures/screens/arcadeScreenDefault.png'
     },
 
+    // Projects
     {
-        name: 'vendingMachineScreenTexture',
+        name: 'vendingMachineDefaultTexture',
         type: 'texture',
-        path: 'textures/screens/vendingMachineScreen.png'
+        path: 'textures/screens/vendingMachineScreens/vendingMachineDefault.png'
     },
+
+    {
+        name: 'project1Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project1.png'
+    },
+
+    {
+        name: 'project2Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project2.png'
+    },
+
+    {
+        name: 'project3Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project3.png'
+    },
+
+    {
+        name: 'project4Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project4.png'
+    },
+
+    {
+        name: 'project5Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project5.png'
+    },
+
+    {
+        name: 'project6Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project6.png'
+    },
+
+    {
+        name: 'project7Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project7.png'
+    },
+
+    {
+        name: 'project8Texture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/project8.png'
+    },
+
+
     // Videos
     {
         name: 'littleTVScreenVideoTexture',

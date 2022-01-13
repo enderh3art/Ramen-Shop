@@ -68,6 +68,8 @@ export default class Performance
 
         }
 
+        
+
         // Remove reflections
 
         // this.experience.scene.remove(this.experience.world.reflections.groundMirror)

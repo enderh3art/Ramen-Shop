@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import gsap from 'gsap'
 
 export default class Controller
 {
@@ -10,13 +11,14 @@ export default class Controller
         this.resources = this.experience.resources
 
         this.setLogic()
-        this.setBottleControls()
+        this.setProjectControls()
         this.setMenuControls()
         this.setCamControls()
 
         this.resources.on('ready', () =>
         {
             this.ramenShop = this.experience.world.ramenShop
+            this.materials = this.experience.materials
         })
     }
 
@@ -34,53 +36,104 @@ export default class Controller
         }
     }
 
-    setBottleControls()
+    // https://jsfiddle.net/prisoner849/dns0xhkz/
+    setProjectControls()
     {
-        this.bottleControls = {}
-        this.bottleControls.bottle1 = async () =>
+        this.projectControls = {}
+        this.projectControls.project1 = async () =>
         {
-            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects')
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects1'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project1Material
+            }
+            console.log('project1')
+        }
+        this.projectControls.project2 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects2'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project2Material
+            }
+            console.log('project2')
+        }
+        this.projectControls.project3 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects3'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project3Material
+            }
+            console.log('project3')
+        }
+        this.projectControls.project4 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects4'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project4Material
+            }
+            console.log('project4')
+        }
+        this.projectControls.project5 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects5'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project5Material
+            }
+            console.log('project5')
+        }
+        this.projectControls.project6 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects6'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project6Material
+            }
+            console.log('project6')
+        }
+        this.projectControls.project7 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects7'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project7Material
+            }
+            console.log('project7')
+        }
+        this.projectControls.project8 = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
+            {
+                this.logic.mode = 'projects8'
+                this.ramenShop.vendingMachineScreen.material = this.materials.project8Material
+            }
+            console.log('project8')
+        }
+
+        // Go back
+        this.projectControls.projectBack = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects0'))
             {
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
-                console.log('back')
             }
+
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects1' || this.logic.mode === 'projects2' || this.logic.mode === 'projects3'|| this.logic.mode === 'projects4'|| this.logic.mode === 'projects5'|| this.logic.mode === 'projects6'|| this.logic.mode === 'projects7'|| this.logic.mode === 'projects8'))
+            {
+                this.logic.mode = 'projects0'
+                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
+            }
+            console.log('projectBack')
         }
-        this.bottleControls.bottle2 = async () =>
+
+        // Enter
+        this.projectControls.projectEnter = async () =>
         {
-            console.log('bottle2')
-        }
-        this.bottleControls.bottle3 = async () =>
-        {
-            console.log('bottle3')
-        }
-        this.bottleControls.bottle4 = async () =>
-        {
-            console.log('bottle4')
-        }
-        this.bottleControls.bottle5 = async () =>
-        {
-            console.log('bottle5')
-        }
-        this.bottleControls.bottle6 = async () =>
-        {
-            console.log('bottle6')
-        }
-        this.bottleControls.bottle7 = async () =>
-        {
-            console.log('bottle7')
-        }
-        this.bottleControls.bottle8 = async () =>
-        {
-            console.log('bottle8')
-        }
-        this.bottleControls.bottle9 = async () =>
-        {
-            console.log('bottle9')
-        }
-        this.bottleControls.bottle10 = async () =>
-        {
-            console.log('bottle10')
+            console.log('projectEnter')
         }
     }
 
@@ -91,7 +144,7 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
-                this.logic.mode = 'projects'
+                this.logic.mode = 'projects0'
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toProjects()
             }
