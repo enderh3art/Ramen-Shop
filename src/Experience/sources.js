@@ -62,6 +62,13 @@ export default [
     },
 
     {
+        name: 'vendingMachineMenuTexture',
+        type: 'texture',
+        path: 'textures/screens/vendingMachineScreens/vendingMachineMenu.png'
+    },
+
+
+    {
         name: 'project1Texture',
         type: 'texture',
         path: 'textures/screens/vendingMachineScreens/project1.png'

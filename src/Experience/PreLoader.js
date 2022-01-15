@@ -28,6 +28,7 @@ export default class PreLoader extends EventEmitter
         //Loaded
         this.resources.on('ready', () =>
         {
+
             window.setTimeout(() =>
             {
                 this.cooking.classList.add('fade')

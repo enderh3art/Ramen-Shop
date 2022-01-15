@@ -36,7 +36,6 @@ export default class Controller
         }
     }
 
-    // https://jsfiddle.net/prisoner849/dns0xhkz/
     setProjectControls()
     {
         this.projectControls = {}
@@ -118,14 +117,16 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects0'))
             {
+                this.logic.lockButtons(1500)
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
+                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineDefaultMaterial
             }
 
             if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects1' || this.logic.mode === 'projects2' || this.logic.mode === 'projects3'|| this.logic.mode === 'projects4'|| this.logic.mode === 'projects5'|| this.logic.mode === 'projects6'|| this.logic.mode === 'projects7'|| this.logic.mode === 'projects8'))
             {
                 this.logic.mode = 'projects0'
-                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
+                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineMenuMaterial
             }
             console.log('projectBack')
         }
@@ -144,9 +145,11 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
+                this.logic.lockButtons(1500)
                 this.logic.mode = 'projects0'
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toProjects()
+                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineMenuMaterial
             }
  
         }
@@ -213,6 +216,7 @@ export default class Controller
         }
         this.camControls.toDefault = async () =>
         {
+            this.logic.lockButtons(1500)
             this.camera.camAngle.unlocked()
             this.camera.transitions.default(1.5)
             await this.sleep(1500)

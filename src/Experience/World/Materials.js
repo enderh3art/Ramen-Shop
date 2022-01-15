@@ -59,7 +59,9 @@ export default class Materials
         this.arcadeScreenDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.arcadeScreenDefaultTexture })
 
         //map Project Textures
-        this.vendingMachineScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineDefaultTexture })
+        this.vendingMachineDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineDefaultTexture })
+        this.vendingMachineMenuMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineMenuTexture })
+       
 
         this.project1Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project1Texture })
         this.project2Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project2Texture })
