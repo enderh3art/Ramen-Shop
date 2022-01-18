@@ -56,21 +56,27 @@ export default [
 
     // About Me Screens
     {
-        name: 'bigScreenAbout',
+        name: 'bigScreenDefaultTexture',
+        type: 'texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenDefault.png'
+    },
+
+    {
+        name: 'bigScreenAboutMeTexture',
         type: 'texture',
         path: 'textures/screens/aboutMeScreens/bigScreenAbout.png'
     },
 
     {
-        name: 'bigScreenAbout',
+        name: 'bigScreenSkillsTexture',
         type: 'texture',
-        path: 'textures/screens/aboutMeScreens/bigScreenExperience.png'
+        path: 'textures/screens/aboutMeScreens/bigScreenSkills.png'
     },
 
     {
-        name: 'bigScreenAbout',
+        name: 'bigScreenExperienceTexture',
         type: 'texture',
-        path: 'textures/screens/aboutMeScreens/bigScreenSkills.png'
+        path: 'textures/screens/aboutMeScreens/bigScreenExperience.png'
     },
 
     // Projects

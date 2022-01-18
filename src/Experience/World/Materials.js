@@ -56,21 +56,9 @@ export default class Materials
         this.fanMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.fanMatcapTexture})
 
         // map screen textures
+        this.bigScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.bigScreenDefaultTexture })
         this.arcadeScreenDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.arcadeScreenDefaultTexture })
-
-        //map Project Textures
-        this.vendingMachineDefaultMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineDefaultTexture })
-        this.vendingMachineMenuMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineMenuTexture })
-       
-
-        this.project1Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project1Texture })
-        this.project2Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project2Texture })
-        this.project3Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project3Texture })
-        this.project4Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project4Texture })
-        this.project5Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project5Texture })
-        this.project6Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project6Texture })
-        this.project7Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project7Texture })
-        this.project8Material = new THREE.MeshBasicMaterial({ map: this.resources.items.project8Texture })
+        this.vendingMachineScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineDefaultTexture })
 
         // Map video textures
         this.littleTVScreenVideoMaterial =  new THREE.MeshBasicMaterial( {map: this.resources.items.littleTVScreenVideoTexture, side: THREE.FrontSide, toneMapped: false} )

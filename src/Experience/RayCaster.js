@@ -69,79 +69,115 @@ export default class RayCaster
 
             // Create Project Hitboxes
             
-            this.ProjectHitBoxGeometry = new THREE.BoxGeometry( 0.29, 0.435, 0.05 )
+            this.projectHitBoxGeometry = new THREE.PlaneGeometry( 0.29, 0.435 )
 
             this.project1 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project1.position.set(0.72,-0.695,2.9)
+            this.project1.position.set(0.72,-0.695,2.88)
             this.project1.visible = false
 
             this.project2 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project2.position.set(0.72 + 0.29,-0.695,2.9)
+            this.project2.position.set(0.72 + 0.29,-0.695,2.88)
             this.project2.visible = false
 
             this.project3 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project3.position.set(0.72 + 0.29*2,-0.695,2.9)
+            this.project3.position.set(0.72 + 0.29*2,-0.695,2.88)
             this.project3.visible = false
 
             this.project4 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project4.position.set(0.72 + 0.29*3,-0.695,2.9)
+            this.project4.position.set(0.72 + 0.29*3,-0.695,2.88)
             this.project4.visible = false
 
             this.project5 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project5.position.set(0.72,-1.23,2.9)
+            this.project5.position.set(0.72,-1.23,2.87)
             this.project5.visible = false
 
             this.project6 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project6.position.set(0.72 + 0.29,-1.23,2.9)
+            this.project6.position.set(0.72 + 0.29,-1.23,2.87)
             this.project6.visible = false
 
             this.project7 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project7.position.set(0.72 + 0.28*2,-1.23,2.9)
+            this.project7.position.set(0.72 + 0.28*2,-1.23,2.87)
             this.project7.visible = false
 
             this.project8 = new THREE.Mesh(
-                this.ProjectHitBoxGeometry,
+                this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
-            this.project8.position.set(0.72 + 0.28*3,-1.23,2.9)
+            this.project8.position.set(0.72 + 0.28*3,-1.23,2.87)
             this.project8.visible = false
 
+            this.projectNavigateHitBoxGeometry = new THREE.PlaneGeometry( 0.47, 0.27 )
+
             this.projectBack = new THREE.Mesh(
-                new THREE.BoxGeometry( 0.47, 0.27, 0.05 ),
+                this.projectNavigateHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.projectBack.position.set(0.86,-1.66,2.85)
             this.projectBack.visible = false
 
             this.projectEnter = new THREE.Mesh(
-                new THREE.BoxGeometry( 0.47, 0.27, 0.05 ),
+                this.projectNavigateHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.projectEnter.position.set(1.415,-1.66,2.85)
             this.projectEnter.visible = false
 
             this.scene.add(this.project1, this.project2, this.project3, this.project4, this.project5, this.project6, this.project7, this.project8, this.projectBack, this.projectEnter)
+
+            // Create aboutMe Hitboxes
+
+            this.aboutMeHitBoxGeometry = new THREE.PlaneGeometry( 0.4, 0.2 )
+
+            this.aboutMeBack = new THREE.Mesh(
+                this.aboutMeHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.aboutMeBack.position.set(-0.55, 4.58, 0.58)
+
+            this.aboutMeScreens = new THREE.Mesh(
+                this.aboutMeHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.aboutMeScreens.position.set(2, 4.45, 0.58)
+            this.aboutMeScreens.rotation.z = Math.PI / 2
+
+            this.skills = new THREE.Mesh(
+                this.aboutMeHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.skills.position.set(2, 4, 0.58)
+            this.skills.rotation.z = Math.PI / 2
+
+            this.experience = new THREE.Mesh(
+                this.aboutMeHitBoxGeometry,
+                this.hitBoxMaterial
+            )
+            this.experience.position.set(2, 3.55, 0.58)
+            this.experience.rotation.z = Math.PI / 2
+
+
+            this.scene.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
 
             // Debug
             if(this.debug.active)

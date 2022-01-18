@@ -13,6 +13,11 @@ export default class Camera
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
 
+        if(this.sizes.width / this.sizes.height > 1)
+        {this.aboutMeDistance = 2.2}
+        else
+        {this.aboutMeDistance = 4.2}
+
         this.setInstance()
         this.setControls()
         this.setCamAngles()
@@ -94,17 +99,17 @@ export default class Camera
         this.camAngle.vendingMachine = () =>
         {
             this.controls.minDistance = 1.5
-            this.controls.maxDistance = 14
+            this.controls.maxDistance = 6
             this.controls.minAzimuthAngle = -(Math.PI * 0.1) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.1 //right
             this.controls.minPolarAngle = Math.PI * .4
             this.controls.maxPolarAngle = Math.PI * .53
         }
 
-        this.camAngle.info = () =>
+        this.camAngle.aboutMe = () =>
         {
-            this.controls.minDistance = 4
-            this.controls.maxDistance = 12
+            this.controls.minDistance = 1
+            this.controls.maxDistance = 6
             this.controls.minAzimuthAngle = -(Math.PI * 0.2) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.2 //right
             this.controls.minPolarAngle = Math.PI * .3
@@ -142,9 +147,6 @@ export default class Camera
             this.controls.enableZoom = false
 
             gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
-            // x: -13.8,
-            // y: 0,
-            // z: -8})
             x: -11.1,
             y: -1,
             z: -7.6})
@@ -168,6 +170,25 @@ export default class Camera
             x: -10.2,
             y: 6.3,
             z: 3.8})
+
+            await this.sleep(1500)
+            this.controls.enableRotate = true
+            this.controls.enableZoom = true
+        }
+
+        this.transitions.aboutMe = async (duration) =>
+        {
+            this.controls.enableRotate = false
+            this.controls.enableZoom = false
+
+            gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
+            x: 0.59,
+            y: 3.8,
+            z: this.aboutMeDistance})
+            gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
+            x: 0.59,
+            y: 3.8,
+            z: 0.7})
 
             await this.sleep(1500)
             this.controls.enableRotate = true

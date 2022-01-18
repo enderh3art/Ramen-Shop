@@ -44,7 +44,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects1'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project1Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project1Texture
             }
             console.log('project1')
         }
@@ -53,7 +53,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects2'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project2Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project2Texture
             }
             console.log('project2')
         }
@@ -62,7 +62,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects3'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project3Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project3Texture
             }
             console.log('project3')
         }
@@ -71,7 +71,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects4'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project4Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project4Texture
             }
             console.log('project4')
         }
@@ -80,7 +80,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects5'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project5Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project5Texture
             }
             console.log('project5')
         }
@@ -89,7 +89,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects6'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project6Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project6Texture
             }
             console.log('project6')
         }
@@ -98,7 +98,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects7'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project7Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project7Texture
             }
             console.log('project7')
         }
@@ -107,7 +107,7 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects8'
-                this.ramenShop.vendingMachineScreen.material = this.materials.project8Material
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project8Texture
             }
             console.log('project8')
         }
@@ -120,13 +120,13 @@ export default class Controller
                 this.logic.lockButtons(1500)
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
-                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineDefaultMaterial
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.vendingMachineDefaultTexture
             }
 
             if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects1' || this.logic.mode === 'projects2' || this.logic.mode === 'projects3'|| this.logic.mode === 'projects4'|| this.logic.mode === 'projects5'|| this.logic.mode === 'projects6'|| this.logic.mode === 'projects7'|| this.logic.mode === 'projects8'))
             {
                 this.logic.mode = 'projects0'
-                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineMenuMaterial
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.vendingMachineMenuTexture
             }
             console.log('projectBack')
         }
@@ -145,11 +145,12 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
-                this.logic.lockButtons(1500)
                 this.logic.mode = 'projects0'
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toProjects()
-                this.ramenShop.vendingMachineScreen.material = this.materials.vendingMachineMenuMaterial
+     
+                this.materials.vendingMachineScreenMaterial.map = this.resources.items.vendingMachineMenuTexture
+                
             }
  
         }
@@ -157,7 +158,6 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
-                this.logic.lockButtons(1500)
                 this.menuControls.buttonIndicator(obj, color)
                 this.camera.transitions.jZhou(1.5)
             }
@@ -175,8 +175,11 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
+                this.logic.mode = 'aboutMe'
                 this.menuControls.buttonIndicator(obj, color)
-                console.log('aboutMe')
+                this.camControls.toAboutMe()
+
+                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenAboutMeTexture
             }
         }
         this.menuControls.credits = async (obj, color) =>
@@ -221,6 +224,14 @@ export default class Controller
             this.camera.transitions.default(1.5)
             await this.sleep(1500)
             this.camera.camAngle.default()
+        }
+        this.camControls.toAboutMe = async () =>
+        {
+            this.logic.lockButtons(1500)
+            this.camera.camAngle.unlocked()
+            this.camera.transitions.aboutMe(1.5)
+            await this.sleep(1500)
+            this.camera.camAngle.aboutMe()
         }
     }
 

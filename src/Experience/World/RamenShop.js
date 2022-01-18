@@ -140,12 +140,13 @@ export default class RamenShop
             this.lampLights.material = this.materials.whiteSignMaterial
 
             // Screens
+            this.bigScreen.material = this.materials.bigScreenMaterial
             this.arcadeScreen.material = this.materials.arcadeScreenDefaultMaterial
             this.littleTVScreen.material = this.materials.littleTVScreenVideoMaterial
             this.tallScreen.material = this.materials.tallScreenVideoMaterial
             this.tvScreen.material = this.materials.tvScreenVideoMaterial
 
-            this.vendingMachineScreen.material = this.materials.vendingMachineDefaultMaterial
+            this.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
 
 
         })
