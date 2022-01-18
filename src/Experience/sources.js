@@ -19,7 +19,7 @@ export default [
     {
         name: 'machinesBakedTexture',
         type: 'texture',
-        path: 'textures/baked/machinesBaked.jpg'
+        path: 'textures/baked/machinesBaked.png'
     },
     {
         name: 'floorBakedTexture',
@@ -52,6 +52,25 @@ export default [
         name: 'arcadeScreenDefaultTexture',
         type: 'texture',
         path: 'textures/screens/arcadeScreenDefault.png'
+    },
+
+    // About Me Screens
+    {
+        name: 'bigScreenAbout',
+        type: 'texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenAbout.png'
+    },
+
+    {
+        name: 'bigScreenAbout',
+        type: 'texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenExperience.png'
+    },
+
+    {
+        name: 'bigScreenAbout',
+        type: 'texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenSkills.png'
     },
 
     // Projects
