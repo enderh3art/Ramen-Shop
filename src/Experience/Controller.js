@@ -13,6 +13,7 @@ export default class Controller
         this.setLogic()
         this.setProjectControls()
         this.setMenuControls()
+        this.setAboutMeControls()
         this.setCamControls()
 
         this.resources.on('ready', () =>
@@ -202,6 +203,53 @@ export default class Controller
                 obj.material = this.ramenShop.materials.blackSignMaterial
                 await this.sleep(200)
                 obj.material = this.ramenShop.materials.whiteSignMaterial
+            }
+        }
+    }
+
+    setAboutMeControls()
+    {
+        this.aboutMeControls = {}
+
+        this.aboutMeControls.aboutMeScreens = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                this.logic.mode = 'aboutMe'
+
+                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenAboutMeTexture
+            }
+        }
+
+        this.aboutMeControls.aboutMeSkills = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'experience'))
+            {
+                this.logic.mode = 'skills'
+
+                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenSkillsTexture
+            }
+        }
+
+        this.aboutMeControls.aboutMeExperience = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills'))
+            {
+                this.logic.mode = 'experience'
+
+                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenExperienceTexture
+            }
+        }
+
+        this.aboutMeControls.aboutMeBack = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                this.logic.lockButtons(1500)
+                this.logic.mode = 'menu'
+                this.camControls.toDefault()
+
+                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenDefaultTexture
             }
         }
     }

@@ -154,6 +154,7 @@ export default class RayCaster
                 this.hitBoxMaterial
             )
             this.aboutMeBack.position.set(-0.55, 4.58, 0.58)
+            this.aboutMeBack.visible = false
 
             this.aboutMeScreens = new THREE.Mesh(
                 this.aboutMeHitBoxGeometry,
@@ -161,6 +162,7 @@ export default class RayCaster
             )
             this.aboutMeScreens.position.set(2, 4.45, 0.58)
             this.aboutMeScreens.rotation.z = Math.PI / 2
+            this.aboutMeScreens.visible = false
 
             this.skills = new THREE.Mesh(
                 this.aboutMeHitBoxGeometry,
@@ -168,6 +170,7 @@ export default class RayCaster
             )
             this.skills.position.set(2, 4, 0.58)
             this.skills.rotation.z = Math.PI / 2
+            this.skills.visible = false
 
             this.experience = new THREE.Mesh(
                 this.aboutMeHitBoxGeometry,
@@ -175,6 +178,7 @@ export default class RayCaster
             )
             this.experience.position.set(2, 3.55, 0.58)
             this.experience.rotation.z = Math.PI / 2
+            this.experience.visible = false
 
 
             this.scene.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
@@ -207,40 +211,59 @@ export default class RayCaster
                 
             }
 
-            // Projects to test
-            this.projectsToTest = 
-            [
-                this.project1, 
-                this.project2, 
-                this.project3, 
-                this.project4, 
-                this.project5, 
-                this.project6, 
-                this.project7, 
-                this.project8,
-                this.projectBack,
-                this.projectEnter
-            ]
-            
             // Objects to test 
             if(this.config.touch == true)
             {
                 this.objectsToTest = [
+                    //menu
                     this.projectsHitBox,
                     this.jZhouHitBox,
                     this.articlesHitBox,
                     this.aboutMeHitBox,
-                    this.creditsHitBox
+                    this.creditsHitBox,
+                    //projects
+                    this.project1, 
+                    this.project2, 
+                    this.project3, 
+                    this.project4, 
+                    this.project5, 
+                    this.project6, 
+                    this.project7, 
+                    this.project8,
+                    this.projectBack,
+                    this.projectEnter,
+                    //aboutMeScreen
+                    this.aboutMeBack, 
+                    this.aboutMeScreens, 
+                    this.skills, 
+                    this.experience
                 ]
             }
             else 
             {
                 this.objectsToTest = [
+                    //menu
                     this.ramenShop.projectsRed,this.ramenShop.projectsWhite,
                     this.ramenShop.jZhouBlack, this.ramenShop.jZhouPink,
                     this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
                     this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
-                    this.ramenShop.creditsBlack,this.ramenShop.creditsOrange
+                    this.ramenShop.creditsBlack,this.ramenShop.creditsOrange,
+                    //projects
+                    this.project1, 
+                    this.project2, 
+                    this.project3, 
+                    this.project4, 
+                    this.project5, 
+                    this.project6, 
+                    this.project7, 
+                    this.project8,
+                    this.projectBack,
+                    this.projectEnter,
+                    //aboutMeScreen
+                    this.aboutMeBack, 
+                    this.aboutMeScreens, 
+                    this.skills, 
+                    this.experience
                 ]
             }
 
@@ -250,14 +273,48 @@ export default class RayCaster
                 this.cursor.x = event.clientX / this.sizes.width * 2 - 1
                 this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
                 this.raycaster.setFromCamera(this.cursor, this.camera.instance)
-
-                // project click listener
-                this.intersectsProjects = this.raycaster.intersectObjects(this.projectsToTest)
-                if(this.intersectsProjects.length)
+                
+                //Object click listener
+                this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
+                if(this.intersectsObjects.length)
                 {
-                    this.selectedProject = this.intersectsProjects[ 0 ].object
-                    switch(this.selectedProject)
+                    this.selectedModel = this.intersectsObjects[ 0 ].object
+        
+                    switch(this.selectedModel)
                     {
+                        // Menu
+                        case this.ramenShop.projectsRed:
+                        case this.ramenShop.projectsWhite:
+                        case this.projectsHitBox:
+                            this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
+                            break
+
+                        case this.ramenShop.jZhouBlack:
+                        case this.ramenShop.jZhouPink:
+                        case this.jZhouHitBox:
+                            this.controller.menuControls.jZhou(this.ramenShop.jZhouBlack, 'black')
+                            break
+        
+                        case this.ramenShop.articlesWhite:
+                        case this.ramenShop.articlesRed:
+                        case this.articlesHitBox:
+                            this.controller.menuControls.articles(this.ramenShop.articlesWhite, 'white')
+                            break
+        
+                        case this.ramenShop.aboutMeBlack:
+                        case this.ramenShop.aboutMeBlue:
+                        case this.aboutMeHitBox:
+                            this.controller.menuControls.aboutMe(this.ramenShop.aboutMeBlack, 'black')
+                            break
+        
+                        case this.ramenShop.creditsBlack:
+                        case this.ramenShop.creditsOrange:
+                        case this.creditsHitBox:
+                            this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
+                            this.hologram.breakHologram()
+                            break
+
+                        //projects
 
                         case this.project1:
                             this.controller.projectControls.project1()
@@ -298,46 +355,19 @@ export default class RayCaster
                         case this.projectEnter:
                             this.controller.projectControls.projectEnter()
                             break
-                    }
-                }
 
-                //Object click listener
-                this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
-                if(this.intersectsObjects.length)
-                {
-                    const selectedModel = this.intersectsObjects[ 0 ].object
-        
-                    switch(selectedModel)
-                    {
-                        case this.ramenShop.projectsRed:
-                        case this.ramenShop.projectsWhite:
-                        case this.projectsHitBox:
-                            this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
+                        //aboutMe Menu
+                        case this.aboutMeBack:
+                            this.controller.aboutMeControls.aboutMeBack()
                             break
-
-                        case this.ramenShop.jZhouBlack:
-                        case this.ramenShop.jZhouPink:
-                        case this.jZhouHitBox:
-                            this.controller.menuControls.jZhou(this.ramenShop.jZhouBlack, 'black')
+                        case this.aboutMeScreens:
+                            this.controller.aboutMeControls.aboutMeScreens()
                             break
-        
-                        case this.ramenShop.articlesWhite:
-                        case this.ramenShop.articlesRed:
-                        case this.articlesHitBox:
-                            this.controller.menuControls.articles(this.ramenShop.articlesWhite, 'white')
+                        case this.skills:
+                            this.controller.aboutMeControls.aboutMeSkills()
                             break
-        
-                        case this.ramenShop.aboutMeBlack:
-                        case this.ramenShop.aboutMeBlue:
-                        case this.aboutMeHitBox:
-                            this.controller.menuControls.aboutMe(this.ramenShop.aboutMeBlack, 'black')
-                            break
-        
-                        case this.ramenShop.creditsBlack:
-                        case this.ramenShop.creditsOrange:
-                        case this.creditsHitBox:
-                            this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
-                            this.hologram.breakHologram()
+                        case this.experience:
+                            this.controller.aboutMeControls.aboutMeExperience()
                             break
                 
                     }
