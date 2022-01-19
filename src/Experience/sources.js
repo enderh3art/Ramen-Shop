@@ -47,11 +47,23 @@ export default [
         type: 'texture',
         path: 'textures/matcaps/fanMatcap.png'
     },
-    // Screens
+    // Arcade Screens
     {
         name: 'arcadeScreenDefaultTexture',
         type: 'texture',
-        path: 'textures/screens/arcadeScreenDefault.png'
+        path: 'textures/screens/arcadeScreens/arcadeScreenDefault.png'
+    },
+
+    {
+        name: 'arcadeScreenCreditsTexture',
+        type: 'texture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenCredits.png'
+    },
+
+    {
+        name: 'arcadeScreenThanksTexture',
+        type: 'texture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenThanks.png'
     },
 
     // About Me Screens

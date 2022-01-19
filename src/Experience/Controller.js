@@ -14,6 +14,7 @@ export default class Controller
         this.setProjectControls()
         this.setMenuControls()
         this.setAboutMeControls()
+        this.setScreenControls()
         this.setCamControls()
 
         this.resources.on('ready', () =>
@@ -187,8 +188,9 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && this.logic.mode === 'menu')
             {
+                this.logic.mode = 'creditsStart'
                 this.menuControls.buttonIndicator(obj, color)
-                console.log('credits')
+                this.camControls.toCredits()
             }
         }
 
@@ -254,6 +256,32 @@ export default class Controller
         }
     }
 
+    setScreenControls()
+    {
+        this.screenControls = {}
+        this.screenControls.arcadeScreen = async () =>
+        {
+            if(this.logic.buttonsLocked === false && this.logic.mode === 'creditsStart' )
+            {
+                this.logic.mode = 'credits'
+                this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenCreditsTexture
+            }
+            else if(this.logic.buttonsLocked === false && this.logic.mode === 'credits' )
+            {
+                this.logic.mode = 'thanks'
+                this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenThanksTexture
+            }
+            else if(this.logic.buttonsLocked === false && this.logic.mode === 'thanks' )
+            {
+                this.logic.lockButtons(1500)
+                this.logic.mode = 'menu'
+                this.camControls.toDefault()
+                this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenDefaultTexture
+            }
+        }
+
+    }
+
     setCamControls()
     {
         this.camControls = {}
@@ -278,6 +306,14 @@ export default class Controller
             this.logic.lockButtons(1500)
             this.camera.camAngle.unlocked()
             this.camera.transitions.aboutMe(1.5)
+            await this.sleep(1500)
+            this.camera.camAngle.aboutMe()
+        }
+        this.camControls.toCredits = async () =>
+        {
+            this.logic.lockButtons(1500)
+            this.camera.camAngle.unlocked()
+            this.camera.transitions.credits(1.5)
             await this.sleep(1500)
             this.camera.camAngle.aboutMe()
         }

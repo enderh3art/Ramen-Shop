@@ -180,8 +180,18 @@ export default class RayCaster
             this.experience.rotation.z = Math.PI / 2
             this.experience.visible = false
 
-
             this.scene.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
+
+            // Create hologram hitbox
+
+            this.hologramHitBox = new THREE.Mesh(
+                new THREE.BoxGeometry( 2, 2, 2 ),
+                this.hitBoxMaterial
+            )
+            this.hologramHitBox.position.set(0,4,-1)
+            this.hologramHitBox.visible = false
+
+            this.scene.add(this.hologramHitBox)
 
             // Debug
             if(this.debug.active)
@@ -236,7 +246,18 @@ export default class RayCaster
                     this.aboutMeBack, 
                     this.aboutMeScreens, 
                     this.skills, 
-                    this.experience
+                    this.experience,
+                    // screens
+                    this.ramenShop.arcadeScreen,
+                    // models
+                    this.ramenShop.ramenShop,
+                    this.ramenShop.machines,
+                    this.ramenShop.floor,
+                    this.ramenShop.misc,
+                    this.ramenShop.graphics,
+                    this.ramenShop.jesseZhouJoined,
+                    //hologram
+                    this.hologramHitBox
                 ]
             }
             else 
@@ -263,7 +284,18 @@ export default class RayCaster
                     this.aboutMeBack, 
                     this.aboutMeScreens, 
                     this.skills, 
-                    this.experience
+                    this.experience,
+                    // screens
+                    this.ramenShop.arcadeScreen,
+                    // Models
+                    this.ramenShop.ramenShop,
+                    this.ramenShop.machines,
+                    this.ramenShop.floor,
+                    this.ramenShop.misc,
+                    this.ramenShop.graphics,
+                    this.ramenShop.jesseZhouJoined,
+                    //hologram
+                    this.hologramHitBox
                 ]
             }
 
@@ -311,7 +343,6 @@ export default class RayCaster
                         case this.ramenShop.creditsOrange:
                         case this.creditsHitBox:
                             this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
-                            this.hologram.breakHologram()
                             break
 
                         //projects
@@ -370,6 +401,14 @@ export default class RayCaster
                             this.controller.aboutMeControls.aboutMeExperience()
                             break
                 
+                        //screens
+                        case this.ramenShop.arcadeScreen:
+                            this.controller.screenControls.arcadeScreen()
+                            break
+
+                        case this.hologramHitBox:
+                            this.hologram.breakHologram()
+                            break
                     }
         
                 }  

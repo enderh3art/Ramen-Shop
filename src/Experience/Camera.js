@@ -194,6 +194,25 @@ export default class Camera
             this.controls.enableRotate = true
             this.controls.enableZoom = true
         }
+
+        this.transitions.credits = async (duration) =>
+        {
+            this.controls.enableRotate = false
+            this.controls.enableZoom = false
+
+            gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
+            x: -0.6,
+            y: -1.05,
+            z: 3.5})
+            gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
+            x: -0.6,
+            y: -1.05,
+            z: 2.2})
+
+            await this.sleep(1500)
+            this.controls.enableRotate = true
+            this.controls.enableZoom = true
+        }
     
     }
 
