@@ -36,7 +36,7 @@ export default class Resources extends EventEmitter
         this.loaders.textureLoader = new THREE.TextureLoader()
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
         this.loaders.basisTextureLoader = new BasisTextureLoader()
-        this.loaders.basisTextureLoader.setTranscoderPath('three/examples/js/libs/basis/')
+        this.loaders.basisTextureLoader.setTranscoderPath('/basis/')
         this.loaders.basisTextureLoader.detectSupport( this.renderer )
     }
 

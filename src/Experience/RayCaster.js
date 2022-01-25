@@ -299,124 +299,138 @@ export default class RayCaster
                 ]
             }
 
-            // Click listener
+            this.touchedPoints = []
+
             window.addEventListener('pointerdown', (event) =>
             {
-                this.cursor.x = event.clientX / this.sizes.width * 2 - 1
-                this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
-                this.raycaster.setFromCamera(this.cursor, this.camera.instance)
-                
-                //Object click listener
-                this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
-                if(this.intersectsObjects.length)
+                this.touchedPoints.push(event.pointerId)
+            })
+
+            // Click listener
+            window.addEventListener('pointerup', (event) =>
+            {
+                if(this.touchedPoints.length === 1) 
                 {
-                    this.selectedModel = this.intersectsObjects[ 0 ].object
-        
-                    switch(this.selectedModel)
-                    {
-                        // Menu
-                        case this.ramenShop.projectsRed:
-                        case this.ramenShop.projectsWhite:
-                        case this.projectsHitBox:
-                            this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
-                            break
-
-                        case this.ramenShop.jZhouBlack:
-                        case this.ramenShop.jZhouPink:
-                        case this.jZhouHitBox:
-                            this.controller.menuControls.jZhou(this.ramenShop.jZhouBlack, 'black')
-                            break
-        
-                        case this.ramenShop.articlesWhite:
-                        case this.ramenShop.articlesRed:
-                        case this.articlesHitBox:
-                            this.controller.menuControls.articles(this.ramenShop.articlesWhite, 'white')
-                            break
-        
-                        case this.ramenShop.aboutMeBlack:
-                        case this.ramenShop.aboutMeBlue:
-                        case this.aboutMeHitBox:
-                            this.controller.menuControls.aboutMe(this.ramenShop.aboutMeBlack, 'black')
-                            break
-        
-                        case this.ramenShop.creditsBlack:
-                        case this.ramenShop.creditsOrange:
-                        case this.creditsHitBox:
-                            this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
-                            break
-
-                        //projects
-
-                        case this.project1:
-                            this.controller.projectControls.project1()
-                            break
-                        
-                        case this.project2:
-                            this.controller.projectControls.project2()
-                            break
-
-                        case this.project3:
-                            this.controller.projectControls.project3()
-                            break
-                        
-                        case this.project4:
-                            this.controller.projectControls.project4()
-                            break
-
-                        case this.project5:
-                            this.controller.projectControls.project5()
-                            break
-
-                        case this.project6:
-                            this.controller.projectControls.project6()
-                            break
-
-                        case this.project7:
-                            this.controller.projectControls.project7()
-                            break
-                        
-                        case this.project8:
-                            this.controller.projectControls.project8()
-                            break
-
-                        case this.projectBack:
-                            this.controller.projectControls.projectBack()
-                            break
-                        
-                        case this.projectEnter:
-                            this.controller.projectControls.projectEnter()
-                            break
-
-                        //aboutMe Menu
-                        case this.aboutMeBack:
-                            this.controller.aboutMeControls.aboutMeBack()
-                            break
-                        case this.aboutMeScreens:
-                            this.controller.aboutMeControls.aboutMeScreens()
-                            break
-                        case this.skills:
-                            this.controller.aboutMeControls.aboutMeSkills()
-                            break
-                        case this.experience:
-                            this.controller.aboutMeControls.aboutMeExperience()
-                            break
-                
-                        //screens
-                        case this.ramenShop.arcadeScreen:
-                            this.controller.screenControls.arcadeScreen()
-                            break
-
-                        case this.hologramHitBox:
-                            this.hologram.breakHologram()
-                            break
-                    }
-        
-                }  
-
+                this.click(event)
+                this.touchedPoints = []
+                }
+                else
+                {this.touchedPoints = []}
             })
         })
-
-
     }
 
+    click(event)
+    {
+        this.cursor.x = event.clientX / this.sizes.width * 2 - 1
+        this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
+        this.raycaster.setFromCamera(this.cursor, this.camera.instance)
+        
+        //Object click listener
+        this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
+        if(this.intersectsObjects.length)
+        {
+            this.selectedModel = this.intersectsObjects[ 0 ].object
+
+            switch(this.selectedModel)
+            {
+                // Menu
+                case this.ramenShop.projectsRed:
+                case this.ramenShop.projectsWhite:
+                case this.projectsHitBox:
+                    this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
+                    break
+
+                case this.ramenShop.jZhouBlack:
+                case this.ramenShop.jZhouPink:
+                case this.jZhouHitBox:
+                    this.controller.menuControls.jZhou(this.ramenShop.jZhouBlack, 'black')
+                    break
+
+                case this.ramenShop.articlesWhite:
+                case this.ramenShop.articlesRed:
+                case this.articlesHitBox:
+                    this.controller.menuControls.articles(this.ramenShop.articlesWhite, 'white')
+                    break
+
+                case this.ramenShop.aboutMeBlack:
+                case this.ramenShop.aboutMeBlue:
+                case this.aboutMeHitBox:
+                    this.controller.menuControls.aboutMe(this.ramenShop.aboutMeBlack, 'black')
+                    break
+
+                case this.ramenShop.creditsBlack:
+                case this.ramenShop.creditsOrange:
+                case this.creditsHitBox:
+                    this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
+                    break
+
+                //projects
+
+                case this.project1:
+                    this.controller.projectControls.project1()
+                    break
+                
+                case this.project2:
+                    this.controller.projectControls.project2()
+                    break
+
+                case this.project3:
+                    this.controller.projectControls.project3()
+                    break
+                
+                case this.project4:
+                    this.controller.projectControls.project4()
+                    break
+
+                case this.project5:
+                    this.controller.projectControls.project5()
+                    break
+
+                case this.project6:
+                    this.controller.projectControls.project6()
+                    break
+
+                case this.project7:
+                    this.controller.projectControls.project7()
+                    break
+                
+                case this.project8:
+                    this.controller.projectControls.project8()
+                    break
+
+                case this.projectBack:
+                    this.controller.projectControls.projectBack()
+                    break
+                
+                case this.projectEnter:
+                    this.controller.projectControls.projectEnter()
+                    break
+
+                //aboutMe Menu
+                case this.aboutMeBack:
+                    this.controller.aboutMeControls.aboutMeBack()
+                    break
+                case this.aboutMeScreens:
+                    this.controller.aboutMeControls.aboutMeScreens()
+                    break
+                case this.skills:
+                    this.controller.aboutMeControls.aboutMeSkills()
+                    break
+                case this.experience:
+                    this.controller.aboutMeControls.aboutMeExperience()
+                    break
+        
+                //screens
+                case this.ramenShop.arcadeScreen:
+                    this.controller.screenControls.arcadeScreen()
+                    break
+
+                case this.hologramHitBox:
+                    this.hologram.breakHologram()
+                    break
+            }
+
+        }  
+    }
 }

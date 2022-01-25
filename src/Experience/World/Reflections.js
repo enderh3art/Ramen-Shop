@@ -264,7 +264,7 @@ export default class Reflections
         this.scene = this.experience.scene
         this.debug = this.experience.debug
 
-        // this.setInstance()
+        this.setInstance()
     }
 
     setInstance() {
