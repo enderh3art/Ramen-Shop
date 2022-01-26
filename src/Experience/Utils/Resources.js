@@ -88,8 +88,9 @@ export default class Resources extends EventEmitter
                 
                 this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
                 this.videoTexture[source.name].flipY = false
-                this.videoTexture[source.name].minFilter  = THREE.LinearFilter;
-                this.videoTexture[source.name].magFilter  = THREE.LinearFilter;
+                this.videoTexture[source.name].minFilter  = THREE.NearestFilter;
+                this.videoTexture[source.name].magFilter  = THREE.NearestFilter;
+                this.videoTexture[source.name].generateMipmaps = false
 
                 this.sourceLoaded(source, this.videoTexture[source.name])          
             
