@@ -21,6 +21,7 @@ export default class Resources extends EventEmitter
 
         this.video = {}
         this.videoTexture = {}
+        this.mychromavideotexturematerial = {}
 
         this.setLoaders()
         this.startLoading()
@@ -77,31 +78,23 @@ export default class Resources extends EventEmitter
                     }
                 )
             }
+
             else if(source.type === 'videoTexture')
             {
                 this.video[source.name] = document.createElement('video')
-                this.video[source.name].playsInline = true
+                this.video[source.name].src = source.path
+                this.video[source.name].play()
+                // this.video[source.name].playsInline = true
                 this.video[source.name].muted = true
                 this.video[source.name].loop = true
                 
                 this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
                 this.videoTexture[source.name].flipY = false
-                // this.videoTexture.wrapS = THREE.RepeatWrapping;
-                // this.videoTexture.repeat.x = - 1;
-                
-                // this.video[source.name].addEventListener('loadeddata', () =>
-                // {
-                //     this.videoTexture[source.name].needsUpdate = true
-                //     this.video[source.name].play()
-                //     this.sourceLoaded(source, this.videoTexture[source.name])
-                // })
+                this.videoTexture[source.name].minFilter  = THREE.LinearFilter;
+                this.videoTexture[source.name].magFilter  = THREE.LinearFilter;
 
-                this.video[source.name].src = source.path
-                this.video[source.name].play()
-                this.sourceLoaded(source, this.videoTexture[source.name])      
-
-
-                
+                this.sourceLoaded(source, this.videoTexture[source.name])          
+            
             }
         }
     }
