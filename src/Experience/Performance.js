@@ -38,15 +38,26 @@ export default class Performance
         }
 
         // Check Performance
-        console.log(1000/this.frameTime)
+        this.frameRate = 1000/this.frameTime
+        console.log(this.frameRate)
 
-        if (1000/this.frameTime <= 30) 
+        if (this.frameRate <= 10) 
         {
-            this.lowerGraphics()
+            this.disablebloom()
+            this.pauseVideos()
+            this.removeReflections()
+        } else if (this.frameRate <=25)
+        {
+            this.pauseVideos()
+            this.removeReflections()
+        } else if (this.frameRate <= 40)
+        {
+            this.removeReflections()
         }
+        
     }
 
-    lowerGraphics()
+    disablebloom()
     {
         // disable bloom
         this.experience.postProcessing.renderBloom = function dontRenderBloom (){}
@@ -58,22 +69,23 @@ export default class Performance
         this.experience.world.ramenShop.arcadeRim.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
         this.experience.world.ramenShop.poleLight.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FCD4FF')})
         this.experience.world.ramenShop.neonGreen.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#8FFF8F')})
-        
-        // Pause all videos
+    }
 
+    pauseVideos()
+    {
         for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
 
             this.resources.video[Object.keys(this.resources.video)[i]].currentTime = 0
             this.resources.video[Object.keys(this.resources.video)[i]].pause()
 
         }
-
-        
-
-        // Remove reflections
-
-        // this.experience.scene.remove(this.experience.world.reflections.groundMirror)
     }
+
+    removeReflections()
+    {
+        this.experience.scene.remove(this.experience.world.reflections.groundMirror)
+    }
+
 
     update()
     {

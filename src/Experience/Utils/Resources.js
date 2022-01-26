@@ -83,8 +83,6 @@ export default class Resources extends EventEmitter
             {
                 this.video[source.name] = document.createElement('video')
                 this.video[source.name].src = source.path
-                this.video[source.name].play()
-                // this.video[source.name].playsInline = true
                 this.video[source.name].muted = true
                 this.video[source.name].loop = true
                 

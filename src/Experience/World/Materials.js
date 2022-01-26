@@ -64,48 +64,57 @@ export default class Materials
 
         // https://discourse.threejs.org/t/basis-video-texture/12716/2
 
-        this.littleTVScreenVideoMaterial = getChromaKeyShaderMaterial(this.resources.items.littleTVScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
-        this.tallScreenVideoMaterial = getChromaKeyShaderMaterial(this.resources.items.tallScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
-        this.tvScreenVideoMaterial = getChromaKeyShaderMaterial(this.resources.items.tvScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
+        this.littleTVScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.littleTVScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
+        this.tallScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tallScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
+        this.tvScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tvScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
 
+        for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
+
+            this.resources.video[Object.keys(this.resources.video)[i]].play()
+        }
+        
         this.resources.trigger('texturesMapped')
     }
+
+    getChromaKeyShaderMaterial(texture, color) {
+
+        this.vertexShader = `
+        varying vec2 vUv;
+        void main( void ) {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+        }
+        `;
+        this.fragmentShader = `
+        uniform vec3 keyColor;
+        varying vec2 vUv;
+        uniform sampler2D map;
+        void main() {
+    
+            vec4 videoColor = texture2D(map, vUv);
+            gl_FragColor = vec4(videoColor.rgb, videoColor.a);
+        }
+        `;
+
+    
+        return new THREE.ShaderMaterial({
+          transparent: true,
+          uniforms: {
+            map: {
+              value: texture
+            },
+            keyColor: {
+              value: color.toArray()
+            }
+          },
+          vertexShader: this.vertexShader,
+          fragmentShader: this.fragmentShader,
+          transparent: false
+        });
+      }
 }
 
-function getChromaKeyShaderMaterial(texture, color) {
 
-    const vertexShader = `
-    varying vec2 vUv;
-    void main( void ) {
-        vUv = uv;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-    }
-    `;
-    const fragmentShader = `
-    uniform vec3 keyColor;
-    varying vec2 vUv;
-    uniform sampler2D map;
-    void main() {
-
-        vec4 videoColor = texture2D(map, vUv);
-        gl_FragColor = vec4(videoColor.rgb, videoColor.a);
-    }
-    `;
-
-    return new THREE.ShaderMaterial({
-      transparent: true,
-      uniforms: {
-        map: {
-          value: texture
-        },
-        keyColor: {
-          value: color.toArray()
-        }
-      },
-      vertexShader: vertexShader,
-      fragmentShader: fragmentShader
-    });
-  }
 
 // function getChromaKeyShaderMaterial(texture, color) {
 
