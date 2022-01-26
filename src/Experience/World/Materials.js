@@ -72,7 +72,7 @@ export default class Materials
 
             this.resources.video[Object.keys(this.resources.video)[i]].play()
         }
-        
+
         this.resources.trigger('texturesMapped')
     }
 
@@ -87,15 +87,26 @@ export default class Materials
         `;
         this.fragmentShader = `
         uniform vec3 keyColor;
+        uniform float similarity;
+        uniform float smoothness;
         varying vec2 vUv;
         uniform sampler2D map;
         void main() {
     
             vec4 videoColor = texture2D(map, vUv);
-            gl_FragColor = vec4(videoColor.rgb, videoColor.a);
+    
+            float Y1 = 0.299 * keyColor.r + 0.587 * keyColor.g + 0.114 * keyColor.b;
+            float Cr1 = keyColor.r - Y1;
+            float Cb1 = keyColor.b - Y1;
+    
+            float Y2 = 0.299 * videoColor.r + 0.587 * videoColor.g + 0.114 * videoColor.b;
+            float Cr2 = videoColor.r - Y2;
+            float Cb2 = videoColor.b - Y2;
+    
+            float blend = smoothstep(similarity, similarity + smoothness, distance(vec2(Cr2, Cb2), vec2(Cr1, Cb1)));
+            gl_FragColor = vec4(videoColor.rgb, videoColor.a * blend);
         }
         `;
-
     
         return new THREE.ShaderMaterial({
           transparent: true,
@@ -105,66 +116,20 @@ export default class Materials
             },
             keyColor: {
               value: color.toArray()
+            },
+            similarity: {
+              value: 0.01
+            },
+            smoothness: {
+              value: 0.0
             }
           },
           vertexShader: this.vertexShader,
-          fragmentShader: this.fragmentShader,
-          transparent: false
+          fragmentShader: this.fragmentShader
         });
       }
+
 }
 
 
 
-// function getChromaKeyShaderMaterial(texture, color) {
-
-//     const vertexShader = `
-//     varying vec2 vUv;
-//     void main( void ) {
-//         vUv = uv;
-//         gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-//     }
-//     `;
-//     const fragmentShader = `
-//     uniform vec3 keyColor;
-//     uniform float similarity;
-//     uniform float smoothness;
-//     varying vec2 vUv;
-//     uniform sampler2D map;
-//     void main() {
-
-//         vec4 videoColor = texture2D(map, vUv);
-
-//         float Y1 = 0.299 * keyColor.r + 0.587 * keyColor.g + 0.114 * keyColor.b;
-//         float Cr1 = keyColor.r - Y1;
-//         float Cb1 = keyColor.b - Y1;
-
-//         float Y2 = 0.299 * videoColor.r + 0.587 * videoColor.g + 0.114 * videoColor.b;
-//         float Cr2 = videoColor.r - Y2;
-//         float Cb2 = videoColor.b - Y2;
-
-//         float blend = smoothstep(similarity, similarity + smoothness, distance(vec2(Cr2, Cb2), vec2(Cr1, Cb1)));
-//         gl_FragColor = vec4(videoColor.rgb, videoColor.a * blend);
-//     }
-//     `;
-
-//     return new THREE.ShaderMaterial({
-//       transparent: true,
-//       uniforms: {
-//         map: {
-//           value: texture
-//         },
-//         keyColor: {
-//           value: color.toArray()
-//         },
-//         similarity: {
-//           value: 0.01
-//         },
-//         smoothness: {
-//           value: 0.0
-//         }
-//       },
-//       vertexShader: vertexShader,
-//       fragmentShader: fragmentShader
-//     });
-//   }

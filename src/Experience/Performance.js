@@ -46,7 +46,7 @@ export default class Performance
             this.disablebloom()
             this.pauseVideos()
             this.removeReflections()
-        } else if (this.frameRate <=25)
+        } else if (this.frameRate <=30)
         {
             this.pauseVideos()
             this.removeReflections()
