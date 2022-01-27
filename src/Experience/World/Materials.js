@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
+import vertexShader from '../../shaders/chromaShaders/vertex.glsl'
+import fragmentShader from '../../shaders/chromaShaders/fragment.glsl'
 
 export default class Materials
 {
@@ -8,6 +10,8 @@ export default class Materials
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+
+        console.log(vertexShader)
 
         this.mapColors()
 
@@ -68,6 +72,10 @@ export default class Materials
         this.tallScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tallScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.tvScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tvScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
 
+        this.smallScreen4VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen4VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
+        this.smallScreen5VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen5VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
+        
+
         for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
 
             this.resources.video[Object.keys(this.resources.video)[i]].play()
@@ -77,36 +85,6 @@ export default class Materials
     }
 
     getChromaKeyShaderMaterial(texture, color) {
-
-        this.vertexShader = `
-        varying vec2 vUv;
-        void main( void ) {
-            vUv = uv;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-        }
-        `;
-        this.fragmentShader = `
-        uniform vec3 keyColor;
-        uniform float similarity;
-        uniform float smoothness;
-        varying vec2 vUv;
-        uniform sampler2D map;
-        void main() {
-    
-            vec4 videoColor = texture2D(map, vUv);
-    
-            float Y1 = 0.299 * keyColor.r + 0.587 * keyColor.g + 0.114 * keyColor.b;
-            float Cr1 = keyColor.r - Y1;
-            float Cb1 = keyColor.b - Y1;
-    
-            float Y2 = 0.299 * videoColor.r + 0.587 * videoColor.g + 0.114 * videoColor.b;
-            float Cr2 = videoColor.r - Y2;
-            float Cb2 = videoColor.b - Y2;
-    
-            float blend = smoothstep(similarity, similarity + smoothness, distance(vec2(Cr2, Cb2), vec2(Cr1, Cb1)));
-            gl_FragColor = vec4(videoColor.rgb, videoColor.a * blend);
-        }
-        `;
     
         return new THREE.ShaderMaterial({
           transparent: true,
@@ -124,8 +102,8 @@ export default class Materials
               value: 0.0
             }
           },
-          vertexShader: this.vertexShader,
-          fragmentShader: this.fragmentShader
+          vertexShader: vertexShader,
+          fragmentShader: fragmentShader
         });
       }
 

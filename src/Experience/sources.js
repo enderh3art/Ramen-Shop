@@ -172,5 +172,16 @@ export default [
         name: 'tvScreenVideoTexture',
         type: 'videoTexture',
         path: 'textures/videosTextures/tvScreen.mp4'
+    },
+    {
+        name: 'smallScreen5VideoTexture',
+        type: 'videoTexture',
+        path: 'textures/videosTextures/smallScreen5.mp4'
+    },
+    {
+        name: 'smallScreen4VideoTexture',
+        type: 'videoTexture',
+        path: 'textures/videosTextures/smallScreen4.mp4'
     }
+
 ]

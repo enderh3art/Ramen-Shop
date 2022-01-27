@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import gsap from 'gsap'
+import vertexShader from '../shaders/transitionShaders/vertex.glsl'
+import fragmentShader from '../shaders/transitionShaders/fragment.glsl'
 
 export default class Controller
 {
@@ -10,11 +12,13 @@ export default class Controller
         this.camera = this.experience.camera
         this.resources = this.experience.resources
 
+        console.log(vertexShader)
+
         this.setLogic()
         this.setProjectControls()
         this.setMenuControls()
         this.setAboutMeControls()
-        this.setScreenControls()
+        this.setArcadeScreenControls()
         this.setCamControls()
 
         this.resources.on('ready', () =>
@@ -37,6 +41,8 @@ export default class Controller
             this.logic.buttonsLocked = false
         }
     }
+
+    // Project selection
 
     setProjectControls()
     {
@@ -140,6 +146,8 @@ export default class Controller
         }
     }
 
+    // Main menu controls
+
     setMenuControls()
     {
         this.menuControls = {}
@@ -209,6 +217,8 @@ export default class Controller
         }
     }
 
+    // About me big screen controls
+
     setAboutMeControls()
     {
         this.aboutMeControls = {}
@@ -247,7 +257,6 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
             {
-                this.logic.lockButtons(1500)
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
 
@@ -256,7 +265,9 @@ export default class Controller
         }
     }
 
-    setScreenControls()
+    //arcade screen credit controls
+
+    setArcadeScreenControls()
     {
         this.screenControls = {}
         this.screenControls.arcadeScreen = async () =>
@@ -273,7 +284,6 @@ export default class Controller
             }
             else if(this.logic.buttonsLocked === false && this.logic.mode === 'thanks' )
             {
-                this.logic.lockButtons(1500)
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
                 this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenDefaultTexture
@@ -281,6 +291,8 @@ export default class Controller
         }
 
     }
+
+    // camera transitions and angles
 
     setCamControls()
     {
