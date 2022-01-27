@@ -12,8 +12,6 @@ export default class Controller
         this.camera = this.experience.camera
         this.resources = this.experience.resources
 
-        console.log(vertexShader)
-
         this.setLogic()
         this.setProjectControls()
         this.setMenuControls()
@@ -52,7 +50,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects1'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project1Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project1Texture,
+                    0.2
+                )
             }
             console.log('project1')
         }
@@ -61,7 +63,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects2'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project2Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project2Texture,
+                    0.2
+                )
             }
             console.log('project2')
         }
@@ -70,7 +76,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects3'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project3Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project3Texture,
+                    0.2
+                )
             }
             console.log('project3')
         }
@@ -79,7 +89,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects4'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project4Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project4Texture,
+                    0.2
+                )
             }
             console.log('project4')
         }
@@ -88,7 +102,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects5'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project5Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project5Texture,
+                    0.2
+                )
             }
             console.log('project5')
         }
@@ -97,7 +115,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects6'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project6Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project6Texture,
+                    0.2
+                )
             }
             console.log('project6')
         }
@@ -106,7 +128,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects7'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project7Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project7Texture,
+                    0.2
+                )
             }
             console.log('project7')
         }
@@ -115,7 +141,11 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'projects0')
             {
                 this.logic.mode = 'projects8'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.project8Texture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.project8Texture,
+                    0.2
+                )
             }
             console.log('project8')
         }
@@ -128,13 +158,21 @@ export default class Controller
                 this.logic.lockButtons(1500)
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.vendingMachineDefaultTexture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.vendingMachineDefaultTexture,
+                    0.2
+                )
             }
 
             if(this.logic.buttonsLocked === false && (this.logic.mode === 'projects1' || this.logic.mode === 'projects2' || this.logic.mode === 'projects3'|| this.logic.mode === 'projects4'|| this.logic.mode === 'projects5'|| this.logic.mode === 'projects6'|| this.logic.mode === 'projects7'|| this.logic.mode === 'projects8'))
             {
                 this.logic.mode = 'projects0'
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.vendingMachineMenuTexture
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.vendingMachineMenuTexture,
+                    0.2
+                )
             }
             console.log('projectBack')
         }
@@ -158,9 +196,12 @@ export default class Controller
                 this.logic.mode = 'projects0'
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toProjects()
-     
-                this.materials.vendingMachineScreenMaterial.map = this.resources.items.vendingMachineMenuTexture
-                
+
+                this.screenTransition(
+                    this.materials.vendingMachineScreenMaterial,
+                    this.resources.items.vendingMachineMenuTexture,
+                    0.2
+                )
             }
  
         }
@@ -275,18 +316,30 @@ export default class Controller
             if(this.logic.buttonsLocked === false && this.logic.mode === 'creditsStart' )
             {
                 this.logic.mode = 'credits'
-                this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenCreditsTexture
+                this.screenTransition(
+                    this.materials.arcadeScreenMaterial,
+                    this.resources.items.arcadeScreenCreditsTexture,
+                    0.2
+                )
             }
             else if(this.logic.buttonsLocked === false && this.logic.mode === 'credits' )
             {
                 this.logic.mode = 'thanks'
-                this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenThanksTexture
+                this.screenTransition(
+                    this.materials.arcadeScreenMaterial,
+                    this.resources.items.arcadeScreenThanksTexture,
+                    0.2
+                )
             }
             else if(this.logic.buttonsLocked === false && this.logic.mode === 'thanks' )
             {
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
-                this.materials.arcadeScreenMaterial.map = this.resources.items.arcadeScreenDefaultTexture
+                this.screenTransition(
+                    this.materials.arcadeScreenMaterial,
+                    this.resources.items.arcadeScreenDefaultTexture,
+                    0.2
+                )
             }
         }
 
@@ -329,6 +382,19 @@ export default class Controller
             await this.sleep(1500)
             this.camera.camAngle.aboutMe()
         }
+    }
+
+    screenTransition(material,newTexture, duration)
+    {
+        material.uniforms.texture2.value = newTexture
+        gsap.to(material.uniforms.progress, {value:1,
+            duration: duration,
+            ease: "power1.inOut",
+            onComplete: () => {
+                material.uniforms.texture1.value = newTexture
+                material.uniforms.progress.value = 0
+            }
+        })
     }
 
     sleep(ms) 

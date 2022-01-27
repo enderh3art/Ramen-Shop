@@ -1,7 +1,9 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
-import vertexShader from '../../shaders/chromaShaders/vertex.glsl'
-import fragmentShader from '../../shaders/chromaShaders/fragment.glsl'
+import chromaVertexShader from '../../shaders/chromaShaders/vertex.glsl'
+import chromaFragmentShader from '../../shaders/chromaShaders/fragment.glsl'
+import TransitionVertexShader from '../../shaders/transitionShaders/vertex.glsl'
+import TransitionFragmentShader from '../../shaders/transitionShaders/fragment.glsl'
 
 export default class Materials
 {
@@ -10,8 +12,6 @@ export default class Materials
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-
-        console.log(vertexShader)
 
         this.mapColors()
 
@@ -61,8 +61,8 @@ export default class Materials
 
         // map screen textures
         this.bigScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.bigScreenDefaultTexture })
-        this.arcadeScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.arcadeScreenDefaultTexture })
-        this.vendingMachineScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.vendingMachineDefaultTexture })
+        this.arcadeScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.arcadeScreenDefaultTexture)
+        this.vendingMachineScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.vendingMachineDefaultTexture)
 
         // Map video textures
 
@@ -75,9 +75,8 @@ export default class Materials
         this.smallScreen4VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen4VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.smallScreen5VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen5VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         
-
+        //play the videos
         for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
-
             this.resources.video[Object.keys(this.resources.video)[i]].play()
         }
 
@@ -102,10 +101,27 @@ export default class Materials
               value: 0.0
             }
           },
-          vertexShader: vertexShader,
-          fragmentShader: fragmentShader
+          vertexShader: chromaVertexShader,
+          fragmentShader: chromaFragmentShader
         });
       }
+    
+    getTransitionShaderMaterial(texture) {
+  
+      return new THREE.ShaderMaterial({
+        side: THREE.DoubleSide,
+        uniforms: {
+          intensity: {value: 30 },
+          texture1: {value: texture },
+          progress: {value: 0 },
+          texture2: {value: null },
+          resolution: {value: new THREE.Vector4() },
+        },
+        // wireframe: true,
+        vertexShader: TransitionVertexShader,
+        fragmentShader: TransitionFragmentShader
+      });
+    }
 
 }
 
