@@ -38,8 +38,9 @@ class Reflector extends Mesh {
         var virtualCamera = new THREE.PerspectiveCamera();
 
         var parameters = {
-            minFilter: THREE.LinearFilter,
-            magFilter: THREE.LinearFilter,
+            minFilter: THREE.NearestFilter,
+            magFilter: THREE.NearestFilter,
+            generateMipmaps : false,
             format: THREE.RGBFormat,
             stencilBuffer: false
         };

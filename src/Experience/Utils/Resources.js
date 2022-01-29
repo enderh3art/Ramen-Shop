@@ -63,7 +63,7 @@ export default class Resources extends EventEmitter
                     (file) =>
                     {
                         file.flipY = false
-                        // file.encoding = THREE.sRGBEncoding
+                        file.encoding = THREE.sRGBEncoding
                         this.sourceLoaded(source, file)
                     }
                 )
@@ -74,6 +74,7 @@ export default class Resources extends EventEmitter
                     source.path,
                     (file) =>
                     {
+                        file.encoding = THREE.sRGBEncoding
                         this.sourceLoaded(source, file)
                     }
                 )
@@ -91,6 +92,7 @@ export default class Resources extends EventEmitter
                 this.videoTexture[source.name].minFilter  = THREE.NearestFilter;
                 this.videoTexture[source.name].magFilter  = THREE.NearestFilter;
                 this.videoTexture[source.name].generateMipmaps = false
+                this.videoTexture[source.name].encoding = THREE.sRGBEncoding
 
                 this.sourceLoaded(source, this.videoTexture[source.name])          
             

@@ -152,8 +152,9 @@ export default class RamenShop
             this.tallScreen.material = this.materials.tallScreenVideoMaterial
             this.tvScreen.material = this.materials.tvScreenVideoMaterial
             
-            this.smallScreen5.material = this.materials.smallScreen5VideoMaterial
+            this.smallScreen3.material = this.materials.smallScreen3VideoMaterial
             this.smallScreen4.material = this.materials.smallScreen4VideoMaterial
+            this.smallScreen5.material = this.materials.smallScreen5VideoMaterial
 
             this.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
 
