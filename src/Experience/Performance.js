@@ -44,11 +44,11 @@ export default class Performance
         if (this.frameRate <= 10) 
         {
             this.disablebloom()
-            this.pauseVideos()
+            // this.pauseVideos()
             this.removeReflections()
         } else if (this.frameRate <=30)
         {
-            this.pauseVideos()
+            // this.pauseVideos()
             this.removeReflections()
         } else if (this.frameRate <= 40)
         {

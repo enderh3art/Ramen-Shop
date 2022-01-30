@@ -76,8 +76,7 @@ export default class Materials
         this.smallScreen4VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen4VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.smallScreen5VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen5VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         
-        
-        //play the videos
+        // play the videos
         for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
             this.resources.video[Object.keys(this.resources.video)[i]].play()
         }
