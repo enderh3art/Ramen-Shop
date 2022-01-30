@@ -100,10 +100,6 @@ export default class Resources extends EventEmitter
                 this.videoTexture[source.name].generateMipmaps = false
                 this.videoTexture[source.name].encoding = THREE.sRGBEncoding
 
-                
-                
-
-                
                 this.sourceLoaded(source, this.videoTexture[source.name])          
             
             }
