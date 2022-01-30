@@ -14,30 +14,30 @@ export default [
     {
         name: 'ramenShopBakedTexture',
         type: 'basisTexture',
-        path: 'textures/baked/ramenShopBaked.basis'
+        path: 'textures/baked/ramenShopBaked1024.basis'
     },
     {
         name: 'machinesBakedTexture',
         type: 'basisTexture',
-        path: 'textures/baked/machinesBaked.basis'
+        path: 'textures/baked/machinesBaked1024.basis'
     },
 
     {
         name: 'floorBakedTexture',
         type: 'basisTexture',
-        path: 'textures/baked/floorBaked.basis'
+        path: 'textures/baked/floorBaked1024.basis'
     },
 
     {
         name: 'miscBakedTexture',
         type: 'basisTexture',
-        path: 'textures/baked/miscBaked.basis'
+        path: 'textures/baked/miscBaked1024.basis'
     },
 
     {
         name: 'graphicsBakedTexture',
         type: 'basisTexture',
-        path: 'textures/baked/graphicsBaked.basis'
+        path: 'textures/baked/graphicsBaked512.basis'
     },
     // Matcaps
     {
