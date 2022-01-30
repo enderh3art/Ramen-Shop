@@ -37,8 +37,6 @@ export default class Performance
             this.intervalSet = true
         }
 
-        this.pauseVideos()
-
         // Check Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
