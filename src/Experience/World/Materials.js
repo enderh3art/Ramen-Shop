@@ -87,6 +87,7 @@ export default class Materials
     getChromaKeyShaderMaterial(texture, color) {
     
         return new THREE.ShaderMaterial({
+          side: THREE.FrontSide,
           transparent: true,
           uniforms: {
             map: {
@@ -110,7 +111,7 @@ export default class Materials
     getTransitionShaderMaterial(texture) {
   
       return new THREE.ShaderMaterial({
-        side: THREE.DoubleSide,
+        side: THREE.FrontSide,
         uniforms: {
           intensity: {value: 30 },
           texture1: {value: texture },
