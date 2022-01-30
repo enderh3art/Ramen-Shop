@@ -97,8 +97,8 @@ export default [
     // Projects
     {
         name: 'vendingMachineDefaultTexture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/vendingMachineDefault.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/vendingMachineDefault.basis'
     },
 
     {
