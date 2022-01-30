@@ -48,12 +48,6 @@ export default class PreLoader extends EventEmitter
         this.startButton.classList.add('fadeIn')
         this.startButton.addEventListener("click", async () => {
 
-            this.resources.video[Object.keys(this.resources.video)[1]].pause()
-
-            // for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
-            //     this.resources.video[Object.keys(this.resources.video)[i]].play()
-            // }
-
             // Remove overlay and button
             this.overlay.classList.add('fade')
             this.startButton.classList.add('fadeOut')

@@ -87,11 +87,11 @@ export default class Resources extends EventEmitter
                 this.video[source.name].src = source.path
 
                 this.video[source.name].muted = true
-                this.video[source.name].playsinline = true
+                this.video[source.name].playsInline = true
                 this.video[source.name].autoplay = true
                 this.video[source.name].loop = true
 
-                this.video[source.name].play()
+                // this.video[source.name].play()
                 
                 this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
                 this.videoTexture[source.name].flipY = false
