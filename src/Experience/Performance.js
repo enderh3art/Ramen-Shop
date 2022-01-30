@@ -40,7 +40,6 @@ export default class Performance
         // Check Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
-        this.pauseVideos()
 
         if (this.frameRate <= 10) 
         {
