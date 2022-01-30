@@ -53,20 +53,20 @@ export default [
     // Arcade Screens
     {
         name: 'arcadeScreenDefaultTexture',
-        type: 'texture',
-        path: 'textures/screens/arcadeScreens/arcadeScreenDefault.png'
+        type: 'basisTexture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenDefault.basis'
     },
 
     {
         name: 'arcadeScreenCreditsTexture',
-        type: 'texture',
-        path: 'textures/screens/arcadeScreens/arcadeScreenCredits.png'
+        type: 'basisTexture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenCredits.basis'
     },
 
     {
         name: 'arcadeScreenThanksTexture',
-        type: 'texture',
-        path: 'textures/screens/arcadeScreens/arcadeScreenThanks.png'
+        type: 'basisTexture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenThanks.basis'
     },
 
     // About Me Screens
