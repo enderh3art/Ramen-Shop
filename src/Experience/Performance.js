@@ -40,15 +40,16 @@ export default class Performance
         // Check Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
+        this.pauseVideos()
 
         if (this.frameRate <= 10) 
         {
             this.disablebloom()
-            // this.pauseVideos()
+            this.pauseVideos()
             this.removeReflections()
         } else if (this.frameRate <=30)
         {
-            // this.pauseVideos()
+            this.pauseVideos()
             this.removeReflections()
         } else if (this.frameRate <= 40)
         {
