@@ -221,82 +221,61 @@ export default class RayCaster
                 
             }
 
+            this.objectsToTest = [
+                //menu
+                this.ramenShop.projectsRed,this.ramenShop.projectsWhite,
+                this.ramenShop.jZhouBlack, this.ramenShop.jZhouPink,
+                this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
+                this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
+                this.ramenShop.creditsBlack,this.ramenShop.creditsOrange,
+                //projects
+                this.project1, 
+                this.project2, 
+                this.project3, 
+                this.project4, 
+                this.project5, 
+                this.project6, 
+                this.project7, 
+                this.project8,
+                this.projectBack,
+                this.projectEnter,
+                //aboutMeScreen
+                this.aboutMeBack, 
+                this.aboutMeScreens, 
+                this.skills, 
+                this.experience,
+                // screens
+                this.ramenShop.arcadeScreen,
+                // Models
+                this.ramenShop.ramenShop,
+                this.ramenShop.machines,
+                this.ramenShop.floor,
+                this.ramenShop.misc,
+                this.ramenShop.graphics,
+                this.ramenShop.jesseZhouJoined,
+                //hologram
+                this.hologramHitBox
+            ]
+
             // Objects to test 
             if(this.config.touch == true)
             {
-                this.objectsToTest = [
-                    //menu
+                this.objectsToTest.push(
                     this.projectsHitBox,
                     this.jZhouHitBox,
                     this.articlesHitBox,
                     this.aboutMeHitBox,
-                    this.creditsHitBox,
-                    //projects
-                    this.project1, 
-                    this.project2, 
-                    this.project3, 
-                    this.project4, 
-                    this.project5, 
-                    this.project6, 
-                    this.project7, 
-                    this.project8,
-                    this.projectBack,
-                    this.projectEnter,
-                    //aboutMeScreen
-                    this.aboutMeBack, 
-                    this.aboutMeScreens, 
-                    this.skills, 
-                    this.experience,
-                    // screens
-                    this.ramenShop.arcadeScreen,
-                    // models
-                    this.ramenShop.ramenShop,
-                    this.ramenShop.machines,
-                    this.ramenShop.floor,
-                    this.ramenShop.misc,
-                    this.ramenShop.graphics,
-                    this.ramenShop.jesseZhouJoined,
-                    //hologram
-                    this.hologramHitBox
-                ]
+                    this.creditsHitBox)
             }
             else 
             {
-                this.objectsToTest = [
-                    //menu
+                this.objectsToTest.push(
                     this.ramenShop.projectsRed,this.ramenShop.projectsWhite,
                     this.ramenShop.jZhouBlack, this.ramenShop.jZhouPink,
                     this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
                     this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
                     this.ramenShop.creditsBlack,this.ramenShop.creditsOrange,
-                    //projects
-                    this.project1, 
-                    this.project2, 
-                    this.project3, 
-                    this.project4, 
-                    this.project5, 
-                    this.project6, 
-                    this.project7, 
-                    this.project8,
-                    this.projectBack,
-                    this.projectEnter,
-                    //aboutMeScreen
-                    this.aboutMeBack, 
-                    this.aboutMeScreens, 
-                    this.skills, 
-                    this.experience,
-                    // screens
-                    this.ramenShop.arcadeScreen,
-                    // Models
-                    this.ramenShop.ramenShop,
-                    this.ramenShop.machines,
-                    this.ramenShop.floor,
-                    this.ramenShop.misc,
-                    this.ramenShop.graphics,
-                    this.ramenShop.jesseZhouJoined,
-                    //hologram
-                    this.hologramHitBox
-                ]
+                )
             }
 
             this.touchedPoints = []
