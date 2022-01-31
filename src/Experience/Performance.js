@@ -45,14 +45,14 @@ export default class Performance
         {
             this.disablebloom()
             this.pauseVideos()
-            this.removeReflections()
+            // this.removeReflections()
         } else if (this.frameRate <=30)
         {
             this.pauseVideos()
-            this.removeReflections()
+            // this.removeReflections()
         } else if (this.frameRate <= 40)
         {
-            this.removeReflections()
+            // this.removeReflections()
         }
         
     }

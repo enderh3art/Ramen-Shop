@@ -42,6 +42,7 @@ class Reflector extends Mesh {
             magFilter: THREE.NearestFilter,
             generateMipmaps : false,
             format: THREE.RGBFormat,
+            // outputEncoding: THREE.sRGBEncoding,
             stencilBuffer: false
         };
 

@@ -103,57 +103,57 @@ export default [
 
     {
         name: 'vendingMachineMenuTexture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/vendingMachineMenu.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/vendingMachineMenu.basis'
     },
 
 
     {
         name: 'project1Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project1.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project1.basis'
     },
 
     {
         name: 'project2Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project2.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project2.basis'
     },
 
     {
         name: 'project3Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project3.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project3.basis'
     },
 
     {
         name: 'project4Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project4.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project4.basis'
     },
 
     {
         name: 'project5Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project5.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project5.basis'
     },
 
     {
         name: 'project6Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project6.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project6.basis'
     },
 
     {
         name: 'project7Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project7.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project7.basis'
     },
 
     {
         name: 'project8Texture',
-        type: 'texture',
-        path: 'textures/screens/vendingMachineScreens/project8.png'
+        type: 'basisTexture',
+        path: 'textures/screens/vendingMachineScreens/project8.basis'
     },
 
 

@@ -18,7 +18,7 @@ export default class World
             // Setup
             this.ramenShop = new RamenShop()
             this.hologram = new Hologram()
-            this.reflections = new Reflections()
+            // this.reflections = new Reflections()
         })
     }
 
