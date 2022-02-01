@@ -83,7 +83,9 @@ export default class Performance
 
     removeReflections()
     {
+        console.log(this.experience.world.reflections.groundMirror)
         this.experience.scene.remove(this.experience.world.reflections.groundMirror)
+        this.experience.world.reflections.groundMirror.material.dispose()
     }
 
 
