@@ -73,24 +73,6 @@ export default class Performance
 
     pauseVideos()
     {
-        // for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
-
-        //     this.resources.video[Object.keys(this.resources.video)[i]].currentTime = 0
-        //     this.resources.video[Object.keys(this.resources.video)[i]].pause()
-
-        // }
-
-        // this.ramenShop.bigScreen,
-        // this.ramenShop.littleTVScreen,
-        // this.ramenShop.tallScreen,
-        // this.ramenShop.tvScreen,
-        // this.ramenShop.sideScreen,
-        
-        // this.ramenShop.smallScreen1,
-        // this.ramenShop.smallScreen2,
-        // this.ramenShop.smallScreen3,
-        // this.ramenShop.smallScreen4,
-        // this.ramenShop.smallScreen5,
 
         this.resources.video['littleTVScreenVideoTexture'].currentTime = 4.63
         this.resources.video['littleTVScreenVideoTexture'].pause()
@@ -101,8 +83,8 @@ export default class Performance
         this.resources.video['tvScreenVideoTexture'].currentTime = 26
         this.resources.video['tvScreenVideoTexture'].pause()
 
-        this.resources.video['sideScreenVideoTexture'].currentTime = 0
-        this.resources.video['sideScreenVideoTexture'].pause()
+        // this.resources.video['sideScreenVideoTexture'].currentTime = 0
+        // this.resources.video['sideScreenVideoTexture'].pause()
 
         this.resources.video['smallScreen3VideoTexture'].currentTime = 16.5
         this.resources.video['smallScreen3VideoTexture'].pause()

@@ -198,13 +198,6 @@ export default class PostProcessing
         }
     }
     
-    // update()
-    // {
-    //     if(this.finalComposer) {this.renderBloom()}
-    //     if(this.finalComposer) {this.finalComposer.render()}
-
-    // }
-
     resize()
     {
         if(this.bloomComposer) {this.bloomComposer.setSize(this.sizes.width, this.sizes.height)}

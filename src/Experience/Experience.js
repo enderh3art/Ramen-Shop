@@ -38,8 +38,6 @@ export default class Experience
         // Setup
         this.debug = new Debug()
         this.scene = new THREE.Scene()
-        
-        // this.performance = new Performance()
         this.sizes = new Sizes()
         this.time = new Time()
         this.camera = new Camera()
