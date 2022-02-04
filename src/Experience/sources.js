@@ -72,8 +72,8 @@ export default [
     // About Me Screens
     {
         name: 'bigScreenDefaultTexture',
-        type: 'texture',
-        path: 'textures/screens/aboutMeScreens/bigScreenDefault.png'
+        type: 'basisTexture',
+        path: 'textures/screens/aboutMeScreens/bigScreenDefault.basis'
     },
 
     {
