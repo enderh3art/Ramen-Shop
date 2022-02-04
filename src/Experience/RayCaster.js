@@ -25,6 +25,7 @@ export default class RayCaster
             this.ramenShop = this.experience.world.ramenShop
             this.hologram = this.experience.world.hologram
             this.raycaster = new THREE.Raycaster()
+            this.cursorDown = new THREE.Vector2()
             this.cursor = new THREE.Vector2()
 
             // Create sign hitboxes
@@ -244,7 +245,7 @@ export default class RayCaster
                 this.aboutMeScreens, 
                 this.skills, 
                 this.experience,
-                // screens
+                // arcadeScreen
                 this.ramenShop.arcadeScreen,
                 // Models
                 this.ramenShop.ramenShop,
@@ -254,7 +255,20 @@ export default class RayCaster
                 this.ramenShop.graphics,
                 this.ramenShop.jesseZhouJoined,
                 //hologram
-                this.hologramHitBox
+                this.hologramHitBox,
+                //TV screens
+                this.ramenShop.bigScreen,
+                this.ramenShop.littleTVScreen,
+                this.ramenShop.tallScreen,
+                this.ramenShop.tvScreen,
+                this.ramenShop.sideScreen,
+                
+                this.ramenShop.smallScreen1,
+                this.ramenShop.smallScreen2,
+                this.ramenShop.smallScreen3,
+                this.ramenShop.smallScreen4,
+                this.ramenShop.smallScreen5,
+    
             ]
 
             // Objects to test 
@@ -283,14 +297,19 @@ export default class RayCaster
             window.addEventListener('pointerdown', (event) =>
             {
                 this.touchedPoints.push(event.pointerId)
+                this.cursorDown.x = event.clientX / this.sizes.width * 2 - 1
+                this.cursorDown.y = - (event.clientY / this.sizes.height) * 2 + 1
             })
 
             // Click listener
             window.addEventListener('pointerup', (event) =>
             {
-                if(this.touchedPoints.length === 1) 
+                this.cursor.x = event.clientX / this.sizes.width * 2 - 1
+                this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
+
+                if(this.touchedPoints.length === 1 && this.cursorDown.x === this.cursor.x && this.cursorDown.y === this.cursor.y) 
                 {
-                this.click(event)
+                this.click(this.cursor)
                 this.touchedPoints = []
                 }
                 else
@@ -299,11 +318,9 @@ export default class RayCaster
         })
     }
 
-    click(event)
+    click(cursor)
     {
-        this.cursor.x = event.clientX / this.sizes.width * 2 - 1
-        this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
-        this.raycaster.setFromCamera(this.cursor, this.camera.instance)
+        this.raycaster.setFromCamera(cursor, this.camera.instance)
         
         //Object click listener
         this.intersectsObjects = this.raycaster.intersectObjects(this.objectsToTest)
@@ -408,6 +425,49 @@ export default class RayCaster
                 case this.hologramHitBox:
                     this.hologram.breakHologram()
                     break
+                
+                case this.ramenShop.bigScreen:
+                    this.controller.videoControls.bigScreen()
+                    break
+
+                case this.ramenShop.littleTVScreen:
+                    this.controller.videoControls.littleTVScreen()
+                    break
+
+                case this.ramenShop.tallScreen:
+                    this.controller.videoControls.tallScreen()
+                    break
+
+                case this.ramenShop.tvScreen:
+                    this.controller.videoControls.tvScreen()
+                    break
+
+                case this.ramenShop.sideScreen:
+                    this.controller.videoControls.sideScreen()
+                    break
+                                    
+                case this.ramenShop.smallScreen1:
+                    this.controller.videoControls.smallScreen1()
+                    break
+
+                case this.ramenShop.smallScreen2:
+                    this.controller.videoControls.smallScreen2()
+                    break
+
+                case this.ramenShop.smallScreen3:
+                    this.controller.videoControls.smallScreen3()
+                    break
+
+                case this.ramenShop.smallScreen4:
+                    this.controller.videoControls.smallScreen4()
+                    break
+
+                case this.ramenShop.smallScreen5:
+                    this.controller.videoControls.smallScreen5()
+                    break
+
+                //Screens
+
             }
 
         }  

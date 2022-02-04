@@ -33,7 +33,7 @@ export default class Performance
         {
             setInterval(() => {
                 this.performanceCheck()
-            }, 5000);
+            }, 10000);
             this.intervalSet = true
         }
 
@@ -41,7 +41,7 @@ export default class Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
 
-        if (this.frameRate <= 10) 
+        if (this.frameRate <= 20) 
         {
             this.disablebloom()
             this.pauseVideos()
@@ -73,12 +73,45 @@ export default class Performance
 
     pauseVideos()
     {
-        for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
+        // for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
 
-            this.resources.video[Object.keys(this.resources.video)[i]].currentTime = 0
-            this.resources.video[Object.keys(this.resources.video)[i]].pause()
+        //     this.resources.video[Object.keys(this.resources.video)[i]].currentTime = 0
+        //     this.resources.video[Object.keys(this.resources.video)[i]].pause()
 
-        }
+        // }
+
+        // this.ramenShop.bigScreen,
+        // this.ramenShop.littleTVScreen,
+        // this.ramenShop.tallScreen,
+        // this.ramenShop.tvScreen,
+        // this.ramenShop.sideScreen,
+        
+        // this.ramenShop.smallScreen1,
+        // this.ramenShop.smallScreen2,
+        // this.ramenShop.smallScreen3,
+        // this.ramenShop.smallScreen4,
+        // this.ramenShop.smallScreen5,
+
+        this.resources.video['littleTVScreenVideoTexture'].currentTime = 4.63
+        this.resources.video['littleTVScreenVideoTexture'].pause()
+
+        this.resources.video['tallScreenVideoTexture'].currentTime = 3.8
+        this.resources.video['tallScreenVideoTexture'].pause()
+
+        this.resources.video['tvScreenVideoTexture'].currentTime = 26
+        this.resources.video['tvScreenVideoTexture'].pause()
+
+        this.resources.video['sideScreenVideoTexture'].currentTime = 0
+        this.resources.video['sideScreenVideoTexture'].pause()
+
+        this.resources.video['smallScreen3VideoTexture'].currentTime = 16.5
+        this.resources.video['smallScreen3VideoTexture'].pause()
+
+        this.resources.video['smallScreen4VideoTexture'].currentTime = 6
+        this.resources.video['smallScreen4VideoTexture'].pause()
+
+        this.resources.video['smallScreen5VideoTexture'].currentTime = 7
+        this.resources.video['smallScreen5VideoTexture'].pause()
     }
 
     removeReflections()

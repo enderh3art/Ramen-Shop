@@ -1,8 +1,5 @@
-import * as THREE from 'three'
 import Experience from './Experience.js'
 import gsap from 'gsap'
-import vertexShader from '../shaders/transitionShaders/vertex.glsl'
-import fragmentShader from '../shaders/transitionShaders/fragment.glsl'
 
 export default class Controller
 {
@@ -18,6 +15,7 @@ export default class Controller
         this.setAboutMeControls()
         this.setArcadeScreenControls()
         this.setCamControls()
+        this.setVideoControls()
 
         this.resources.on('ready', () =>
         {
@@ -382,6 +380,77 @@ export default class Controller
             await this.sleep(1500)
             this.camera.camAngle.aboutMe()
         }
+    }
+
+    // video controls
+
+    setVideoControls()
+    {
+        this.videoControls = {}
+
+        this.videoControls.bigScreen = async () =>
+        {
+            console.log('bigScreen')
+        }
+
+        this.videoControls.littleTVScreen = async () =>
+        {
+            this.videoControls.togglePlayback(this.resources.video['littleTVScreenVideoTexture'])
+        }
+
+        this.videoControls.tallScreen = async () =>
+        {
+            this.videoControls.togglePlayback(this.resources.video['tallScreenVideoTexture'])
+        }
+
+        this.videoControls.tvScreen = async () =>
+        {
+            if(this.resources.video['tvScreenVideoTexture'].paused)
+            {this.resources.video['tvScreenVideoTexture'].play()}
+            else {
+                window.open('https://www.youtube.com/watch?v=fYcphQibLek', '_blank');
+                this.resources.video['tvScreenVideoTexture'].pause()
+            }
+        }
+
+        this.videoControls.sideScreen = async () =>
+        {
+            this.videoControls.togglePlayback(this.resources.video['sideScreenVideoTexture'])
+        }
+
+        this.videoControls.smallScreen1 = async () =>
+        {
+            console.log('smallScreen1')
+        }
+
+        this.videoControls.smallScreen2 = async () =>
+        {
+            console.log('smallScreen2')
+        }
+
+        this.videoControls.smallScreen3 = async () =>
+        {
+            this.videoControls.togglePlayback(this.resources.video['smallScreen3VideoTexture'])
+        }
+
+        this.videoControls.smallScreen4 = async () =>
+        {
+            this.videoControls.togglePlayback(this.resources.video['smallScreen4VideoTexture'])
+        }
+
+        this.videoControls.smallScreen5 = async () =>
+        {
+            this.videoControls.togglePlayback(this.resources.video['smallScreen5VideoTexture'])
+        }
+
+        this.videoControls.togglePlayback = async (video) =>
+        {
+            if(video.paused)
+            {video.play()}
+            else {video.pause()}
+        }
+
+
     }
 
     screenTransition(material,newTexture, duration)

@@ -187,6 +187,12 @@ export default [
         name: 'smallScreen3VideoTexture',
         type: 'videoTexture',
         path: 'textures/videosTextures/smallScreen3.mp4'
+    },
+    {
+        name: 'sideScreenVideoTexture',
+        type: 'videoTexture',
+        path: 'textures/videosTextures/sideScreen.mp4'
     }
+
 
 ]

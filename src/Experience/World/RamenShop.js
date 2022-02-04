@@ -83,6 +83,7 @@ export default class RamenShop
         this.arcadeScreen = this.model.children.find(child => child.name === 'arcadeScreen')
         this.tvScreen = this.model.children.find(child => child.name === 'tvScreen')
         this.littleTVScreen = this.model.children.find(child => child.name === 'littleTVScreen')
+        this.sideScreen = this.model.children.find(child => child.name === 'sideScreen')
 
         this.vendingMachineScreen = this.model.children.find(child => child.name === 'vendingMachineScreen')
 
@@ -151,6 +152,7 @@ export default class RamenShop
             this.littleTVScreen.material = this.materials.littleTVScreenVideoMaterial
             this.tallScreen.material = this.materials.tallScreenVideoMaterial
             this.tvScreen.material = this.materials.tvScreenVideoMaterial
+            this.sideScreen.material = this.materials.sideScreenVideoMaterial
             
             this.smallScreen3.material = this.materials.smallScreen3VideoMaterial
             this.smallScreen4.material = this.materials.smallScreen4VideoMaterial

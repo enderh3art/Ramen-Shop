@@ -65,7 +65,7 @@ class Reflector extends Mesh {
             ] ),
             fragmentShader: shader.fragmentShader,
             vertexShader: shader.vertexShader,
-            precision: 'lowp'
+            // precision: 'lowp'
         } );
 
         material.uniforms[ "tDiffuse" ].value = renderTarget.texture;
