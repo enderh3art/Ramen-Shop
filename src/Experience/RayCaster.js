@@ -194,6 +194,25 @@ export default class RayCaster
 
             this.scene.add(this.hologramHitBox)
 
+            // Create large object hitboxes
+
+            this.vendingMachineHitBox = new THREE.Mesh(
+                new THREE.BoxGeometry( 1.6, 3.1, 1.6 ),
+                this.hitBoxMaterial
+            )
+            this.vendingMachineHitBox.position.set(1.15,-1.1,2.1)
+            this.vendingMachineHitBox.visible = false
+
+            this.arcadeMachineHitBox = new THREE.Mesh(
+                new THREE.BoxGeometry( 1.3, 2.9, 1.8 ),
+                this.hitBoxMaterial
+            )
+            this.arcadeMachineHitBox.position.set(-0.58,-1.5,2.25)
+            this.arcadeMachineHitBox.visible = false
+
+            this.scene.add(this.vendingMachineHitBox, this.arcadeMachineHitBox)
+
+
             // Debug
             if(this.debug.active)
             {
@@ -221,6 +240,8 @@ export default class RayCaster
                     })
                 
             }
+
+            // Objects to test
 
             this.objectsToTest = [
                 //menu
@@ -271,7 +292,7 @@ export default class RayCaster
     
             ]
 
-            // Objects to test 
+            // touch objects
             if(this.config.touch == true)
             {
                 this.objectsToTest.push(
@@ -292,13 +313,40 @@ export default class RayCaster
                 )
             }
 
+            // add the machines
+
+            this.machinesToTest = [this.vendingMachineHitBox, this.arcadeMachineHitBox, this.ramenShop.bigScreen,
+
+                //obstructors
+                this.ramenShop.ramenShop,
+                this.ramenShop.machines,
+                this.ramenShop.floor,
+                this.ramenShop.misc,
+                this.ramenShop.bigScreen,
+                this.ramenShop.littleTVScreen,
+                this.ramenShop.tallScreen,
+                this.ramenShop.tvScreen,
+                this.ramenShop.sideScreen,
+                
+                this.ramenShop.smallScreen1,
+                this.ramenShop.smallScreen2,
+                this.ramenShop.smallScreen3,
+                this.ramenShop.smallScreen4,
+                this.ramenShop.smallScreen5,
+            ]
+
             this.touchedPoints = []
 
             window.addEventListener('pointerdown', (event) =>
             {
                 this.touchedPoints.push(event.pointerId)
-                this.cursorDown.x = event.clientX / this.sizes.width * 2 - 1
-                this.cursorDown.y = - (event.clientY / this.sizes.height) * 2 + 1
+
+                this.cursorXMin = Math.abs((event.clientX / this.sizes.width * 2 - 1)*0.9)
+                this.cursorXMax = Math.abs((event.clientX / this.sizes.width * 2 - 1)*1.1)
+
+                this.cursorYMin = Math.abs((event.clientY / this.sizes.height * 2 - 1)*0.9)
+                this.cursorYMax = Math.abs((event.clientY / this.sizes.height * 2 - 1)*1.1)
+
             })
 
             // Click listener
@@ -307,7 +355,13 @@ export default class RayCaster
                 this.cursor.x = event.clientX / this.sizes.width * 2 - 1
                 this.cursor.y = - (event.clientY / this.sizes.height) * 2 + 1
 
-                if(this.touchedPoints.length === 1 && this.cursorDown.x === this.cursor.x && this.cursorDown.y === this.cursor.y) 
+                this.absX = Math.abs(this.cursor.x)
+                this.absY = Math.abs(this.cursor.y)
+
+                if(this.touchedPoints.length === 1 && 
+                this.absX > this.cursorXMin && this.absX < this.cursorXMax &&
+                this.absY > this.cursorYMin && this.absY < this.cursorYMax) 
+
                 {
                 this.click(this.cursor)
                 this.touchedPoints = []
@@ -425,10 +479,6 @@ export default class RayCaster
                 case this.hologramHitBox:
                     this.hologram.breakHologram()
                     break
-                
-                case this.ramenShop.bigScreen:
-                    this.controller.videoControls.bigScreen()
-                    break
 
                 case this.ramenShop.littleTVScreen:
                     this.controller.videoControls.littleTVScreen()
@@ -470,6 +520,29 @@ export default class RayCaster
 
             }
 
-        }  
+        } 
+        
+        //Object click listener
+        this.intersectsMachines= this.raycaster.intersectObjects(this.machinesToTest)
+        if(this.intersectsMachines.length)
+        {
+            this.selectedMachine = this.intersectsMachines[ 0 ].object
+
+            switch(this.selectedMachine)
+            {
+                // Menu
+                case this.vendingMachineHitBox:
+                    this.controller.menuControls.projects(this.ramenShop.projectsWhite, 'white')
+                    break
+
+                case this.arcadeMachineHitBox:
+                    this.controller.menuControls.credits(this.ramenShop.creditsBlack, 'black')
+                    break
+
+                case this.ramenShop.bigScreen:
+                    this.controller.menuControls.aboutMe(this.ramenShop.aboutMeBlack, 'black')
+                    break
+            }
+        }
     }
 }

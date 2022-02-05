@@ -60,7 +60,7 @@ export default class Materials
         this.fanMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.fanMatcapTexture})
 
         // map screen textures
-        this.bigScreenMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.bigScreenDefaultTexture })
+        this.bigScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.bigScreenDefaultTexture)
         this.arcadeScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.arcadeScreenDefaultTexture)
         this.vendingMachineScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.vendingMachineDefaultTexture)
 
@@ -72,6 +72,9 @@ export default class Materials
         this.tallScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tallScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.tvScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tvScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.sideScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.sideScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
+
+        this.smallScreen1Material = this.getTransitionShaderMaterial(this.resources.items.smallScreenOne1)
+        this.smallScreen2Material = this.getTransitionShaderMaterial(this.resources.items.smallScreenTwo1)
 
         this.smallScreen3VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen3VideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.smallScreen4VideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.smallScreen4VideoTexture, new THREE.Color("rgb(0, 255, 0)"));

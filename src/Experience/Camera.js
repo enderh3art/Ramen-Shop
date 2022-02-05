@@ -14,7 +14,7 @@ export default class Camera
         this.canvas = this.experience.canvas
 
         if(this.sizes.width / this.sizes.height > 1)
-        {this.aboutMeDistance = 2.2}
+        {this.aboutMeDistance = 2.5}
         else
         {this.aboutMeDistance = 4.2}
 
@@ -92,13 +92,14 @@ export default class Camera
             this.controls.maxDistance = 16
             this.controls.minAzimuthAngle = 0 
             this.controls.maxAzimuthAngle = Math.PI *1.9999
+            this.controls.minPolarAngle = Math.PI *0.2
             this.controls.maxPolarAngle = Math.PI * 0.55
             this.cam = false
         }
 
         this.camAngle.vendingMachine = () =>
         {
-            this.controls.minDistance = 1.5
+            this.controls.minDistance = 2
             this.controls.maxDistance = 6
             this.controls.minAzimuthAngle = -(Math.PI * 0.1) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.1 //right
@@ -109,6 +110,16 @@ export default class Camera
         this.camAngle.aboutMe = () =>
         {
             this.controls.minDistance = 1
+            this.controls.maxDistance = 6
+            this.controls.minAzimuthAngle = -(Math.PI * 0.2) //left
+            this.controls.maxAzimuthAngle = Math.PI * 0.2 //right
+            this.controls.minPolarAngle = Math.PI * .3
+            this.controls.maxPolarAngle = Math.PI * .65
+        }
+
+        this.camAngle.credits = () =>
+        {
+            this.controls.minDistance = 1.5
             this.controls.maxDistance = 6
             this.controls.minAzimuthAngle = -(Math.PI * 0.2) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.2 //right

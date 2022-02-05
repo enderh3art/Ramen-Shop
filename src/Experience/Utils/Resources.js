@@ -23,6 +23,9 @@ export default class Resources extends EventEmitter
         this.videoTexture = {}
         this.mychromavideotexturematerial = {}
 
+        this.carousel1 = []
+        this.carousel2 = []
+
         this.setLoaders()
         this.startLoading()
     }
@@ -58,13 +61,21 @@ export default class Resources extends EventEmitter
             }
             else if(source.type === 'texture')
             {
+                
+
                 this.loaders.textureLoader.load(
                     source.path,
                     (file) =>
                     {
                         file.flipY = false
-                        file.encoding = THREE.sRGBEncoding
+                        // file.encoding = THREE.sRGBEncoding
                         this.sourceLoaded(source, file)
+
+                        if(source.path.includes("smallScreen1"))
+                        {this.carousel1.push(file)}
+
+                        if(source.path.includes("smallScreen2"))
+                        {this.carousel2.push(file)}
                     }
                 )
             }
@@ -90,7 +101,6 @@ export default class Resources extends EventEmitter
                 this.video[source.name].playsInline = true
                 this.video[source.name].autoplay = true
                 this.video[source.name].loop = true
-
                 // this.video[source.name].play()
                 
                 this.videoTexture[source.name] = new THREE.VideoTexture(this.video[source.name])
@@ -104,6 +114,7 @@ export default class Resources extends EventEmitter
             
             }
         }
+
     }
 
     sourceLoaded(source, file)

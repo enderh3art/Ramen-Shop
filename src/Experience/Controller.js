@@ -159,7 +159,7 @@ export default class Controller
                 this.screenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.vendingMachineDefaultTexture,
-                    0.2
+                    0.4
                 )
             }
 
@@ -228,7 +228,12 @@ export default class Controller
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toAboutMe()
 
-                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenAboutMeTexture
+                this.screenTransition(
+                    this.materials.bigScreenMaterial,
+                    this.resources.items.bigScreenAboutMeTexture,
+                    0.2
+                )
+
             }
         }
         this.menuControls.credits = async (obj, color) =>
@@ -268,7 +273,11 @@ export default class Controller
             {
                 this.logic.mode = 'aboutMe'
 
-                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenAboutMeTexture
+                this.screenTransition(
+                    this.materials.bigScreenMaterial,
+                    this.resources.items.bigScreenAboutMeTexture,
+                    0.2
+                )
             }
         }
 
@@ -278,7 +287,11 @@ export default class Controller
             {
                 this.logic.mode = 'skills'
 
-                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenSkillsTexture
+                this.screenTransition(
+                    this.materials.bigScreenMaterial,
+                    this.resources.items.bigScreenSkillsTexture,
+                    0.2
+                )
             }
         }
 
@@ -288,7 +301,11 @@ export default class Controller
             {
                 this.logic.mode = 'experience'
 
-                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenExperienceTexture
+                this.screenTransition(
+                    this.materials.bigScreenMaterial,
+                    this.resources.items.bigScreenExperienceTexture,
+                    0.2
+                )
             }
         }
 
@@ -299,7 +316,11 @@ export default class Controller
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
 
-                this.materials.bigScreenMaterial.map = this.resources.items.bigScreenDefaultTexture
+                this.screenTransition(
+                    this.materials.bigScreenMaterial,
+                    this.resources.items.bigScreenDefaultTexture,
+                    0.4
+                )
             }
         }
     }
@@ -378,7 +399,7 @@ export default class Controller
             this.camera.camAngle.unlocked()
             this.camera.transitions.credits(1.5)
             await this.sleep(1500)
-            this.camera.camAngle.aboutMe()
+            this.camera.camAngle.credits()
         }
     }
 
@@ -418,14 +439,34 @@ export default class Controller
             this.videoControls.togglePlayback(this.resources.video['sideScreenVideoTexture'])
         }
 
+        this.smallScreen1Counter = 1
+
         this.videoControls.smallScreen1 = async () =>
-        {
-            console.log('smallScreen1')
+        { 
+            if(this.smallScreen1Counter < this.resources.carousel1.length)
+            {this.smallScreen1Counter++}
+            else {this.smallScreen1Counter = 1}
+
+            this.screenTransition(
+                this.materials.smallScreen1Material,
+                this.resources.carousel1[this.smallScreen1Counter-1],
+                0.2
+            )
         }
+
+        this.smallScreen2Counter = 1
 
         this.videoControls.smallScreen2 = async () =>
         {
-            console.log('smallScreen2')
+            if(this.smallScreen2Counter < this.resources.carousel2.length)
+            {this.smallScreen2Counter++}
+            else {this.smallScreen2Counter = 1}
+
+            this.screenTransition(
+                this.materials.smallScreen2Material,
+                this.resources.carousel2[this.smallScreen2Counter-1],
+                0.2
+            )
         }
 
         this.videoControls.smallScreen3 = async () =>
