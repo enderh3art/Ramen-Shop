@@ -450,7 +450,7 @@ export default class Controller
             this.screenTransition(
                 this.materials.smallScreen1Material,
                 this.resources.carousel1[this.smallScreen1Counter-1],
-                0.2
+                0.8
             )
         }
 
@@ -465,7 +465,7 @@ export default class Controller
             this.screenTransition(
                 this.materials.smallScreen2Material,
                 this.resources.carousel2[this.smallScreen2Counter-1],
-                0.2
+                0.8
             )
         }
 

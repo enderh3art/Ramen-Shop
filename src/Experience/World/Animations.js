@@ -15,14 +15,25 @@ export default class Animations
         this.update = function update() {}
 
         // Wait for resources
-        this.resources.on('ready', () =>
+        this.resources.on('ready', async () =>
         {
             // Setup
             this.ramenShop = this.experience.world.ramenShop
             this.hologram = this.experience.world.hologram
+            this.controller = this.experience.controller
 
             // Update Function
             this.enableUpdate()
+
+            setInterval(() => {
+                this.controller.videoControls.smallScreen1()
+            }, 5000)
+
+            await this.sleep(2500)
+
+            setInterval(() => {
+                this.controller.videoControls.smallScreen2()
+            }, 5000)
         })
     }
 
@@ -34,5 +45,10 @@ export default class Animations
             {this.ramenShop.dish.rotation.y = Math.sin(this.time.elapsed * 0.5 * 0.001) *.4 - Math.PI *.2}
             {this.hologram.mesh.rotation.y += - 0.25 * this.time.delta * 0.001}
         }
+    }
+
+    sleep(ms) 
+    {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

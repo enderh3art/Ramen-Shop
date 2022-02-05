@@ -198,43 +198,43 @@ export default [
 
     {
         name: 'smallScreenOne1',
-        type: 'texture',
-        path: 'textures/screens/smallScreen1/1.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen1/1.basis'
     },
     {
         name: 'smallScreenOne2',
-        type: 'texture',
-        path: 'textures/screens/smallScreen1/2.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen1/2.basis'
     },
     {
         name: 'smallScreenOne3',
-        type: 'texture',
-        path: 'textures/screens/smallScreen1/3.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen1/3.basis'
     },
     {
         name: 'smallScreenOne4',
-        type: 'texture',
-        path: 'textures/screens/smallScreen1/4.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen1/4.basis'
     },
     {
         name: 'smallScreenTwo1',
-        type: 'texture',
-        path: 'textures/screens/smallScreen2/1.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen2/1.basis'
     },
     {
         name: 'smallScreenTwo2',
-        type: 'texture',
-        path: 'textures/screens/smallScreen2/2.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen2/2.basis'
     },
     {
         name: 'smallScreenTwo3',
-        type: 'texture',
-        path: 'textures/screens/smallScreen2/3.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen2/3.basis'
     },
     {
         name: 'smallScreenTwo4',
-        type: 'texture',
-        path: 'textures/screens/smallScreen2/4.jpg'
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen2/4.basis'
     }
 
 
