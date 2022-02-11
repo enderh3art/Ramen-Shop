@@ -160,7 +160,7 @@ h1 {
     animation: jump 2.1s ease-in-out infinite;
 }
 
-/* #cooking #area #pancake #pastry {
+#cooking #area #pancake #pastry {
     position: absolute;
     bottom: 26%;
     right: 40%;
@@ -171,7 +171,7 @@ h1 {
     border-radius: 100%;
     transform-origin: -140% 0;
     animation: fly 2.1s ease-in-out infinite;
-} */
+}
 
 /* #cooking #area #pancake #pastry {
     position: absolute;
