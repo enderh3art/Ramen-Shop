@@ -35,10 +35,22 @@ export default class Experience
         // Options
         this.canvas = _canvas
 
+        //config
+        this.config = {}
+        this.config.touch = false
+        window.addEventListener('touchstart', () =>
+        {
+            this.config.touch = true
+        }, { once: true })
+
         // Setup
         this.debug = new Debug()
         this.scene = new THREE.Scene()
         this.sizes = new Sizes()
+
+        if(this.sizes.width / this.sizes.height > 1) {this.config.vertical = false}
+        else {this.config.vertical = true}
+
         this.time = new Time()
         this.camera = new Camera()
         this.renderer = new Renderer()
@@ -51,16 +63,6 @@ export default class Experience
         this.postProcessing = new PostProcessing()
         this.controller = new Controller()
         this.rayCaster = new RayCaster()
-        
-
-        // Config
-        this.config = {}
-        this.config.touch = false
-
-        window.addEventListener('touchstart', () =>
-        {
-            this.config.touch = true
-        }, { once: true })
 
         // Resize event
         this.sizes.on('resize', () =>

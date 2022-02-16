@@ -94,6 +94,24 @@ export default [
         path: 'textures/screens/aboutMeScreens/bigScreenExperience.basis'
     },
 
+    {
+        name: 'bigScreenAboutMeMobileTexture',
+        type: 'basisTexture',
+        path: 'textures/screens/aboutMeScreens/bigScreenAboutMobile.basis'
+    },
+
+    {
+        name: 'bigScreenSkillsMobileTexture',
+        type: 'basisTexture',
+        path: 'textures/screens/aboutMeScreens/bigScreenSkillsMobile.basis'
+    },
+
+    {
+        name: 'bigScreenExperienceMobileTexture',
+        type: 'basisTexture',
+        path: 'textures/screens/aboutMeScreens/bigScreenExperienceMobile.basis'
+    },
+
     // Projects
     {
         name: 'vendingMachineDefaultTexture',
@@ -217,6 +235,14 @@ export default [
         path: 'textures/screens/smallScreen1/4.basis'
     },
     {
+        name: 'smallScreenOne5',
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen1/5.basis'
+    },
+
+    // smallScreen2 carousel
+
+    {
         name: 'smallScreenTwo1',
         type: 'basisTexture',
         path: 'textures/screens/smallScreen2/1.basis'
@@ -235,6 +261,11 @@ export default [
         name: 'smallScreenTwo4',
         type: 'basisTexture',
         path: 'textures/screens/smallScreen2/4.basis'
+    },
+    {
+        name: 'smallScreenTwo5',
+        type: 'basisTexture',
+        path: 'textures/screens/smallScreen2/5.basis'
     }
 
 

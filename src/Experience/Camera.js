@@ -12,11 +12,20 @@ export default class Camera
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
+        this.config = this.experience.config
 
-        if(this.sizes.width / this.sizes.height > 1)
-        {this.aboutMeDistance = 2.5}
+        if(this.config.vertical === true)
+        {
+        this.aboutMeDistance = 2.6
+        this.projectsDistance = 4.6
+        }
         else
-        {this.aboutMeDistance = 4.2}
+        {
+        this.aboutMeDistance = 2.2
+        this.projectsDistance = 4.2
+        }
+
+
 
         this.setInstance()
         this.setControls()
@@ -100,7 +109,7 @@ export default class Camera
         this.camAngle.vendingMachine = () =>
         {
             this.controls.minDistance = 2
-            this.controls.maxDistance = 6
+            this.controls.maxDistance = 3.5
             this.controls.minAzimuthAngle = -(Math.PI * 0.1) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.1 //right
             this.controls.minPolarAngle = Math.PI * .4
@@ -110,7 +119,7 @@ export default class Camera
         this.camAngle.aboutMe = () =>
         {
             this.controls.minDistance = 1
-            this.controls.maxDistance = 6
+            this.controls.maxDistance = this.aboutMeDistance
             this.controls.minAzimuthAngle = -(Math.PI * 0.2) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.2 //right
             this.controls.minPolarAngle = Math.PI * .3
@@ -120,7 +129,7 @@ export default class Camera
         this.camAngle.credits = () =>
         {
             this.controls.minDistance = 1.5
-            this.controls.maxDistance = 6
+            this.controls.maxDistance = 2.5
             this.controls.minAzimuthAngle = -(Math.PI * 0.2) //left
             this.controls.maxAzimuthAngle = Math.PI * 0.2 //right
             this.controls.minPolarAngle = Math.PI * .3
@@ -139,16 +148,16 @@ export default class Camera
             this.controls.enableZoom = false
 
             gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
-            x: 1.2,
+            x: 1.15,
             y:-1.2,
-            z:4.8})
+            z:this.projectsDistance})
             gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
-            x: 1.2,
+            x: 1.15,
             y:-1.2,
             z:1.7})
 
             await this.sleep(1500)
-            this.controls.enableRotate = true
+            // this.controls.enableRotate = true
             this.controls.enableZoom = true
         }
 
@@ -193,16 +202,16 @@ export default class Camera
             this.controls.enableZoom = false
 
             gsap.to(this.instance.position, { duration: duration, ease: "power1.inOut",
-            x: 0.59,
+            x: 0.66,
             y: 3.8,
             z: this.aboutMeDistance})
             gsap.to(this.controls.target, { duration: duration, ease: "power1.inOut",
-            x: 0.59,
+            x: 0.66,
             y: 3.8,
             z: 0.7})
 
             await this.sleep(1500)
-            this.controls.enableRotate = true
+            // this.controls.enableRotate = true
             this.controls.enableZoom = true
         }
 
@@ -221,7 +230,7 @@ export default class Camera
             z: 2.2})
 
             await this.sleep(1500)
-            this.controls.enableRotate = true
+            // this.controls.enableRotate = true
             this.controls.enableZoom = true
         }
     

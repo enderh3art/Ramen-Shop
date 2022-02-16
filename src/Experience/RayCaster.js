@@ -14,13 +14,12 @@ export default class RayCaster
         this.performance = this.experience.performance 
         this.preLoader = this.experience.preLoader
         this.controller = this.experience.controller
+        this.config = this.experience.config
 
         // Wait for resources
         this.preLoader.on('start', () =>
         {
-
             // Setup
-            this.config = {}
             this.config.touch = this.experience.config.touch
             this.ramenShop = this.experience.world.ramenShop
             this.hologram = this.experience.world.hologram
@@ -148,39 +147,72 @@ export default class RayCaster
 
             // Create aboutMe Hitboxes
 
-            this.aboutMeHitBoxGeometry = new THREE.PlaneGeometry( 0.4, 0.2 )
+            if(this.config.vertical === true)
+            {
+                this.aboutMeHitBoxGeometry = new THREE.PlaneGeometry( 0.3, 0.2 )
 
-            this.aboutMeBack = new THREE.Mesh(
-                this.aboutMeHitBoxGeometry,
-                this.hitBoxMaterial
-            )
-            this.aboutMeBack.position.set(-0.55, 4.58, 0.58)
+                this.aboutMeBack = new THREE.Mesh(
+                    new THREE.PlaneGeometry( 0.3, 0.2 ),
+                    this.hitBoxMaterial
+                )
+                this.aboutMeBack.position.set(0.12, 4.58, 0.58)
+
+                this.aboutMeScreens = new THREE.Mesh(
+                    this.aboutMeHitBoxGeometry,
+                    this.hitBoxMaterial
+                )
+                this.aboutMeScreens.position.set(0.45, 4.58, 0.58)
+
+                this.skills = new THREE.Mesh(
+                    this.aboutMeHitBoxGeometry,
+                    this.hitBoxMaterial
+                )
+                this.skills.position.set(0.78, 4.58, 0.58)
+
+                this.experience = new THREE.Mesh(
+                    new THREE.PlaneGeometry( 0.45, 0.2 ),
+                    this.hitBoxMaterial
+                )
+                this.experience.position.set(1.15, 4.58, 0.58)
+
+            }
+            else
+            {
+                this.aboutMeHitBoxGeometry = new THREE.PlaneGeometry( 0.4, 0.4 )
+
+                this.aboutMeBack = new THREE.Mesh(
+                    new THREE.PlaneGeometry( 0.7, 0.2 ),
+                    this.hitBoxMaterial
+                )
+                this.aboutMeBack.position.set(-0.5, 4.58, 0.58)
+
+                this.aboutMeScreens = new THREE.Mesh(
+                    this.aboutMeHitBoxGeometry,
+                    this.hitBoxMaterial
+                )
+                this.aboutMeScreens.position.set(2, 4.4, 0.58)
+                this.aboutMeScreens.rotation.z = Math.PI / 2
+
+                this.skills = new THREE.Mesh(
+                    this.aboutMeHitBoxGeometry,
+                    this.hitBoxMaterial
+                )
+                this.skills.position.set(2, 4, 0.58)
+                this.skills.rotation.z = Math.PI / 2
+
+                this.experience = new THREE.Mesh(
+                    new THREE.PlaneGeometry( 0.6, 0.4 ),
+                    this.hitBoxMaterial
+                )
+                this.experience.position.set(2, 3.5, 0.58)
+                this.experience.rotation.z = Math.PI / 2
+            }
+
             this.aboutMeBack.visible = false
-
-            this.aboutMeScreens = new THREE.Mesh(
-                this.aboutMeHitBoxGeometry,
-                this.hitBoxMaterial
-            )
-            this.aboutMeScreens.position.set(2, 4.45, 0.58)
-            this.aboutMeScreens.rotation.z = Math.PI / 2
             this.aboutMeScreens.visible = false
-
-            this.skills = new THREE.Mesh(
-                this.aboutMeHitBoxGeometry,
-                this.hitBoxMaterial
-            )
-            this.skills.position.set(2, 4, 0.58)
-            this.skills.rotation.z = Math.PI / 2
             this.skills.visible = false
-
-            this.experience = new THREE.Mesh(
-                this.aboutMeHitBoxGeometry,
-                this.hitBoxMaterial
-            )
-            this.experience.position.set(2, 3.55, 0.58)
-            this.experience.rotation.z = Math.PI / 2
             this.experience.visible = false
-
+            
             this.scene.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
 
             // Create hologram hitbox

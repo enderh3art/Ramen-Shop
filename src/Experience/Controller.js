@@ -5,9 +5,13 @@ export default class Controller
 {
     constructor()
     {
+
+        // Setup
         this.experience = new Experience()
         this.camera = this.experience.camera
         this.resources = this.experience.resources
+        this.preLoader = this.experience.preLoader
+        this.config = this.experience.config
 
         this.setLogic()
         this.setProjectControls()
@@ -22,8 +26,10 @@ export default class Controller
             this.ramenShop = this.experience.world.ramenShop
             this.materials = this.experience.materials
         })
+
     }
 
+    
     setLogic()
     {
         this.logic = {}
@@ -228,11 +234,25 @@ export default class Controller
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toAboutMe()
 
-                this.screenTransition(
-                    this.materials.bigScreenMaterial,
-                    this.resources.items.bigScreenAboutMeTexture,
-                    0.2
-                )
+                if(this.config.vertical === true)
+                {
+                    console.log(this.config.vertical)
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenAboutMeMobileTexture,
+                        0.2
+                    )
+                }
+                else
+                {
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenAboutMeTexture,
+                        0.2
+                    )
+                }
+
+
 
             }
         }
@@ -273,11 +293,24 @@ export default class Controller
             {
                 this.logic.mode = 'aboutMe'
 
-                this.screenTransition(
-                    this.materials.bigScreenMaterial,
-                    this.resources.items.bigScreenAboutMeTexture,
-                    0.2
-                )
+                if(this.config.vertical === true)
+                {
+                    console.log(this.config.vertical)
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenAboutMeMobileTexture,
+                        0.2
+                    )
+                }
+                else
+                {
+                    console.log('horizontal')
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenAboutMeTexture,
+                        0.2
+                    )
+                }
             }
         }
 
@@ -287,11 +320,22 @@ export default class Controller
             {
                 this.logic.mode = 'skills'
 
-                this.screenTransition(
-                    this.materials.bigScreenMaterial,
-                    this.resources.items.bigScreenSkillsTexture,
-                    0.2
-                )
+                if(this.config.vertical === true)
+                {
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenSkillsMobileTexture,
+                        0.2
+                    )
+                }
+                else
+                {
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenSkillsTexture,
+                        0.2
+                    )
+                }
             }
         }
 
@@ -301,11 +345,22 @@ export default class Controller
             {
                 this.logic.mode = 'experience'
 
-                this.screenTransition(
-                    this.materials.bigScreenMaterial,
-                    this.resources.items.bigScreenExperienceTexture,
-                    0.2
-                )
+                if(this.config.vertical === true)
+                {
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenExperienceMobileTexture,
+                        0.2
+                    )
+                }
+                else
+                {
+                    this.screenTransition(
+                        this.materials.bigScreenMaterial,
+                        this.resources.items.bigScreenExperienceTexture,
+                        0.2
+                    )
+                }
             }
         }
 
