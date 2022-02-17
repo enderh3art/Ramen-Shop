@@ -72,14 +72,14 @@ export default [
     // Easel
     {
         name: 'easelTouchTexture',
-        type: 'texture',
-        path: 'textures/screens/easel/easelTouch.png'
+        type: 'basisTexture',
+        path: 'textures/screens/easel/easelTouch.basis'
     },
 
     {
         name: 'easelClickTexture',
-        type: 'texture',
-        path: 'textures/screens/easel/easelClick.png'
+        type: 'basisTexture',
+        path: 'textures/screens/easel/easelClick.basis'
     },
     
 
