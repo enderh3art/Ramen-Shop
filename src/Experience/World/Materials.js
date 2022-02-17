@@ -111,7 +111,6 @@ export default class Materials
       }
 
       this.ramenShop = this.experience.world.ramenShop
-      console.log(this.ramenShop)
       this.ramenShop.setEaselMaterial()
     }
 
