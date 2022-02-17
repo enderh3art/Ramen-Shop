@@ -93,6 +93,8 @@ export default class RamenShop
         this.smallScreen4 = this.model.children.find(child => child.name === 'smallScreen4')
         this.smallScreen5 = this.model.children.find(child => child.name === 'smallScreen5')
 
+        this.easelFrontGraphic = this.model.children.find(child => child.name === 'easelFrontGraphic')
+
     }
 
     setMaterials()
@@ -163,10 +165,15 @@ export default class RamenShop
 
             this.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
 
-
         })
 
         this.model.position.y = - 3
         this.scene.add(this.model)
+    }
+
+    setEaselMaterial()
+    {
+        this.materials = this.experience.materials
+        this.easelFrontGraphic.material = this.materials.easelMaterial
     }
 }

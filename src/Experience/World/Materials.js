@@ -12,6 +12,8 @@ export default class Materials
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+        this.preLoader = this.experience.preLoader
+        this.config = this.experience.config
 
         this.mapColors()
 
@@ -19,6 +21,13 @@ export default class Materials
         this.resources.on('ready', () =>
         {
             this.mapTextures()
+        })
+
+        this.preLoader.on('start', () =>
+        {
+            // Setup
+            this.config.touch = this.experience.config.touch
+            this.mapEasel()
         })
     }
 
@@ -86,6 +95,21 @@ export default class Materials
         }
 
         this.resources.trigger('texturesMapped')
+    }
+
+    mapEasel()
+    {
+      if(this.config.touch === true)
+      {
+        this.easelMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.easelTouchTexture })
+      }
+      else{
+        this.easelMaterial = new THREE.MeshBasicMaterial({ map: this.resources.items.easelClickTexture })
+      }
+
+      this.ramenShop = this.experience.world.ramenShop
+      console.log(this.ramenShop)
+      this.ramenShop.setEaselMaterial()
     }
 
     getChromaKeyShaderMaterial(texture, color) {

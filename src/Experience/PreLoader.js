@@ -61,6 +61,7 @@ export default class PreLoader extends EventEmitter
             // Trigger start events
             this.controller = this.experience.controller
             this.performance = this.experience.performance
+
             this.controller.camControls.toDefault()
 
             await this.sleep(500)

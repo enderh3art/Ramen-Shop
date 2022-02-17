@@ -69,6 +69,20 @@ export default [
         path: 'textures/screens/arcadeScreens/arcadeScreenThanks.basis'
     },
 
+    // Easel
+    {
+        name: 'easelTouchTexture',
+        type: 'texture',
+        path: 'textures/screens/easel/easelTouch.png'
+    },
+
+    {
+        name: 'easelClickTexture',
+        type: 'texture',
+        path: 'textures/screens/easel/easelClick.png'
+    },
+    
+
     // About Me Screens
     {
         name: 'bigScreenDefaultTexture',
