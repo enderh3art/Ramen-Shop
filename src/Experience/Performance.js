@@ -41,7 +41,7 @@ export default class Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
 
-        if (this.frameRate <= 2000) 
+        if (this.frameRate <= 20) 
         {
             this.disablebloom()
             this.pauseVideos()
