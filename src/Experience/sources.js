@@ -42,28 +42,28 @@ export default [
     // Matcaps
     {
         name: 'dishMatcapTexture',
-        type: 'texture',
-        path: 'textures/matcaps/dishMatcap.png'
+        type: 'basisTexture',
+        path: 'textures/matcaps/dishMatcap.basis'
     },
     {
         name: 'fanMatcapTexture',
-        type: 'texture',
-        path: 'textures/matcaps/fanMatcap.png'
+        type: 'basisTexture',
+        path: 'textures/matcaps/fanMatcap.basis'
     },
     {
         name: 'lightMatcapTexture',
-        type: 'texture',
-        path: 'textures/matcaps/lightMatcap.png'
+        type: 'basisTexture',
+        path: 'textures/matcaps/lightMatcap.basis'
     },
     {
         name: 'neonBlueMatcapTexture',
-        type: 'texture',
-        path: 'textures/matcaps/neonBlueMatcap.png'
+        type: 'basisTexture',
+        path: 'textures/matcaps/neonBlueMatcap.basis'
     },
     {
         name: 'neonGreenMatcapTexture',
-        type: 'texture',
-        path: 'textures/matcaps/neonGreenMatcap.png'
+        type: 'basisTexture',
+        path: 'textures/matcaps/neonGreenMatcap.basis'
     },
     // Arcade Screens
     {
