@@ -67,6 +67,9 @@ export default class Materials
         // map matcap textures
         this.dishMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.dishMatcapTexture, side: THREE.DoubleSide})
         this.fanMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.fanMatcapTexture})
+        this.lightMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.lightMatcapTexture})
+        this.neonBlueMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.neonBlueMatcapTexture})
+        this.neonGreenMatcapMaterial = new THREE.MeshMatcapMaterial({matcap: this.resources.items.neonGreenMatcapTexture})
 
         // map screen textures
         this.bigScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.bigScreenDefaultTexture)

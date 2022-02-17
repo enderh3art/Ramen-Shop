@@ -50,6 +50,21 @@ export default [
         type: 'texture',
         path: 'textures/matcaps/fanMatcap.png'
     },
+    {
+        name: 'lightMatcapTexture',
+        type: 'texture',
+        path: 'textures/matcaps/lightMatcap.png'
+    },
+    {
+        name: 'neonBlueMatcapTexture',
+        type: 'texture',
+        path: 'textures/matcaps/neonBlueMatcap.png'
+    },
+    {
+        name: 'neonGreenMatcapTexture',
+        type: 'texture',
+        path: 'textures/matcaps/neonGreenMatcap.png'
+    },
     // Arcade Screens
     {
         name: 'arcadeScreenDefaultTexture',

@@ -41,7 +41,7 @@ export default class Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
 
-        if (this.frameRate <= 20) 
+        if (this.frameRate <= 2000) 
         {
             this.disablebloom()
             this.pauseVideos()
@@ -64,11 +64,14 @@ export default class Performance
         this.experience.postProcessing.bloomComposer.reset()
 
         // change materials
-        this.experience.world.ramenShop.neonPink.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FFAEEA')})
-        this.experience.world.ramenShop.neonBlue.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
-        this.experience.world.ramenShop.arcadeRim.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#3BCBFF')})
-        this.experience.world.ramenShop.poleLight.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#FCD4FF')})
-        this.experience.world.ramenShop.neonGreen.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#8FFF8F')})
+        this.materials = this.experience.materials
+
+        this.experience.world.ramenShop.neonPink.material = this.materials.lightMatcapMaterial
+        this.experience.world.ramenShop.neonBlue.material = this.materials.neonBlueMatcapMaterial
+        this.experience.world.ramenShop.neonGreen.material = this.materials.neonGreenMatcapMaterial
+        this.experience.world.ramenShop.arcadeRim.material = new THREE.MeshBasicMaterial({color: new THREE.Color('#55FFFF')})
+        this.experience.world.ramenShop.poleLight.material = this.materials.lightMatcapMaterial
+        
     }
 
     pauseVideos()
