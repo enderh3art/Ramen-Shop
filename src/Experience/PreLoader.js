@@ -10,12 +10,14 @@ export default class PreLoader extends EventEmitter
 
         this.experience = new Experience()
         this.scene = this.experience.scene
+        this.sounds = this.experience.sounds
+        console.log(this.sounds)
         this.resources = this.experience.resources
         this.overlay = document.querySelector('.overlay')
         this.cooking = document.querySelector('#cooking')
         this.startButton = document.querySelector('.start')       
-        // this.startButton.style.display = 'none'
-    
+
+
 
         // Progress
         this.resources.on('itemLoaded', () =>
@@ -63,6 +65,9 @@ export default class PreLoader extends EventEmitter
             this.performance = this.experience.performance
 
             this.controller.camControls.toDefault()
+
+            
+            this.sounds.playStartSound()
 
             await this.sleep(500)
             this.performance.performanceCheck()       

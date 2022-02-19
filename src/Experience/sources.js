@@ -52,8 +52,8 @@ export default [
     },
     {
         name: 'lightMatcapTexture',
-        type: 'basisTexture',
-        path: 'textures/matcaps/lightMatcap.basis'
+        type: 'texture',
+        path: 'textures/matcaps/lightMatcap.png'
     },
     {
         name: 'neonBlueMatcapTexture',

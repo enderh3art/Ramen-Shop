@@ -5,6 +5,7 @@ import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Camera from './Camera.js'
 import Renderer from './Renderer.js'
+import Sounds from './Sounds.js'
 import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 import Materials from './World/Materials.js'
@@ -54,6 +55,7 @@ export default class Experience
         this.time = new Time()
         this.camera = new Camera()
         this.renderer = new Renderer()
+        this.sounds = new Sounds()
         this.resources = new Resources(sources)
         this.performance = new Performance()
         this.preLoader = new PreLoader()
