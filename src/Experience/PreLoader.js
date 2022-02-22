@@ -66,14 +66,19 @@ export default class PreLoader extends EventEmitter
 
             this.controller.camControls.toDefault()
 
+            this.sounds.playClick()
+            this.sounds.playWhoosh()
+            this.sounds.playMusic()
             
-            this.sounds.playStartSound()
 
             await this.sleep(500)
-            this.performance.performanceCheck()       
+            this.performance.performanceCheck()  
 
             // Emit Event
             this.trigger('start')
+
+            await this.sleep(500)
+            this.sounds.playDing()
 
         },{ once: true });
     }
