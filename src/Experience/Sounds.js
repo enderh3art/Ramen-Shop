@@ -31,18 +31,18 @@ export default class Sounds
 
         this.ding = new Howl({
             src: [ding],
-            volume: 0.12
+            volume: 0.14
         });
 
         this.music = new Howl({
             src: [music],
             loop: true,
-            volume: 0.25
+            volume: 0.35
         });
         
         this.whoosh = new Howl({
             src: [whoosh],
-            volume: 0.4
+            volume: 0.6
         });
 
 
