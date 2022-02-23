@@ -37,7 +37,7 @@ export default class Sounds
         this.cooking = new Howl({
             src: [cooking],
             loop: true,
-            volume: 0.1
+            volume: 0.05
         });
         
         this.whoosh = new Howl({
@@ -45,9 +45,48 @@ export default class Sounds
             volume: 0.6
         });
 
-
-
+        this.setMute()
     }
+
+    setMute()
+    {
+        // Set up
+        this.muted = typeof this.debug !== 'undefined'
+        Howler.mute(this.muted)
+
+        // M Key
+        window.addEventListener('keydown', (_event) =>
+        {
+            if(_event.key === 'm')
+            {
+                this.muted = !this.muted
+                Howler.mute(this.muted)
+            }
+        })
+
+        // Tab focus / blur
+        document.addEventListener('visibilitychange', () =>
+        {
+            if(document.hidden)
+            {
+                Howler.mute(true)
+            }
+            else
+            {
+                Howler.mute(this.muted)
+            }
+        })
+
+        // Debug
+        if(this.debug)
+        {
+            this.debugFolder.add(this, 'muted').listen().onChange(() =>
+            {
+                Howler.mute(this.muted)
+            })
+        }
+    }
+
 
     playArcade() {
         this.arcade.play()

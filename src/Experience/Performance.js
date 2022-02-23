@@ -24,11 +24,30 @@ export default class Performance
         this.lastLoop = new Date
         this.intervalSet = null
 
+
+        this.windowOpen = true
+        this.setWindowVisibility()
+
+    }
+
+    setWindowVisibility()
+    {
+        document.addEventListener('visibilitychange', () =>
+        {
+            if(document.hidden)
+            {
+                this.windowOpen = false
+            }
+            else
+            {
+                this.windowOpen = true
+            }
+        })
     }
 
     performanceCheck()
     {
-        // Perform checks every 5 seconds
+        // Perform checks every 10 seconds
         if(this.intervalSet === null)
         {
             setInterval(() => {
@@ -41,16 +60,16 @@ export default class Performance
         this.frameRate = 1000/this.frameTime
         console.log(this.frameRate)
 
-        if (this.frameRate <= 20) 
+        if (this.frameRate <= 20 && this.windowOpen === true) 
         {
             this.disablebloom()
             this.pauseVideos()
             this.removeReflections()
-        } else if (this.frameRate <=30)
+        } else if (this.frameRate <=30 && this.windowOpen === true)
         {
             this.pauseVideos()
             this.removeReflections()
-        } else if (this.frameRate <= 40)
+        } else if (this.frameRate <= 40 && this.windowOpen === true)
         {
             this.removeReflections()
         }
@@ -109,14 +128,16 @@ export default class Performance
 
     update()
     {
+
+        this.thisFrameTime = (this.thisLoop=new Date) - this.lastLoop;
+        this.frameTime+= (this.thisFrameTime - this.frameTime) / this.filterStrength;
+        this.lastLoop = this.thisLoop;
+
         if(this.debug.active)
         {
             this.stats.begin()
             this.stats.end()
         }
 
-        this.thisFrameTime = (this.thisLoop=new Date) - this.lastLoop;
-        this.frameTime+= (this.thisFrameTime - this.frameTime) / this.filterStrength;
-        this.lastLoop = this.thisLoop;
     }
 }
