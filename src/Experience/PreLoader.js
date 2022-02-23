@@ -11,7 +11,6 @@ export default class PreLoader extends EventEmitter
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.sounds = this.experience.sounds
-        console.log(this.sounds)
         this.resources = this.experience.resources
         this.overlay = document.querySelector('.overlay')
         this.cooking = document.querySelector('#cooking')
@@ -68,7 +67,7 @@ export default class PreLoader extends EventEmitter
 
             this.sounds.playClick()
             this.sounds.playWhoosh()
-            this.sounds.playMusic()
+            this.sounds.playCooking()
             
 
             await this.sleep(500)

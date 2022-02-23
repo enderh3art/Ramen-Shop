@@ -21,6 +21,7 @@ export default class Controller
         this.setArcadeScreenControls()
         this.setCamControls()
         this.setVideoControls()
+        this.setSocialControls()
 
         this.resources.on('ready', () =>
         {
@@ -238,7 +239,7 @@ export default class Controller
                 this.sounds.playClick()
                 this.menuControls.buttonIndicator(obj, color)
                 await this.sleep(250)
-                window.open('https://medium.com/@jesse-zhou', '_blank');
+                window.open('https://medium.com/@jesse-zhou', '_blank')
             }
         }
         this.menuControls.aboutMe = async (obj, color) =>
@@ -252,7 +253,6 @@ export default class Controller
 
                 if(this.config.vertical === true)
                 {
-                    console.log(this.config.vertical)
                     this.screenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeMobileTexture,
@@ -313,7 +313,6 @@ export default class Controller
                 
                 if(this.config.vertical === true)
                 {
-                    console.log(this.config.vertical)
                     this.screenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeMobileTexture,
@@ -322,7 +321,6 @@ export default class Controller
                 }
                 else
                 {
-                    console.log('horizontal')
                     this.screenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeTexture,
@@ -579,6 +577,55 @@ export default class Controller
         }
 
 
+    }
+
+    setSocialControls()
+    {
+        this.socialControls = {}
+        this.socialControls.twitter = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                window.open('https://twitter.com/JesseZ98', '_blank');
+            }
+            
+        }
+
+        this.socialControls.linkedIn = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                window.open('https://www.linkedin.com/in/jessezhou1998', '_blank');
+            }
+            
+        }
+
+        this.socialControls.gitHub = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                window.open('https://github.com/enderh3art', '_blank');
+            }
+            
+        }
+
+        this.socialControls.medium = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                window.open('https://medium.com/@jesse-zhou', '_blank');
+            }
+            
+        }
+
+        this.socialControls.mail = async () =>
+        {
+            if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
+            {
+                window.location.href='mailto:jessezhouu@gmail.com'
+            }
+            
+        }
     }
 
     screenTransition(material,newTexture, duration)

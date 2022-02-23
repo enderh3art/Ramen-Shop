@@ -5,7 +5,7 @@ import arcade from '../../static/sounds/arcade.mp3'
 import bloop from '../../static/sounds/bloop.mp3'
 import click from '../../static/sounds/click.mp3'
 import ding from '../../static/sounds/ding.mp3'
-import music from '../../static/sounds/music.mp3'
+import cooking from '../../static/sounds/cooking.mp3'
 import whoosh from '../../static/sounds/whoosh.mp3'
 
 export default class Sounds
@@ -34,10 +34,10 @@ export default class Sounds
             volume: 0.14
         });
 
-        this.music = new Howl({
-            src: [music],
+        this.cooking = new Howl({
+            src: [cooking],
             loop: true,
-            volume: 0.35
+            volume: 0.1
         });
         
         this.whoosh = new Howl({
@@ -65,8 +65,8 @@ export default class Sounds
         this.ding.play()
     }
 
-    playMusic() {
-        this.music.play()
+    playCooking() {
+        this.cooking.play()
     }
 
     playWhoosh() {

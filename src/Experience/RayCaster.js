@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { GridHelper, Group } from 'three'
 import Experience from './Experience.js'
 
 export default class RayCaster
@@ -28,6 +29,7 @@ export default class RayCaster
             this.cursor = new THREE.Vector2()
 
             // Create sign hitboxes
+            this.signHitBoxes = new THREE.Group()
             this.hitBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true} )
 
             this.projectsHitBox = new THREE.Mesh(
@@ -35,40 +37,37 @@ export default class RayCaster
                 this.hitBoxMaterial
             )
             this.projectsHitBox.position.set(-4,0.4,-5)
-            this.projectsHitBox.visible = false
 
             this.jZhouHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 1, 1 ),
                 this.hitBoxMaterial
             )
             this.jZhouHitBox.position.set(-4,-0.4,-4.72)
-            this.jZhouHitBox.visible = false
-
             this.articlesHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.45, 1.5 ),
                 this.hitBoxMaterial
             )
             this.articlesHitBox.position.set(-4,-1.25,-5)
-            this.articlesHitBox.visible = false
 
             this.aboutMeHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.43, 1.7 ),
                 this.hitBoxMaterial
             )
             this.aboutMeHitBox.position.set(-4,-1.83,-5.1)
-            this.aboutMeHitBox.visible = false
 
             this.creditsHitBox = new THREE.Mesh(
                 new THREE.BoxGeometry( 0.4, 0.4, 1.4 ),
                 this.hitBoxMaterial
             )
             this.creditsHitBox.position.set(-4,-2.3,-5.03)
-            this.creditsHitBox.visible = false
 
-            this.scene.add(this.projectsHitBox, this.jZhouHitBox, this.articlesHitBox,this.aboutMeHitBox, this.creditsHitBox )
+            this.signHitBoxes.add(this.projectsHitBox, this.jZhouHitBox, this.articlesHitBox,this.aboutMeHitBox, this.creditsHitBox )
+            this.signHitBoxes.visible = false
+            this.scene.add(this.signHitBoxes)
 
             // Create Project Hitboxes
             
+            this.projectHitBoxes = new THREE.Group()
             this.projectHitBoxGeometry = new THREE.PlaneGeometry( 0.29, 0.435 )
 
             this.project1 = new THREE.Mesh(
@@ -76,56 +75,48 @@ export default class RayCaster
                 this.hitBoxMaterial
             )
             this.project1.position.set(0.72,-0.695,2.88)
-            this.project1.visible = false
 
             this.project2 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project2.position.set(0.72 + 0.29,-0.695,2.88)
-            this.project2.visible = false
 
             this.project3 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project3.position.set(0.72 + 0.29*2,-0.695,2.88)
-            this.project3.visible = false
 
             this.project4 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project4.position.set(0.72 + 0.29*3,-0.695,2.88)
-            this.project4.visible = false
 
             this.project5 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project5.position.set(0.72,-1.23,2.87)
-            this.project5.visible = false
 
             this.project6 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project6.position.set(0.72 + 0.29,-1.23,2.87)
-            this.project6.visible = false
 
             this.project7 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project7.position.set(0.72 + 0.28*2,-1.23,2.87)
-            this.project7.visible = false
 
             this.project8 = new THREE.Mesh(
                 this.projectHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.project8.position.set(0.72 + 0.28*3,-1.23,2.87)
-            this.project8.visible = false
 
             this.projectNavigateHitBoxGeometry = new THREE.PlaneGeometry( 0.47, 0.27 )
 
@@ -134,18 +125,20 @@ export default class RayCaster
                 this.hitBoxMaterial
             )
             this.projectBack.position.set(0.86,-1.66,2.85)
-            this.projectBack.visible = false
 
             this.projectEnter = new THREE.Mesh(
                 this.projectNavigateHitBoxGeometry,
                 this.hitBoxMaterial
             )
             this.projectEnter.position.set(1.415,-1.66,2.85)
-            this.projectEnter.visible = false
 
-            this.scene.add(this.project1, this.project2, this.project3, this.project4, this.project5, this.project6, this.project7, this.project8, this.projectBack, this.projectEnter)
+            this.projectHitBoxes.add(this.project1, this.project2, this.project3, this.project4, this.project5, this.project6, this.project7, this.project8, this.projectBack, this.projectEnter)
+            this.projectHitBoxes.visible = false
+            this.scene.add(this.projectHitBoxes)
 
             // Create aboutMe Hitboxes
+
+            this.aboutMeBoxes = new THREE.Group()
 
             if(this.config.vertical === true)
             {
@@ -207,13 +200,57 @@ export default class RayCaster
                 this.experience.position.set(2, 3.5, 0.58)
                 this.experience.rotation.z = Math.PI / 2
             }
-
-            this.aboutMeBack.visible = false
-            this.aboutMeScreens.visible = false
-            this.skills.visible = false
-            this.experience.visible = false
             
-            this.scene.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
+            this.aboutMeBoxes.add(this.aboutMeBack, this.aboutMeScreens, this.skills, this.experience)
+            this.aboutMeBoxes.visible = false
+
+            this.scene.add(this.aboutMeBoxes)
+
+            // Create social Hitboxes
+
+            this.socials = new THREE.Group()
+
+            this.socialButtonGeometry = new THREE.PlaneGeometry( 0.13, 0.13 )
+
+            this.twitterSocialButton = new THREE.Mesh(
+                this.socialButtonGeometry,
+                this.hitBoxMaterial
+            )
+            this.twitterSocialButton.position.set(-0.27, 3.05, 0.58)
+
+            this.linkedInSocialButton = new THREE.Mesh(
+                this.socialButtonGeometry,
+                this.hitBoxMaterial
+            )
+            this.linkedInSocialButton.position.set(-0.131, 3.05, 0.58)
+
+            this.gitHubSocialButton = new THREE.Mesh(
+                this.socialButtonGeometry,
+                this.hitBoxMaterial
+            )
+            this.gitHubSocialButton.position.set(-0.01, 3.05, 0.58)
+
+            this.mediumSocialButton = new THREE.Mesh(
+                this.socialButtonGeometry,
+                this.hitBoxMaterial
+            )
+            this.mediumSocialButton.position.set(0.115, 3.05, 0.58)
+
+            this.mailSocialButton = new THREE.Mesh(
+                this.socialButtonGeometry,
+                this.hitBoxMaterial
+            )
+            this.mailSocialButton.position.set(0.245, 3.05, 0.58)
+
+            this.socials.add(this.twitterSocialButton, this.linkedInSocialButton, this.gitHubSocialButton, this.mediumSocialButton, this.mailSocialButton)
+
+            if(this.config.vertical === true)
+            {
+                this.socials.translateX(0.36)
+            }
+
+            this.socials.visible = false
+            this.scene.add(this.socials)
 
             // Create hologram hitbox
 
@@ -282,6 +319,7 @@ export default class RayCaster
                 this.ramenShop.articlesWhite,this.ramenShop.articlesRed,
                 this.ramenShop.aboutMeBlack,this.ramenShop.aboutMeBlue,
                 this.ramenShop.creditsBlack,this.ramenShop.creditsOrange,
+
                 //projects
                 this.project1, 
                 this.project2, 
@@ -293,13 +331,16 @@ export default class RayCaster
                 this.project8,
                 this.projectBack,
                 this.projectEnter,
+
                 //aboutMeScreen
                 this.aboutMeBack, 
                 this.aboutMeScreens, 
                 this.skills, 
                 this.experience,
+
                 // arcadeScreen
                 this.ramenShop.arcadeScreen,
+
                 // Models
                 this.ramenShop.ramenShop,
                 this.ramenShop.machines,
@@ -307,8 +348,10 @@ export default class RayCaster
                 this.ramenShop.misc,
                 this.ramenShop.graphics,
                 this.ramenShop.jesseZhouJoined,
+
                 //hologram
                 this.hologramHitBox,
+
                 //TV screens
                 this.ramenShop.bigScreen,
                 this.ramenShop.littleTVScreen,
@@ -321,7 +364,13 @@ export default class RayCaster
                 this.ramenShop.smallScreen3,
                 this.ramenShop.smallScreen4,
                 this.ramenShop.smallScreen5,
-    
+
+                // socials
+                this.twitterSocialButton,
+                this.linkedInSocialButton,
+                this.gitHubSocialButton,
+                this.mediumSocialButton,
+                this.mailSocialButton
             ]
 
             // touch objects
@@ -548,8 +597,26 @@ export default class RayCaster
                     this.controller.videoControls.smallScreen5()
                     break
 
-                //Screens
+                // Socials
+                case this.twitterSocialButton:
+                    this.controller.socialControls.twitter()
+                    break
 
+                case this.linkedInSocialButton:
+                    this.controller.socialControls.linkedIn()
+                    break
+                
+                case this.gitHubSocialButton:
+                    this.controller.socialControls.gitHub()
+                    break
+
+                case this.mediumSocialButton:
+                    this.controller.socialControls.medium()
+                    break
+                
+                case this.mailSocialButton:
+                    this.controller.socialControls.mail()
+                    break
             }
 
         } 
