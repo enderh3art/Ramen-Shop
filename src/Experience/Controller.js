@@ -63,7 +63,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project1')
         }
         this.projectControls.project2 = async () =>
         {
@@ -77,7 +76,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project2')
         }
         this.projectControls.project3 = async () =>
         {
@@ -91,7 +89,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project3')
         }
         this.projectControls.project4 = async () =>
         {
@@ -105,7 +102,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project4')
         }
         this.projectControls.project5 = async () =>
         {
@@ -119,7 +115,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project5')
         }
         this.projectControls.project6 = async () =>
         {
@@ -133,7 +128,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project6')
         }
         this.projectControls.project7 = async () =>
         {
@@ -147,7 +141,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project7')
         }
         this.projectControls.project8 = async () =>
         {
@@ -161,7 +154,6 @@ export default class Controller
                     0.2
                 )
             }
-            console.log('project8')
         }
 
         // Go back
