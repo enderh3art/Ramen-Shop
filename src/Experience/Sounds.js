@@ -7,6 +7,7 @@ import click from '../../static/sounds/click.mp3'
 import ding from '../../static/sounds/ding.mp3'
 import cooking from '../../static/sounds/cooking.mp3'
 import whoosh from '../../static/sounds/whoosh.mp3'
+import hologram from '../../static/sounds/hologram.mp3'
 
 export default class Sounds
 {
@@ -43,6 +44,11 @@ export default class Sounds
         this.whoosh = new Howl({
             src: [whoosh],
             volume: 0.6
+        });
+
+        this.hologram = new Howl({
+            src: [hologram],
+            volume: 0.2
         });
 
         this.setMute()
@@ -110,6 +116,10 @@ export default class Sounds
 
     playWhoosh() {
         this.whoosh.play()
+    }
+
+    playHologram() {
+        this.hologram.play()
     }
 
 

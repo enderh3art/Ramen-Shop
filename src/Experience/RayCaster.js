@@ -16,6 +16,7 @@ export default class RayCaster
         this.preLoader = this.experience.preLoader
         this.controller = this.experience.controller
         this.config = this.experience.config
+        this.sounds = this.experience.sounds
 
         // Wait for resources
         this.preLoader.on('start', () =>
@@ -579,10 +580,12 @@ export default class RayCaster
                                     
                 case this.ramenShop.smallScreen1:
                     this.controller.videoControls.smallScreen1()
+                    this.sounds.playBloop()
                     break
 
                 case this.ramenShop.smallScreen2:
                     this.controller.videoControls.smallScreen2()
+                    this.sounds.playBloop()
                     break
 
                 case this.ramenShop.smallScreen3:

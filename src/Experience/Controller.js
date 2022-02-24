@@ -563,6 +563,7 @@ export default class Controller
 
         this.videoControls.togglePlayback = async (video) =>
         {
+            this.sounds.playBloop()
             if(video.paused)
             {video.play()}
             else {video.pause()}
