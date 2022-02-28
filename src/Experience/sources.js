@@ -296,18 +296,18 @@ export default [
 
     {
         name: 'sideScreen1Texture',
-        type: 'texture',
-        path: 'textures/screens/sideScreens/sideScreen1.png'
+        type: 'basisTexture',
+        path: 'textures/screens/sideScreens/sideScreen1.basis'
     },
     {
         name: 'sideScreen2Texture',
-        type: 'texture',
-        path: 'textures/screens/sideScreens/sideScreen2.png'
+        type: 'basisTexture',
+        path: 'textures/screens/sideScreens/sideScreen2.basis'
     },
     {
         name: 'sideScreen3Texture',
-        type: 'texture',
-        path: 'textures/screens/sideScreens/sideScreen3.png'
+        type: 'basisTexture',
+        path: 'textures/screens/sideScreens/sideScreen3.basis'
     }
 
 ]

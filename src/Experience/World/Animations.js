@@ -35,7 +35,7 @@ export default class Animations
 
             setInterval(() => {
                 this.changeSideScreen()
-            }, 5000)
+            }, 7000)
         })
     }
 
@@ -64,7 +64,7 @@ export default class Animations
                 this.slideTransition(
                     this.materials.sideScreenMaterial,
                     this.resources.items.sideScreen2Texture,
-                    5
+                    7
                 )
                 this.sideScreen +=1
                 break
@@ -72,7 +72,7 @@ export default class Animations
                 this.slideTransition(
                     this.materials.sideScreenMaterial,
                     this.resources.items.sideScreen3Texture,
-                    5
+                    7
                 )
                 this.sideScreen +=1
                 break
@@ -80,7 +80,7 @@ export default class Animations
                 this.slideTransition(
                     this.materials.sideScreenMaterial,
                     this.resources.items.sideScreen1Texture,
-                    5
+                    7
                 )
                 this.sideScreen = 1
                 break

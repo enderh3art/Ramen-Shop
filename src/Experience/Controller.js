@@ -514,11 +514,7 @@ export default class Controller
 
         this.videoControls.sideScreen = async () =>
         {
-            this.slideTransition(
-                this.materials.sideScreenMaterial,
-                this.resources.items.sideScreen2Texture,
-                5
-            )
+
         }
 
         this.smallScreen1Counter = 1
@@ -636,18 +632,6 @@ export default class Controller
         gsap.to(material.uniforms.progress, {value:1,
             duration: duration,
             ease: "power1.inOut",
-            onComplete: () => {
-                material.uniforms.texture1.value = newTexture
-                material.uniforms.progress.value = 0
-            }
-        })
-    }
-
-    slideTransition(material,newTexture, duration)
-    {
-        material.uniforms.texture2.value = newTexture
-        gsap.to(material.uniforms.progress, {value:1,
-            duration: duration,
             onComplete: () => {
                 material.uniforms.texture1.value = newTexture
                 material.uniforms.progress.value = 0
