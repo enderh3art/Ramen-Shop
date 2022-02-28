@@ -235,11 +235,6 @@ export default [
         type: 'videoTexture',
         path: 'textures/videosTextures/smallScreen3.mp4'
     },
-    {
-        name: 'sideScreenVideoTexture',
-        type: 'videoTexture',
-        path: 'textures/videosTextures/sideScreen.mp4'
-    },
 
     // smallScreen1 carousel
 
@@ -295,7 +290,24 @@ export default [
         name: 'smallScreenTwo5',
         type: 'basisTexture',
         path: 'textures/screens/smallScreen2/5.basis'
-    }
+    },
 
+    // sideScreen
+
+    {
+        name: 'sideScreen1Texture',
+        type: 'texture',
+        path: 'textures/screens/sideScreens/sideScreen1.png'
+    },
+    {
+        name: 'sideScreen2Texture',
+        type: 'texture',
+        path: 'textures/screens/sideScreens/sideScreen2.png'
+    },
+    {
+        name: 'sideScreen3Texture',
+        type: 'texture',
+        path: 'textures/screens/sideScreens/sideScreen3.png'
+    }
 
 ]

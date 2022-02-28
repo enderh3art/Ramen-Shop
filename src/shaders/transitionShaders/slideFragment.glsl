@@ -6,10 +6,12 @@ varying vec2 vUv;
 
 
 void main() {
-  vec4 t1 = texture2D(texture1,vUv);
-  vec4 t2 = texture2D(texture2,vUv);
 
-  vec2 p = vUv + progress * vec2(1.0, 0.0);
+  vec2 p = vUv + progress * vec2(0.0, -1.0);
+  vec2 f = fract(p);
+
+  vec4 t1 = texture2D(texture1,f);
+  vec4 t2 = texture2D(texture2,f);
 
   gl_FragColor= mix(
     t2,

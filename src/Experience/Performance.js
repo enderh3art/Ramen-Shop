@@ -105,9 +105,6 @@ export default class Performance
         this.resources.video['tvScreenVideoTexture'].currentTime = 26
         this.resources.video['tvScreenVideoTexture'].pause()
 
-        // this.resources.video['sideScreenVideoTexture'].currentTime = 0
-        // this.resources.video['sideScreenVideoTexture'].pause()
-
         this.resources.video['smallScreen3VideoTexture'].currentTime = 16.5
         this.resources.video['smallScreen3VideoTexture'].pause()
 

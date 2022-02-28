@@ -13,6 +13,7 @@ export default class Controller
         this.sounds = this.experience.sounds
         this.preLoader = this.experience.preLoader
         this.config = this.experience.config
+        this.animations = this.experience.animations
 
         this.setLogic()
         this.setProjectControls()
@@ -513,7 +514,11 @@ export default class Controller
 
         this.videoControls.sideScreen = async () =>
         {
-            this.videoControls.togglePlayback(this.resources.video['sideScreenVideoTexture'])
+            this.slideTransition(
+                this.materials.sideScreenMaterial,
+                this.resources.items.sideScreen2Texture,
+                5
+            )
         }
 
         this.smallScreen1Counter = 1
@@ -529,6 +534,8 @@ export default class Controller
                 this.resources.carousel1[this.smallScreen1Counter-1],
                 0.8
             )
+
+            this.animations.photoCounter = 0
         }
 
         this.smallScreen2Counter = 1
@@ -544,6 +551,8 @@ export default class Controller
                 this.resources.carousel2[this.smallScreen2Counter-1],
                 0.8
             )
+
+            this.animations.photoCounter = 0
         }
 
         this.videoControls.smallScreen3 = async () =>
@@ -627,6 +636,18 @@ export default class Controller
         gsap.to(material.uniforms.progress, {value:1,
             duration: duration,
             ease: "power1.inOut",
+            onComplete: () => {
+                material.uniforms.texture1.value = newTexture
+                material.uniforms.progress.value = 0
+            }
+        })
+    }
+
+    slideTransition(material,newTexture, duration)
+    {
+        material.uniforms.texture2.value = newTexture
+        gsap.to(material.uniforms.progress, {value:1,
+            duration: duration,
             onComplete: () => {
                 material.uniforms.texture1.value = newTexture
                 material.uniforms.progress.value = 0

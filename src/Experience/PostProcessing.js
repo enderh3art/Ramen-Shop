@@ -74,7 +74,6 @@ export default class PostProcessing
         this.ramenShop.storageLight.layers.enable(this.BLOOM_SCENE)
         this.ramenShop.poleLight.layers.enable(this.BLOOM_SCENE)
         this.ramenShop.arcadeRim.layers.enable(this.BLOOM_SCENE)
-        this.ramenShop.sideScreen.layers.enable(this.BLOOM_SCENE)
     }
 
     setRenderTarget()

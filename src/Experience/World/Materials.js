@@ -4,6 +4,7 @@ import chromaVertexShader from '../../shaders/chromaShaders/vertex.glsl'
 import chromaFragmentShader from '../../shaders/chromaShaders/fragment.glsl'
 import TransitionVertexShader from '../../shaders/transitionShaders/vertex.glsl'
 import TransitionFragmentShader from '../../shaders/transitionShaders/fragment.glsl'
+import SlideTransitionFragmentShader from '../../shaders/transitionShaders/slideFragment.glsl'
 
 export default class Materials
 {
@@ -76,6 +77,8 @@ export default class Materials
         this.arcadeScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.arcadeScreenDefaultTexture)
         this.vendingMachineScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.vendingMachineDefaultTexture)
 
+        this.sideScreenMaterial = this.getSideScreenShaderMaterial(this.resources.items.sideScreen1Texture)
+
         // Map video textures
 
         // https://discourse.threejs.org/t/basis-video-texture/12716/2
@@ -83,7 +86,6 @@ export default class Materials
         this.littleTVScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.littleTVScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.tallScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tallScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
         this.tvScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.tvScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
-        this.sideScreenVideoMaterial = this.getChromaKeyShaderMaterial(this.resources.items.sideScreenVideoTexture, new THREE.Color("rgb(0, 255, 0)"));
 
         this.smallScreen1Material = this.getTransitionShaderMaterial(this.resources.items.smallScreenOne1)
         this.smallScreen2Material = this.getTransitionShaderMaterial(this.resources.items.smallScreenTwo1)
@@ -143,17 +145,31 @@ export default class Materials
       return new THREE.ShaderMaterial({
         side: THREE.FrontSide,
         uniforms: {
-          intensity: {value: 30 },
           texture1: {value: texture },
           progress: {value: 0 },
           texture2: {value: null },
-          resolution: {value: new THREE.Vector4() },
         },
         // wireframe: true,
         vertexShader: TransitionVertexShader,
         fragmentShader: TransitionFragmentShader
       });
     }
+
+    getSideScreenShaderMaterial(texture) {
+  
+      return new THREE.ShaderMaterial({
+        side: THREE.FrontSide,
+        uniforms: {
+          texture1: {value: texture },
+          progress: {value: 0 },
+          texture2: {value: null },
+        },
+        // wireframe: true,
+        vertexShader: TransitionVertexShader,
+        fragmentShader: SlideTransitionFragmentShader
+      });
+    }
+
 
 }
 
