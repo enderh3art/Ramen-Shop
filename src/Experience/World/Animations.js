@@ -29,9 +29,13 @@ export default class Animations
             this.enableUpdate()
             
             this.photoCounter = 0
-            this.sideScreen = 1
-
-            this.changeSideScreen()
+            
+            this.slideTransition(
+                this.materials.sideScreenMaterial,
+                this.resources.items.sideScreen2Texture,
+                7
+            )
+            this.sideScreen = 2
 
             setInterval(() => {
                 this.changeSideScreen()
@@ -92,7 +96,7 @@ export default class Animations
         material.uniforms.texture2.value = newTexture
         gsap.to(material.uniforms.progress, {value:1,
             duration: duration,
-            ease: "linear",
+            ease: "none",
             onComplete: () => {
                 material.uniforms.texture1.value = newTexture
                 material.uniforms.progress.value = 0
