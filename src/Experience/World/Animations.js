@@ -29,17 +29,10 @@ export default class Animations
             this.enableUpdate()
             
             this.photoCounter = 0
-            
-            this.slideTransition(
-                this.materials.sideScreenMaterial,
-                this.resources.items.sideScreen2Texture,
-                7
-            )
-            this.sideScreen = 2
 
-            setInterval(() => {
-                this.changeSideScreen()
-            }, 7000)
+            this.sideScreen = 1
+            this.changeSideScreen()
+            
         })
     }
 
@@ -100,6 +93,7 @@ export default class Animations
             onComplete: () => {
                 material.uniforms.texture1.value = newTexture
                 material.uniforms.progress.value = 0
+                this.changeSideScreen()
             }
         })
     }
