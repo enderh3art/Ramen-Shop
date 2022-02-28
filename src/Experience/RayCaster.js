@@ -358,7 +358,6 @@ export default class RayCaster
                 this.ramenShop.littleTVScreen,
                 this.ramenShop.tallScreen,
                 this.ramenShop.tvScreen,
-                this.ramenShop.sideScreen,
                 
                 this.ramenShop.smallScreen1,
                 this.ramenShop.smallScreen2,
@@ -408,7 +407,6 @@ export default class RayCaster
                 this.ramenShop.littleTVScreen,
                 this.ramenShop.tallScreen,
                 this.ramenShop.tvScreen,
-                this.ramenShop.sideScreen,
                 
                 this.ramenShop.smallScreen1,
                 this.ramenShop.smallScreen2,
@@ -572,10 +570,6 @@ export default class RayCaster
 
                 case this.ramenShop.tvScreen:
                     this.controller.videoControls.tvScreen()
-                    break
-
-                case this.ramenShop.sideScreen:
-                    this.controller.videoControls.sideScreen()
                     break
                                     
                 case this.ramenShop.smallScreen1:
