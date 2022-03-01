@@ -584,7 +584,7 @@ export default class Controller
         {
             if(this.logic.buttonsLocked === false && (this.logic.mode === 'aboutMe' || this.logic.mode === 'skills' || this.logic.mode === 'experience'))
             {
-                window.open('https://twitter.com/JesseZ98', '_blank');
+                window.open('https://twitter.com/Jessezhouu', '_blank');
             }
             
         }
