@@ -12,6 +12,7 @@ export default class PreLoader extends EventEmitter
         this.scene = this.experience.scene
         this.sounds = this.experience.sounds
         this.resources = this.experience.resources
+        this.sizes = this.experience.sizes
         this.overlay = document.querySelector('.overlay')
         this.cooking = document.querySelector('#cooking')
         this.startButton = document.querySelector('.start')       
@@ -68,6 +69,8 @@ export default class PreLoader extends EventEmitter
             this.sounds.playClick()
             this.sounds.playWhoosh()
             this.sounds.playCooking()
+
+            this.sizes.resize()
             
 
             await this.sleep(500)
@@ -76,8 +79,11 @@ export default class PreLoader extends EventEmitter
             // Emit Event
             this.trigger('start')
 
+   
             await this.sleep(500)
             this.sounds.playDing()
+
+            
 
         },{ once: true });
     }

@@ -444,6 +444,7 @@ export default class RayCaster
 
                 {
                 this.click(this.cursor)
+
                 this.touchedPoints = []
                 }
                 else
