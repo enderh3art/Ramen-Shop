@@ -64,22 +64,25 @@ export default class PreLoader extends EventEmitter
             this.controller = this.experience.controller
             this.performance = this.experience.performance
 
+            // Move Camera
             this.controller.camControls.toDefault()
 
+            // Play Sounds
             this.sounds.playClick()
             this.sounds.playWhoosh()
             this.sounds.playCooking()
 
+            // Required for instagram brower compatibility
             this.sizes.resize()
             
-
+            // Wait before performance Check
             await this.sleep(500)
             this.performance.performanceCheck()  
 
             // Emit Event
             this.trigger('start')
 
-   
+            // Play Sounds
             await this.sleep(500)
             this.sounds.playDing()
 
