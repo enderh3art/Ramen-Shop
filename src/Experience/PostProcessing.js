@@ -89,11 +89,14 @@ export default class PostProcessing
                 encoding: THREE.sRGBEncoding
             }
         )
-        this.renderTarget.texture.encoding = 3007
+        console.log(this.renderTarget.texture)
+        this.renderTarget.texture.encoding = THREE.sRGBEncoding
+
+        console.log(this.renderTarget.texture.encoding)
 
         if(this.renderer.instance.capabilities.isWebGL2)
         {
-            this.renderTarget.samples = 2
+            this.renderTarget.samples = 4
             console.log('using WebGLMultiSampleRenderTarget')
         }
         else
