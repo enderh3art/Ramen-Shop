@@ -78,34 +78,27 @@ export default class PostProcessing
 
     setRenderTarget()
     {
+        this.renderTarget = new THREE.WebGLRenderTarget
+        (
+            800,
+            600,
+            {
+                minFilter: THREE.LinearFilter,
+                magFilter: THREE.LinearFilter,
+                format: THREE.RGBAFormat,
+                encoding: THREE.sRGBEncoding
+            }
+        )
+        this.renderTarget.texture.encoding = 3007
+
         if(this.renderer.instance.capabilities.isWebGL2)
         {
-            this.renderTarget = new THREE.WebGLMultisampleRenderTarget
-            (
-                800,
-                600,
-                {
-                    minFilter: THREE.LinearFilter,
-                    magFilter: THREE.LinearFilter,
-                    format: THREE.RGBAFormat,
-                    encoding: THREE.sRGBEncoding
-                }
-            )
+            this.renderTarget.samples = 2
             console.log('using WebGLMultiSampleRenderTarget')
         }
         else
         {
-            this.renderTarget = new THREE.WebGLRenderTarget
-            (
-                800,
-                600,
-                {
-                    minFilter: THREE.LinearFilter,
-                    magFilter: THREE.LinearFilter,
-                    format: THREE.RGBAFormat,
-                    encoding: THREE.sRGBEncoding
-                }
-            )
+            this.renderTarget.texture.encoding = 3007
             console.log('using WebGLRenderTarget')
         }
     }
