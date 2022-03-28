@@ -21,6 +21,7 @@
     "lil-gui": "^0.11.0",
     "mini-css-extract-plugin": "^2.4.3",
     "portfinder-sync": "0.0.2",
+    "postprocessing": "^6.26.3",
     "raw-loader": "^4.0.2",
     "stats.js": "^0.17.0",
     "style-loader": "^3.3.1",
