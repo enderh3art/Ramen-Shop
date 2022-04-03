@@ -41,8 +41,8 @@ class Reflector extends Mesh {
             minFilter: THREE.NearestFilter,
             magFilter: THREE.NearestFilter,
             generateMipmaps : false,
-            format: THREE.RGBFormat,
-            // outputEncoding: THREE.sRGBEncoding,
+            format: THREE.RGBAFormat,
+
             stencilBuffer: false
         };
 
@@ -273,8 +273,8 @@ export default class Reflections
         this.geometry = new THREE.CircleGeometry( 25, 5 );
         this.groundMirror = new Reflector( this.geometry, {
             clipBias: 0.003,
-            textureWidth: window.innerWidth/2,
-            textureHeight: window.innerHeight/2,
+            textureWidth: window.innerWidth,
+            textureHeight: window.innerHeight,
             color: 0x777777
         } );
         this.groundMirror.position.y = -2.8;

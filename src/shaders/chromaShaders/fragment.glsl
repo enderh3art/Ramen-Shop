@@ -3,6 +3,11 @@ uniform float similarity;
 uniform float smoothness;
 varying vec2 vUv;
 uniform sampler2D map;
+
+vec4 LinearToGamma(in vec4 value, in float gammaFactor) {
+  return vec4(pow(value.xyz, vec3(1.0 / gammaFactor)), value.w);
+}
+
 void main() {
 
     vec4 videoColor = texture2D(map, vUv);
@@ -16,5 +21,5 @@ void main() {
     float Cb2 = videoColor.b - Y2;
 
     float blend = smoothstep(similarity, similarity + smoothness, distance(vec2(Cr2, Cb2), vec2(Cr1, Cb1)));
-    gl_FragColor = vec4(videoColor.rgb, videoColor.a * blend);
+    gl_FragColor = LinearToGamma(vec4(videoColor.rgb, videoColor.a * blend),0.5);
 }

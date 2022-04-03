@@ -89,18 +89,18 @@ export default class PostProcessing
                 encoding: THREE.sRGBEncoding
             }
         )
-        this.renderTarget.texture.encoding = 3007
 
-        if(this.renderer.instance.capabilities.isWebGL2)
-        {
-            this.renderTarget.samples = 2
-            console.log('using WebGLMultiSampleRenderTarget')
-        }
-        else
-        {
-            this.renderTarget.texture.encoding = 3007
-            console.log('using WebGLRenderTarget')
-        }
+        // Currently not working on metal (ios)
+
+        // if(this.renderer.instance.capabilities.isWebGL2)
+        // {
+        //     this.renderTarget.samples = 4
+        //     console.log('using WebGLMultiSampleRenderTarget')
+        // }
+        // else
+        // {
+        //     console.log('using WebGLRenderTarget')
+        // }
     }
 
     setPasses()
@@ -145,12 +145,17 @@ export default class PostProcessing
         this.finalComposer.addPass( this.finalPass )
 
         // SMAA pass if WebGL2 is not available
-        if(!this.renderer.instance.capabilities.isWebGL2)
-        {
-            this.smaaPass = new SMAAPass()
-            this.finalComposer.addPass(this.smaaPass)
-            console.log('Using SMAA')
-        }
+
+        // if(!this.renderer.instance.capabilities.isWebGL2)
+        // {
+        //     this.smaaPass = new SMAAPass()
+        //     this.finalComposer.addPass(this.smaaPass)
+        //     console.log('Using SMAA')
+        // }
+
+        this.smaaPass = new SMAAPass()
+        this.finalComposer.addPass(this.smaaPass)
+        
 
         this.enableUpdate()
 
