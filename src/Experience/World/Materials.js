@@ -5,12 +5,15 @@ import chromaFragmentShader from '../../shaders/chromaShaders/fragment.glsl'
 import TransitionVertexShader from '../../shaders/transitionShaders/vertex.glsl'
 import TransitionFragmentShader from '../../shaders/transitionShaders/fragment.glsl'
 import SlideTransitionFragmentShader from '../../shaders/transitionShaders/slideFragment.glsl'
+import hologramVertexShader from '../../shaders/hologramShaders/vertex.glsl'
+import hologramFragmentShader from '../../shaders/hologramShaders/fragment.glsl'
 
 export default class Materials
 {
     constructor()
     {
         this.experience = new Experience()
+        this.debug = this.experience.debug
         this.scene = this.experience.scene
         this.resources = this.experience.resources
         this.preLoader = this.experience.preLoader
@@ -29,7 +32,11 @@ export default class Materials
             // Setup
             this.config.touch = this.experience.config.touch
             this.mapEasel()
-        })
+        }) 
+
+        // Debug
+        this.debugObject = {}
+        this.debugObject.color = '#42f2ff'
     }
 
     mapColors()
@@ -53,7 +60,7 @@ export default class Materials
         this.neonBlueMaterial = new THREE.MeshBasicMaterial({color: new THREE.Color('#00BBFF')})
         this.poleLightMaterial = new THREE.MeshBasicMaterial({color: new THREE.Color('#FF5EF1')})
         this.neonGreenMaterial = new THREE.MeshBasicMaterial({color: new THREE.Color('#56FF54')})
-    }
+    } 
 
     mapTextures()
     {
@@ -98,6 +105,36 @@ export default class Materials
         for ( let i = 0; i < Object.keys(this.resources.video).length; i ++ ) {
             this.resources.video[Object.keys(this.resources.video)[i]].play()
         }
+
+        // Shader Materials
+
+        this.hologramBaseMaterial = new THREE.ShaderMaterial({
+          vertexShader: hologramVertexShader,
+          fragmentShader: hologramFragmentShader,
+          side: THREE.DoubleSide,
+          transparent: true,
+          uniforms:{
+              uTime: { value: 0},
+              uBigGridThickness: {value : 0.13},
+              uLittleGridThickness: {value : 0.1},
+              uBigGridFrequency: {value : 8.0},
+              uLittleGridFrequency: {value : 24.0},
+              uSpeed : {value: 0.5},
+              uColor: {value: new THREE.Color(this.debugObject.color)},
+          }
+        })
+
+        if(this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('hologramBase')
+            this.debugFolder.add(this.hologramBaseMaterial.uniforms.uBigGridThickness, 'value').min(0).max(1).step(0.001).name('uBigGridThickness')
+            this.debugFolder.add(this.hologramBaseMaterial.uniforms.uLittleGridThickness, 'value').min(0).max(1).step(0.001).name('uLittleGridThickness')
+            this.debugFolder.add(this.hologramBaseMaterial.uniforms.uBigGridFrequency, 'value').min(0).max(10).step(1).name('uBigGridFrequency')
+            this.debugFolder.add(this.hologramBaseMaterial.uniforms.uLittleGridFrequency, 'value').min(0).max(30).step(1).name('uLittleGridFrequency')
+            this.debugFolder.add(this.hologramBaseMaterial.uniforms.uSpeed, 'value').min(0).max(3).step(0.001).name('uSpeed')          
+        }
+
+
 
         this.resources.trigger('texturesMapped')
     }

@@ -86,8 +86,6 @@ export default class PreLoader extends EventEmitter
             await this.sleep(500)
             this.sounds.playDing()
 
-            
-
         },{ once: true });
     }
 

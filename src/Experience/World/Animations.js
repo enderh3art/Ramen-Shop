@@ -10,6 +10,7 @@ export default class Animations
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+        this.materials = this.experience.materials
         this.time = this.experience.time
         this.loaded = 0
 
@@ -51,6 +52,7 @@ export default class Animations
                     this.controller.videoControls.smallScreen2()
                 }
             }
+            {this.materials.hologramBaseMaterial.uniforms.uTime.value = this.time.elapsed * 0.001}
         }
     }
 

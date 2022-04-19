@@ -16,6 +16,6 @@ void main() {
   gl_FragColor= mix(
     t2,
     t1,
-    step(0.0, p.y) * step(p.y, 1.0) * step(0.0, p.x) * step(p.x, 1.0)
+    step(0.0, p.y) * step(p.y, 1.0)
   );
 }

@@ -22,6 +22,7 @@ export default class RamenShop
         this.resource = this.resources.items.ramenShopModel
 
         this.parseModel()
+        this.addObjects()
         this.setMaterials()
     }
 
@@ -96,6 +97,11 @@ export default class RamenShop
 
     }
 
+    addObjects()
+    {
+        this.hologramBaseGeometry = new THREE.CircleGeometry(.68, 32)
+    }
+
     setMaterials()
     {
         // Set Materials
@@ -164,7 +170,28 @@ export default class RamenShop
 
             this.vendingMachineScreen.material = this.materials.vendingMachineScreenMaterial
 
+            // ShaderMaterials
+
+            this.hologramBase = new THREE.Mesh(this.hologramBaseGeometry, this.materials.hologramBaseMaterial)
+            this.hologramBase.position.x = -0.13
+            this.hologramBase.position.y = 2.15
+            this.hologramBase.position.z = -0.95
+            this.hologramBase.rotation.x = Math.PI * 0.5
+            this.scene.add(this.hologramBase)
+
+            if(this.debug.active)
+            {
+                this.debugFolder = this.debug.ui.addFolder('hologramBasePosition')
+                this.debugFolder.add(this.hologramBase.position, 'x').min(-10).max(10).step(0.001).name('x')
+                this.debugFolder.add(this.hologramBase.position, 'y').min(-10).max(10).step(0.001).name('y')
+                this.debugFolder.add(this.hologramBase.position, 'z').min(-10).max(10).step(0.001).name('z')
+
+            }
+
+
         })
+
+
 
         this.model.position.y = - 3
         this.scene.add(this.model)
