@@ -119,7 +119,7 @@ export default class Materials
               uLittleGridThickness: {value : 0.1},
               uBigGridFrequency: {value : 8.0},
               uLittleGridFrequency: {value : 24.0},
-              uSpeed : {value: 0.5},
+              uSpeed : {value: 0.8},
               uColor: {value: new THREE.Color(this.debugObject.color)},
           }
         })
