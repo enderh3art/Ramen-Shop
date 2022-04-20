@@ -13,42 +13,42 @@ export default [
     // Baked Textures
     {
         name: 'ramenShopBakedTexture',
-        type: 'basisTexture',
-        path: 'textures/baked/ramenShopBaked1024.basis'
+        type: 'KTX2Texture',
+        path: 'textures/baked/ramenShopBaked1024.ktx2'
     },
     {
         name: 'machinesBakedTexture',
-        type: 'basisTexture',
-        path: 'textures/baked/machinesBaked1024.basis'
+        type: 'KTX2Texture',
+        path: 'textures/baked/machinesBaked1024.ktx2'
     },
 
     {
         name: 'floorBakedTexture',
-        type: 'basisTexture',
-        path: 'textures/baked/floorBaked1024.basis'
+        type: 'KTX2Texture',
+        path: 'textures/baked/floorBaked1024.ktx2'
     },
 
     {
         name: 'miscBakedTexture',
-        type: 'basisTexture',
-        path: 'textures/baked/miscBaked1024.basis'
+        type: 'KTX2Texture',
+        path: 'textures/baked/miscBaked1024.ktx2'
     },
 
     {
         name: 'graphicsBakedTexture',
-        type: 'basisTexture',
-        path: 'textures/baked/graphicsBaked512.basis'
+        type: 'KTX2Texture',
+        path: 'textures/baked/graphicsBaked512.ktx2'
     },
     // Matcaps
     {
         name: 'dishMatcapTexture',
-        type: 'basisTexture',
-        path: 'textures/matcaps/dishMatcap.basis'
+        type: 'KTX2Texture',
+        path: 'textures/matcaps/dishMatcap.ktx2'
     },
     {
         name: 'fanMatcapTexture',
-        type: 'basisTexture',
-        path: 'textures/matcaps/fanMatcap.basis'
+        type: 'KTX2Texture',
+        path: 'textures/matcaps/fanMatcap.ktx2'
     },
     {
         name: 'lightMatcapTexture',
@@ -57,150 +57,150 @@ export default [
     },
     {
         name: 'neonBlueMatcapTexture',
-        type: 'basisTexture',
-        path: 'textures/matcaps/neonBlueMatcap.basis'
+        type: 'KTX2Texture',
+        path: 'textures/matcaps/neonBlueMatcap.ktx2'
     },
     {
         name: 'neonGreenMatcapTexture',
-        type: 'basisTexture',
-        path: 'textures/matcaps/neonGreenMatcap.basis'
+        type: 'KTX2Texture',
+        path: 'textures/matcaps/neonGreenMatcap.ktx2'
     },
     // Arcade Screens
     {
         name: 'arcadeScreenDefaultTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/arcadeScreens/arcadeScreenDefault.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenDefault.ktx2'
     },
 
     {
         name: 'arcadeScreenCreditsTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/arcadeScreens/arcadeScreenCredits.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenCredits.ktx2'
     },
 
     {
         name: 'arcadeScreenThanksTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/arcadeScreens/arcadeScreenThanks.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/arcadeScreens/arcadeScreenThanks.ktx2'
     },
 
     // Easel
     {
         name: 'easelTouchTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/easel/easelTouch.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/easel/easelTouch.ktx2'
     },
 
     {
         name: 'easelClickTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/easel/easelClick.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/easel/easelClick.ktx2'
     },
     
 
     // About Me Screens
     {
         name: 'bigScreenDefaultTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenDefault.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenDefault.ktx2'
     },
 
     {
         name: 'bigScreenAboutMeTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenAbout.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenAbout.ktx2'
     },
 
     {
         name: 'bigScreenSkillsTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenSkills.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenSkills.ktx2'
     },
 
     {
         name: 'bigScreenExperienceTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenExperience.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenExperience.ktx2'
     },
 
     {
         name: 'bigScreenAboutMeMobileTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenAboutMobile.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenAboutMobile.ktx2'
     },
 
     {
         name: 'bigScreenSkillsMobileTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenSkillsMobile.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenSkillsMobile.ktx2'
     },
 
     {
         name: 'bigScreenExperienceMobileTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/aboutMeScreens/bigScreenExperienceMobile.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/aboutMeScreens/bigScreenExperienceMobile.ktx2'
     },
 
     // Projects
     {
         name: 'vendingMachineDefaultTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/vendingMachineDefault.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/vendingMachineDefault.ktx2'
     },
 
     {
         name: 'vendingMachineMenuTexture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/vendingMachineMenu.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/vendingMachineMenu.ktx2'
     },
 
 
     {
         name: 'project1Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project1.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project1.ktx2'
     },
 
     {
         name: 'project2Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project2.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project2.ktx2'
     },
 
     {
         name: 'project3Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project3.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project3.ktx2'
     },
 
     {
         name: 'project4Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project4.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project4.ktx2'
     },
 
     {
         name: 'project5Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project5.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project5.ktx2'
     },
 
     {
         name: 'project6Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project6.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project6.ktx2'
     },
 
     {
         name: 'project7Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project7.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project7.ktx2'
     },
 
     {
         name: 'project8Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/vendingMachineScreens/project8.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/vendingMachineScreens/project8.ktx2'
     },
 
 
@@ -296,18 +296,17 @@ export default [
 
     {
         name: 'sideScreen1Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/sideScreens/sideScreen1.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/sideScreens/sideScreen1.ktx2'
     },
     {
         name: 'sideScreen2Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/sideScreens/sideScreen2.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/sideScreens/sideScreen2.ktx2'
     },
     {
         name: 'sideScreen3Texture',
-        type: 'basisTexture',
-        path: 'textures/screens/sideScreens/sideScreen3.basis'
+        type: 'KTX2Texture',
+        path: 'textures/screens/sideScreens/sideScreen3.ktx2'
     }
-
 ]
