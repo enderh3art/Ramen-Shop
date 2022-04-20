@@ -176,7 +176,7 @@ export default class RamenShop
             this.hologramBase.position.x = -0.13
             this.hologramBase.position.y = 2.15
             this.hologramBase.position.z = -0.95
-            this.hologramBase.rotation.x = Math.PI * 0.5
+            this.hologramBase.rotation.x = Math.PI * -0.5
             this.scene.add(this.hologramBase)
 
             if(this.debug.active)
@@ -187,12 +187,7 @@ export default class RamenShop
                 this.debugFolder.add(this.hologramBase.position, 'z').min(-10).max(10).step(0.001).name('z')
 
             }
-
-
         })
-
-
-
         this.model.position.y = - 3
         this.scene.add(this.model)
     }
