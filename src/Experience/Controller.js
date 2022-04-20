@@ -58,7 +58,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects1'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project1Texture,
                     0.2
@@ -71,7 +71,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects2'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project2Texture,
                     0.2
@@ -84,7 +84,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects3'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project3Texture,
                     0.2
@@ -97,7 +97,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects4'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project4Texture,
                     0.2
@@ -110,7 +110,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects5'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project5Texture,
                     0.2
@@ -123,7 +123,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects6'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project6Texture,
                     0.2
@@ -136,7 +136,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects7'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project7Texture,
                     0.2
@@ -149,7 +149,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects8'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.project8Texture,
                     0.2
@@ -166,10 +166,11 @@ export default class Controller
                 this.logic.lockButtons(1500)
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.vendingMachineDefaultTexture,
-                    0.4
+                    0.4,
+                    true
                 )
             }
 
@@ -177,7 +178,7 @@ export default class Controller
             {
                 this.sounds.playBloop()
                 this.logic.mode = 'projects0'
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.vendingMachineMenuTexture,
                     0.2
@@ -207,7 +208,7 @@ export default class Controller
                 this.menuControls.buttonIndicator(obj, color)
                 this.camControls.toProjects()
 
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.vendingMachineScreenMaterial,
                     this.resources.items.vendingMachineMenuTexture,
                     0.2
@@ -246,18 +247,18 @@ export default class Controller
 
                 if(this.config.vertical === true)
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeMobileTexture,
-                        0.2
+                        0.2,
                     )
                 }
                 else
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeTexture,
-                        0.2
+                        0.2,
                     )
                 }
 
@@ -306,7 +307,7 @@ export default class Controller
                 
                 if(this.config.vertical === true)
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeMobileTexture,
                         0.2
@@ -314,7 +315,7 @@ export default class Controller
                 }
                 else
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenAboutMeTexture,
                         0.2
@@ -332,7 +333,7 @@ export default class Controller
 
                 if(this.config.vertical === true)
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenSkillsMobileTexture,
                         0.2
@@ -340,7 +341,7 @@ export default class Controller
                 }
                 else
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenSkillsTexture,
                         0.2
@@ -358,7 +359,7 @@ export default class Controller
 
                 if(this.config.vertical === true)
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenExperienceMobileTexture,
                         0.2
@@ -366,7 +367,7 @@ export default class Controller
                 }
                 else
                 {
-                    this.screenTransition(
+                    this.bigScreenTransition(
                         this.materials.bigScreenMaterial,
                         this.resources.items.bigScreenExperienceTexture,
                         0.2
@@ -383,10 +384,12 @@ export default class Controller
                 this.logic.mode = 'menu'
                 this.camControls.toDefault()
 
-                this.screenTransition(
+                this.bigScreenTransition(
                     this.materials.bigScreenMaterial,
                     this.resources.items.bigScreenDefaultTexture,
-                    0.4
+                    0.4,
+                    1,
+                    0
                 )
             }
         }
@@ -626,7 +629,7 @@ export default class Controller
         }
     }
 
-    screenTransition(material,newTexture, duration)
+    screenTransition(material,newTexture, duration,)
     {
         material.uniforms.texture2.value = newTexture
         gsap.to(material.uniforms.progress, {value:1,
@@ -635,6 +638,23 @@ export default class Controller
             onComplete: () => {
                 material.uniforms.texture1.value = newTexture
                 material.uniforms.progress.value = 0
+            }
+        })
+    }
+
+    bigScreenTransition(material,newTexture, duration, toDefault)
+    {
+        material.uniforms.uTexture2IsDefault.value = toDefault ? 1 : 0
+
+        material.uniforms.uTexture2.value = newTexture
+        gsap.to(material.uniforms.uProgress, {value:1,
+            duration: duration,
+            ease: "power1.inOut",
+            onComplete: () => {
+                material.uniforms.uTexture1IsDefault.value = toDefault ? 1 : 0 
+                material.uniforms.uTexture1.value = newTexture
+                material.uniforms.uProgress.value = 0
+                
             }
         })
     }

@@ -82,8 +82,9 @@ export default class Materials
 
         // map screen textures
         // this.bigScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.bigScreenDefaultTexture)
+        // this.vendingMachineScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.vendingMachineDefaultTexture)
         this.arcadeScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.arcadeScreenDefaultTexture)
-        this.vendingMachineScreenMaterial = this.getTransitionShaderMaterial(this.resources.items.vendingMachineDefaultTexture)
+
 
         this.sideScreenMaterial = this.getSideScreenShaderMaterial(this.resources.items.sideScreen1Texture)
 
@@ -109,6 +110,7 @@ export default class Materials
 
         // Shader Materials
 
+        //Hologram
         this.hologramBaseMaterial = new THREE.ShaderMaterial({
           vertexShader: hologramVertexShader,
           fragmentShader: hologramFragmentShader,
@@ -124,8 +126,12 @@ export default class Materials
           }
         })
 
-        this.debugObject.lightColor = '#00FFF0'
-        this.debugObject.darkColor = '#05a7bd'
+        // Big Screen
+
+        this.debugObject.bigScreenLightColor = '#00FFF0'
+        this.debugObject.bigScreenDarkColor = '#05a7bd'
+        this.debugObject.vendingMachineScreenLightColor = '#34fe81'
+        this.debugObject.vendingMachineScreenDarkColor = '#386aff'
 
         this.bigScreenMaterial = new THREE.ShaderMaterial({
           vertexShader: bigScreenVertexShader,
@@ -136,9 +142,34 @@ export default class Materials
               uYOffset: {value : 0.648},
               uRadialThickness: {value : 4.0},
               uSpeed : {value: 0.3},
-              uLightColor: {value: new THREE.Color(this.debugObject.lightColor)},
-              uDarkColor: {value: new THREE.Color(this.debugObject.darkColor)},
-              uTexture: {value: this.resources.items.bigScreenDefaultTexture}
+              uLightColor: {value: new THREE.Color(this.debugObject.bigScreenLightColor)},
+              uDarkColor: {value: new THREE.Color(this.debugObject.bigScreenDarkColor)},
+              uDefaultTexture: {value: this.resources.items.bigScreenDefaultTexture},
+              uTexture1: {value: null },
+              uTexture2: {value: null },
+              uProgress: {value: 0 },
+              uTexture1IsDefault: {value: 1.0},
+              uTexture2IsDefault: {value: 0},
+          }
+        })
+
+        this.vendingMachineScreenMaterial = new THREE.ShaderMaterial({
+          vertexShader: bigScreenVertexShader,
+          fragmentShader: bigScreenFragmentShader,
+          uniforms:{
+              uTime: { value: 0},
+              uXOffset: {value : 0.421},
+              uYOffset: {value : 0.522},
+              uRadialThickness: {value : 4.0},
+              uSpeed : {value: 0.3},
+              uLightColor: {value: new THREE.Color(this.debugObject.vendingMachineScreenLightColor)},
+              uDarkColor: {value: new THREE.Color(this.debugObject.vendingMachineScreenDarkColor)},
+              uDefaultTexture: {value: this.resources.items.vendingMachineDefaultTexture},
+              uTexture1: {value: null },
+              uTexture2: {value: null },
+              uProgress: {value: 0 },
+              uTexture1IsDefault: {value: 1.0},
+              uTexture2IsDefault: {value: 0},
           }
         })
 
@@ -154,24 +185,44 @@ export default class Materials
             this.debugFolder.add(this.hologramBaseMaterial.uniforms.uSpeed, 'value').min(0).max(3).step(0.001).name('uSpeed')      
           
             //bigScreen
-            this.debugFolder.add(this.bigScreenMaterial.uniforms.uXOffset, 'value').min(-1).max(1).step(0.001).name('uXOffset')
-            this.debugFolder.add(this.bigScreenMaterial.uniforms.uYOffset, 'value').min(-1).max(1).step(0.001).name('uYOffset')
-            this.debugFolder.add(this.bigScreenMaterial.uniforms.uRadialThickness, 'value').min(0).max(8.0).step(0.001).name('uRadialThickness')
-            this.debugFolder.add(this.bigScreenMaterial.uniforms.uSpeed, 'value').min(0).max(4).step(0.001).name('uSpeed')
+            this.debugFolder.add(this.bigScreenMaterial.uniforms.uXOffset, 'value').min(-1).max(1).step(0.001).name('bigScreenUXOffset')
+            this.debugFolder.add(this.bigScreenMaterial.uniforms.uYOffset, 'value').min(-1).max(1).step(0.001).name('bigScreenUYOffset')
+            this.debugFolder.add(this.bigScreenMaterial.uniforms.uRadialThickness, 'value').min(0).max(8.0).step(0.001).name('bigScreenURadialThickness')
+            this.debugFolder.add(this.bigScreenMaterial.uniforms.uSpeed, 'value').min(0).max(4).step(0.001).name('bigScreenUSpeed')
             this.debugFolder
-              .addColor(this.debugObject, 'lightColor')
-              .name('lightColor')
+              .addColor(this.debugObject, 'bigScreenLightColor')
+              .name('bigScreenLightColor')
               .onChange(() =>
               {
-                this.bigScreenMaterial.uniforms.uLightColor.value.set(this.debugObject.lightColor)
+                this.bigScreenMaterial.uniforms.uLightColor.value.set(this.debugObject.bigScreenLightColor)
               })
             this.debugFolder
-              .addColor(this.debugObject, 'darkColor')
-              .name('darkColor')
+              .addColor(this.debugObject, 'bigScreenDarkColor')
+              .name('bigScreenDarkColor')
               .onChange(() =>
               {
-                this.bigScreenMaterial.uniforms.uDarkColor.value.set(this.debugObject.darkColor)
+                this.bigScreenMaterial.uniforms.uDarkColor.value.set(this.debugObject.bigScreenDarkColor)
               })
+
+              //VendingMchineScreen
+              this.debugFolder.add(this.vendingMachineScreenMaterial.uniforms.uXOffset, 'value').min(-1).max(1).step(0.001).name('vendingMachineScreenUXOffset')
+              this.debugFolder.add(this.vendingMachineScreenMaterial.uniforms.uYOffset, 'value').min(-1).max(1).step(0.001).name('vendingMachineScreenUYOffset')
+              this.debugFolder.add(this.vendingMachineScreenMaterial.uniforms.uRadialThickness, 'value').min(0).max(8.0).step(0.001).name('vendingMachineScreenURadialThickness')
+              this.debugFolder.add(this.vendingMachineScreenMaterial.uniforms.uSpeed, 'value').min(0).max(4).step(0.001).name('vendingMachineScreenUSpeed')
+              this.debugFolder
+                .addColor(this.debugObject, 'vendingMachineScreenLightColor')
+                .name('vendingMachineScreenLightColor')
+                .onChange(() =>
+                {
+                  this.vendingMachineScreenMaterial.uniforms.uLightColor.value.set(this.debugObject.vendingMachineScreenLightColor)
+                })
+              this.debugFolder
+                .addColor(this.debugObject, 'vendingMachineScreenDarkColor')
+                .name('vendingMachineScreenDarkColor')
+                .onChange(() =>
+                {
+                  this.vendingMachineScreenMaterial.uniforms.uDarkColor.value.set(this.debugObject.vendingMachineScreenDarkColor)
+                })
             
         }
 

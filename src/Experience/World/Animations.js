@@ -54,6 +54,7 @@ export default class Animations
             }
             {this.materials.hologramBaseMaterial.uniforms.uTime.value = this.time.elapsed * 0.001}
             {this.materials.bigScreenMaterial.uniforms.uTime.value = -this.time.elapsed * 0.001}
+            {this.materials.vendingMachineScreenMaterial.uniforms.uTime.value = -this.time.elapsed * 0.001}
         }
     }
 

@@ -1,5 +1,4 @@
 uniform float progress;
-uniform float intensity;
 uniform sampler2D texture1;
 uniform sampler2D texture2;
 varying vec2 vUv;
