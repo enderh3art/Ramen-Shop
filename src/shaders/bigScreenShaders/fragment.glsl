@@ -24,8 +24,6 @@ vec2 rotate(vec2 uv, float rotation, vec2 mid)
       cos(rotation) * (uv.y - mid.y) - sin(rotation) * (uv.x - mid.x) + mid.y
     );
 }
-
-
 void main()
 {
     vec2 rotatedUV = rotate(vUv, -uTime * uSpeed, vec2(uXOffset, uYOffset));
