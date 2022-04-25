@@ -245,6 +245,8 @@ export default class Materials
       this.ramenShop.setEaselMaterial()
     }
 
+// https://discourse.threejs.org/t/basis-video-texture/12716
+
     getChromaKeyShaderMaterial(texture, color) {
     
         return new THREE.ShaderMaterial({
