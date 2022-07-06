@@ -43,12 +43,12 @@ export default [
     {
         name: 'dishMatcapTexture',
         type: 'KTX2Texture',
-        path: 'textures/matcaps/dishMatcap.ktx2'
+        path: 'textures/matcaps/dishMatCap.ktx2'
     },
     {
         name: 'fanMatcapTexture',
         type: 'KTX2Texture',
-        path: 'textures/matcaps/fanMatcap.ktx2'
+        path: 'textures/matcaps/fanMatCap.ktx2'
     },
     {
         name: 'lightMatcapTexture',
@@ -58,12 +58,12 @@ export default [
     {
         name: 'neonBlueMatcapTexture',
         type: 'KTX2Texture',
-        path: 'textures/matcaps/neonBlueMatcap.ktx2'
+        path: 'textures/matcaps/neonBlueMatCap.ktx2'
     },
     {
         name: 'neonGreenMatcapTexture',
         type: 'KTX2Texture',
-        path: 'textures/matcaps/neonGreenMatcap.ktx2'
+        path: 'textures/matcaps/neonGreenMatCap.ktx2'
     },
     // Arcade Screens
     {
