@@ -98,16 +98,11 @@ module.exports = {
             // MP3
             {
                 test: /\.(mp3)$/,
-                use:
-                [
-                    {
-                        loader: 'file-loader',
-                        options:
-                        {
-                            outputPath: 'assets/audios/'
-                        }
-                    }
-                ]
+                type: 'asset/resource',
+                generator:
+                {
+                    filename: 'assets/audios/[hash][ext]'
+                }
             }
         ]
     }
